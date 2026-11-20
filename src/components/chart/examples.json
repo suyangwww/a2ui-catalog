@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Chart — Renders interactive area, line, bar, stacked bar, and donut charts with live hover/touch readouts",
+    "props": {
+      "type": "area",
+      "title": "Monthly Cloud Revenue vs Cost ($K)",
+      "subtitle": "Hover or drag across points to inspect live values",
+      "xKey": "m",
+      "valuePrefix": "$",
+      "valueSuffix": "K",
+      "series": [
+        {
+          "key": "rev",
+          "label": "Revenue"
+        },
+        {
+          "key": "cost",
+          "label": "Infrastructure Cost"
+        }
+      ],
+      "data": [
+        {
+          "m": "Jan",
+          "rev": 120,
+          "cost": 48
+        },
+        {
+          "m": "Feb",
+          "rev": 145,
+          "cost": 51
+        },
+        {
+          "m": "Mar",
+          "rev": 168,
+          "cost": 54
+        },
+        {
+          "m": "Apr",
+          "rev": 194,
+          "cost": 58
+        },
+        {
+          "m": "May",
+          "rev": 228,
+          "cost": 61
+        }
+      ]
+    }
+  }
+]

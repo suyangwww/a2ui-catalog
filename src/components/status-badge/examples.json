@@ -1,0 +1,43 @@
+[
+  {
+    "title": "StatusBadge — Displays a compact colored pill for states like Confirmed, Healthy, Pending, or At Risk",
+    "props": {
+      "label": "Confirmed · On Time",
+      "tone": "success",
+      "pulse": true
+    },
+    "children": [
+      {
+        "id": "row",
+        "component": "Row",
+        "gap": "sm",
+        "wrap": true,
+        "children": [
+          "b1",
+          "b2",
+          "b3",
+          "b4"
+        ]
+      },
+      {
+        "id": "b2",
+        "component": "StatusBadge",
+        "label": "In Review",
+        "tone": "info",
+        "icon": "clock"
+      },
+      {
+        "id": "b3",
+        "component": "StatusBadge",
+        "label": "Capacity Tight",
+        "tone": "warning"
+      },
+      {
+        "id": "b4",
+        "component": "StatusBadge",
+        "label": "Action Required",
+        "tone": "critical"
+      }
+    ]
+  }
+]

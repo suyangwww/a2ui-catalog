@@ -1,0 +1,18 @@
+[
+  {
+    "title": "TextField — Lets users type short text, emails, numbers, or multi-line notes directly into the Data Model",
+    "props": {
+      "label": "Recipient Email",
+      "value": {
+        "@path": "/email"
+      },
+      "placeholder": "name@company.com",
+      "helperText": "Receipt and calendar invite will be sent here.",
+      "prefixIcon": "mail",
+      "clearable": true
+    },
+    "dataModel": {
+      "email": "alex@company.com"
+    }
+  }
+]

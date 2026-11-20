@@ -1,0 +1,10 @@
+[
+  {
+    "title": "AudioPlayer — Plays voice summaries, meeting clips, or spoken briefings with playback speed control",
+    "props": {
+      "url": "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=",
+      "description": "Morning Executive Briefing",
+      "subtitle": "Spoken Summary · 1x / 1.5x / 2x speed"
+    }
+  }
+]

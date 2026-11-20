@@ -1,0 +1,60 @@
+[
+  {
+    "title": "Tabs — Lets users switch between two or more views inside the same space",
+    "props": {
+      "variant": "segmented",
+      "tabs": [
+        {
+          "title": "Summary",
+          "icon": "sparkles",
+          "child": "p1"
+        },
+        {
+          "title": "Budget",
+          "icon": "wallet",
+          "child": "p2"
+        },
+        {
+          "title": "Schedule",
+          "icon": "calendar",
+          "child": "p3"
+        }
+      ]
+    },
+    "children": [
+      {
+        "id": "p1",
+        "component": "Card",
+        "title": "Executive Summary",
+        "child": "p1t"
+      },
+      {
+        "id": "p1t",
+        "component": "Text",
+        "text": "Project is tracking two days ahead of schedule with all core milestones delivered."
+      },
+      {
+        "id": "p2",
+        "component": "Card",
+        "title": "Budget Snapshot",
+        "child": "p2t"
+      },
+      {
+        "id": "p2t",
+        "component": "Text",
+        "text": "$42,500 spent of $50,000 allocated (85% utilized)."
+      },
+      {
+        "id": "p3",
+        "component": "Card",
+        "title": "Upcoming Milestones",
+        "child": "p3t"
+      },
+      {
+        "id": "p3t",
+        "component": "Text",
+        "text": "Customer beta opens Tuesday; general availability scheduled for May 28."
+      }
+    ]
+  }
+]

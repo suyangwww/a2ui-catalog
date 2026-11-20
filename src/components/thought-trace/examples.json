@@ -1,0 +1,21 @@
+[
+  {
+    "title": "ThoughtTrace — Shows a calm, collapsible summary of how the agent reasoned through a task",
+    "props": {
+      "summary": "Thought for 2.8s · Compared 6 nonstop flights & corporate policy",
+      "status": "complete",
+      "durationSeconds": 2.8,
+      "defaultExpanded": true,
+      "steps": [
+        {
+          "title": "Checked seat availability",
+          "detail": "Filtered nonstop flights into Tokyo Haneda with >94% on-time history."
+        },
+        {
+          "title": "Verified travel policy",
+          "detail": "Confirmed business class is pre-approved for flights over 8 hours."
+        }
+      ]
+    }
+  }
+]

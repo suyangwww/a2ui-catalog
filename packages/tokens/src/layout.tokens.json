@@ -1,0 +1,27 @@
+{
+  "radii": {
+    "xs": "6px",
+    "sm": "8px",
+    "md": "10px",
+    "lg": "14px",
+    "xl": "20px",
+    "pill": "9999px"
+  },
+  "spacing": {
+    "none": "0px",
+    "xs": "4px",
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "24px",
+    "2xl": "32px"
+  },
+  "glass": {
+    "blur": "22px",
+    "saturate": "180%"
+  },
+  "touch": {
+    "minTargetFine": "36px",
+    "minTargetCoarse": "44px"
+  }
+}

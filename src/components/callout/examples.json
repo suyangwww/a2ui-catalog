@@ -1,0 +1,25 @@
+[
+  {
+    "title": "Callout — Frames an important takeaway, tip, warning, or critical alert in a tinted banner",
+    "props": {
+      "tone": "tip",
+      "title": "Analyst Takeaway",
+      "body": "Consolidating three unused SaaS licenses saves $2,232 per year with zero workflow impact."
+    },
+    "children": [
+      {
+        "id": "c2",
+        "component": "Callout",
+        "tone": "warning",
+        "title": "Visa Reminder",
+        "body": "Transit through London requires an electronic travel authorization.",
+        "actionLabel": "Check Eligibility",
+        "action": {
+          "event": {
+            "name": "check_eta"
+          }
+        }
+      }
+    ]
+  }
+]

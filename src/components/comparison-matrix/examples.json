@@ -1,0 +1,64 @@
+[
+  {
+    "title": "ComparisonMatrix — Compares 2 to 4 options side by side across shared criteria, highlighting a recommended pick",
+    "props": {
+      "title": "Compare Flight Options (Switch Desktop / iPad / iPhone above)",
+      "criteria": [
+        {
+          "key": "dep",
+          "label": "Departure"
+        },
+        {
+          "key": "dur",
+          "label": "Duration"
+        },
+        {
+          "key": "cab",
+          "label": "Cabin"
+        },
+        {
+          "key": "otp",
+          "label": "On-Time Rate"
+        }
+      ],
+      "options": [
+        {
+          "id": "o1",
+          "title": "ANA NH 105",
+          "subtitle": "$4,280 roundtrip",
+          "badge": "Recommended",
+          "recommended": true,
+          "values": {
+            "dep": "12:15 PM",
+            "dur": "11h 10m",
+            "cab": "Business Suite",
+            "otp": "96.4%"
+          },
+          "actionLabel": "Select ANA",
+          "action": {
+            "event": {
+              "name": "pick_ana"
+            }
+          }
+        },
+        {
+          "id": "o2",
+          "title": "JAL JL 005",
+          "subtitle": "$4,520 roundtrip",
+          "values": {
+            "dep": "1:40 PM",
+            "dur": "11h 15m",
+            "cab": "Apex Suite",
+            "otp": "94.8%"
+          },
+          "actionLabel": "Select JAL",
+          "action": {
+            "event": {
+              "name": "pick_jal"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

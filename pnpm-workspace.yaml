@@ -1,0 +1,13 @@
+packages:
+  - "packages/*"
+  - "apps/*"
+
+overrides:
+  zod: "^3.25.76"
+
+allowBuilds:
+  esbuild: true
+  protobufjs: true
+
+minimumReleaseAgeExclude:
+  - lucide-react@1.76.0

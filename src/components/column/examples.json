@@ -1,0 +1,45 @@
+[
+  {
+    "title": "Column — Stacks child components cleanly from top to bottom",
+    "props": {
+      "gap": "md",
+      "children": [
+        "t1",
+        "div",
+        "t2",
+        "btn"
+      ]
+    },
+    "children": [
+      {
+        "id": "t1",
+        "component": "Text",
+        "variant": "h3",
+        "text": "Weekly Team Digest Ready"
+      },
+      {
+        "id": "div",
+        "component": "Divider"
+      },
+      {
+        "id": "t2",
+        "component": "Text",
+        "variant": "body",
+        "tone": "secondary",
+        "text": "Three milestones completed and zero blockers reported across engineering."
+      },
+      {
+        "id": "btn",
+        "component": "Button",
+        "label": "Send Digest to Team",
+        "variant": "primary",
+        "icon": "send",
+        "action": {
+          "event": {
+            "name": "send_digest"
+          }
+        }
+      }
+    ]
+  }
+]

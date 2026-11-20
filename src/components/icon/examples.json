@@ -1,0 +1,77 @@
+[
+  {
+    "title": "Icon — Displays crisp vector symbols from 83 built-in agent and interface icons",
+    "props": {
+      "name": "sparkles",
+      "size": "lg",
+      "tone": "accent"
+    },
+    "children": [
+      {
+        "id": "row",
+        "component": "Row",
+        "gap": "lg",
+        "wrap": true,
+        "children": [
+          "i1",
+          "i2",
+          "i3",
+          "i4",
+          "i5",
+          "i6",
+          "i7",
+          "i8"
+        ]
+      },
+      {
+        "id": "i2",
+        "component": "Icon",
+        "name": "brain",
+        "size": "lg",
+        "tone": "primary"
+      },
+      {
+        "id": "i3",
+        "component": "Icon",
+        "name": "flight",
+        "size": "lg",
+        "tone": "accent"
+      },
+      {
+        "id": "i4",
+        "component": "Icon",
+        "name": "shieldCheck",
+        "size": "lg",
+        "tone": "success"
+      },
+      {
+        "id": "i5",
+        "component": "Icon",
+        "name": "trendingUp",
+        "size": "lg",
+        "tone": "success"
+      },
+      {
+        "id": "i6",
+        "component": "Icon",
+        "name": "code",
+        "size": "lg",
+        "tone": "secondary"
+      },
+      {
+        "id": "i7",
+        "component": "Icon",
+        "name": "wallet",
+        "size": "lg",
+        "tone": "primary"
+      },
+      {
+        "id": "i8",
+        "component": "Icon",
+        "name": "warning",
+        "size": "lg",
+        "tone": "warning"
+      }
+    ]
+  }
+]

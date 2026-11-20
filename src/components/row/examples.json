@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Row — Places child components side by side in a horizontal line",
+    "props": {
+      "justify": "spaceBetween",
+      "align": "center",
+      "gap": "md",
+      "wrap": true,
+      "children": [
+        "av",
+        "badges"
+      ]
+    },
+    "children": [
+      {
+        "id": "av",
+        "component": "Avatar",
+        "name": "Travel Concierge",
+        "subtitle": "Ready to book",
+        "status": "online"
+      },
+      {
+        "id": "badges",
+        "component": "Row",
+        "gap": "sm",
+        "wrap": true,
+        "children": [
+          "b1",
+          "b2"
+        ]
+      },
+      {
+        "id": "b1",
+        "component": "StatusBadge",
+        "label": "Direct Flight",
+        "tone": "info"
+      },
+      {
+        "id": "b2",
+        "component": "StatusBadge",
+        "label": "Seats Available",
+        "tone": "success",
+        "pulse": true
+      }
+    ]
+  }
+]

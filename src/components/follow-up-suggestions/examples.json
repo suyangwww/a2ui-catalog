@@ -1,0 +1,41 @@
+[
+  {
+    "title": "FollowUpSuggestions — Offers 2 to 4 tap-to-send next-step prompt pills at the end of an agent turn",
+    "props": {
+      "title": "Suggested Next Steps",
+      "layout": "wrap",
+      "suggestions": [
+        {
+          "id": "f1",
+          "label": "Compare hotel options near Tokyo Station",
+          "icon": "sparkles",
+          "action": {
+            "event": {
+              "name": "ask_hotels"
+            }
+          }
+        },
+        {
+          "id": "f2",
+          "label": "Add airport transfer to itinerary",
+          "icon": "car",
+          "action": {
+            "event": {
+              "name": "add_transfer"
+            }
+          }
+        },
+        {
+          "id": "f3",
+          "label": "Export schedule to calendar",
+          "icon": "calendar",
+          "action": {
+            "event": {
+              "name": "export_cal"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

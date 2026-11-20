@@ -1,0 +1,21 @@
+{
+  "name": "@a2ui-catalog/tokens",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/lumina-tokens.css",
+    "./lumina-tokens.css": "./dist/lumina-tokens.css",
+    "./platforms/*": "./dist/platforms/*"
+  },
+  "scripts": {
+    "build": "node scripts/build-tokens.mjs && tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist src/generated.ts"
+  }
+}

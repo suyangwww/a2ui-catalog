@@ -1,0 +1,41 @@
+[
+  {
+    "title": "StatMetric — Highlights a headline KPI number with a trend badge and an optional mini sparkline chart",
+    "props": {
+      "label": "Quarterly Revenue",
+      "value": "$48.6M",
+      "delta": "+34.2%",
+      "trend": "up",
+      "trendSentiment": "positive",
+      "caption": "vs prior quarter",
+      "sparkline": [
+        28,
+        31,
+        35,
+        39,
+        44,
+        48.6
+      ]
+    },
+    "children": [
+      {
+        "id": "s2",
+        "component": "StatMetric",
+        "label": "Checkout Latency",
+        "value": "42ms",
+        "delta": "-68%",
+        "trend": "down",
+        "trendSentiment": "positive",
+        "caption": "Lower latency is positive",
+        "sparkline": [
+          135,
+          110,
+          88,
+          64,
+          49,
+          42
+        ]
+      }
+    ]
+  }
+]

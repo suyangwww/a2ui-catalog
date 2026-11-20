@@ -1,0 +1,23 @@
+{
+  "name": "@a2ui-catalog/core",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/packages/core/src/index.js",
+  "types": "./dist/packages/core/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/packages/core/src/index.d.ts",
+      "default": "./dist/packages/core/src/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@a2ui/web_core": "^0.15.0",
+    "zod": "^3.25.76"
+  }
+}

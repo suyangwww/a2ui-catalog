@@ -1,0 +1,46 @@
+[
+  {
+    "title": "Accordion — Organizes secondary details into expandable rows that stay tucked away until clicked",
+    "props": {
+      "allowMultiple": true,
+      "items": [
+        {
+          "id": "i1",
+          "title": "Refund & Change Policy",
+          "subtitle": "Free changes up to 48 hours prior",
+          "child": "c1",
+          "defaultOpen": true
+        },
+        {
+          "id": "i2",
+          "title": "Baggage Allowance",
+          "subtitle": "2 checked bags included",
+          "child": "c2"
+        },
+        {
+          "id": "i3",
+          "title": "Lounge Access",
+          "subtitle": "Terminal 3 International Suite",
+          "child": "c3"
+        }
+      ]
+    },
+    "children": [
+      {
+        "id": "c1",
+        "component": "Text",
+        "text": "Tickets may be rebooked or refunded with zero fee up to 48 hours before departure."
+      },
+      {
+        "id": "c2",
+        "component": "Text",
+        "text": "Includes two 32kg checked suitcases plus one cabin carry-on and personal item."
+      },
+      {
+        "id": "c3",
+        "component": "Text",
+        "text": "Complimentary shower suites, dining, and quiet workspaces at Gate 114."
+      }
+    ]
+  }
+]

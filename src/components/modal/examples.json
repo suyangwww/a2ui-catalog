@@ -1,0 +1,46 @@
+[
+  {
+    "title": "Modal — Opens secondary details in a focused overlay when the user clicks a trigger button",
+    "props": {
+      "title": "Encryption & Compliance Details",
+      "description": "Verified security posture for this workspace",
+      "size": "sm",
+      "trigger": "trig",
+      "content": "body"
+    },
+    "children": [
+      {
+        "id": "trig",
+        "component": "Button",
+        "label": "Inspect Security Details",
+        "variant": "primary",
+        "icon": "shieldCheck",
+        "action": {
+          "event": {
+            "name": "open_security"
+          }
+        }
+      },
+      {
+        "id": "body",
+        "component": "KeyValueList",
+        "items": [
+          {
+            "label": "Data Encryption",
+            "value": "AES-256 at rest · TLS 1.3"
+          },
+          {
+            "label": "Certifications",
+            "value": "SOC 2 Type II · ISO 27001",
+            "tone": "success"
+          },
+          {
+            "label": "Audit Log Retention",
+            "value": "365 days",
+            "mono": true
+          }
+        ]
+      }
+    ]
+  }
+]

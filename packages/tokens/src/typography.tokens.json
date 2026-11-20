@@ -1,0 +1,18 @@
+{
+  "fonts": {
+    "sans": "-apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"SF Pro Display\", \"Inter\", \"Segoe UI\", Roboto, system-ui, sans-serif",
+    "display": "-apple-system, BlinkMacSystemFont, \"SF Pro Display\", \"Inter\", \"Segoe UI\", system-ui, sans-serif",
+    "mono": "\"SF Mono\", \"JetBrains Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+  },
+  "scale": {
+    "hero": { "size": "2rem", "lineHeight": "1.18", "weight": 700, "tracking": "-0.03em" },
+    "h1": { "size": "1.5rem", "lineHeight": "1.24", "weight": 650, "tracking": "-0.025em" },
+    "h2": { "size": "1.25rem", "lineHeight": "1.30", "weight": 620, "tracking": "-0.02em" },
+    "h3": { "size": "1.0625rem", "lineHeight": "1.36", "weight": 600, "tracking": "-0.015em" },
+    "subtitle": { "size": "0.9375rem", "lineHeight": "1.45", "weight": 500, "tracking": "-0.01em" },
+    "body": { "size": "0.9375rem", "lineHeight": "1.55", "weight": 400, "tracking": "-0.006em" },
+    "caption": { "size": "0.8125rem", "lineHeight": "1.40", "weight": 450, "tracking": "0em" },
+    "overline": { "size": "0.71875rem", "lineHeight": "1.25", "weight": 650, "tracking": "0.06em" },
+    "code": { "size": "0.84375rem", "lineHeight": "1.55", "weight": 450, "tracking": "0em" }
+  }
+}

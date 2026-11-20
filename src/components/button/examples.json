@@ -1,0 +1,63 @@
+[
+  {
+    "title": "Button — Triggers an agent request or client function, with primary, secondary, subtle, and danger styles",
+    "props": {
+      "label": "Confirm Plan",
+      "variant": "primary",
+      "icon": "check",
+      "action": {
+        "event": {
+          "name": "confirm"
+        }
+      }
+    },
+    "children": [
+      {
+        "id": "row",
+        "component": "Row",
+        "gap": "sm",
+        "wrap": true,
+        "children": [
+          "b1",
+          "b2",
+          "b3",
+          "b4"
+        ]
+      },
+      {
+        "id": "b2",
+        "component": "Button",
+        "label": "Edit Details",
+        "variant": "secondary",
+        "icon": "edit",
+        "action": {
+          "event": {
+            "name": "edit"
+          }
+        }
+      },
+      {
+        "id": "b3",
+        "component": "Button",
+        "label": "Skip for Now",
+        "variant": "ghost",
+        "action": {
+          "event": {
+            "name": "skip"
+          }
+        }
+      },
+      {
+        "id": "b4",
+        "component": "Button",
+        "label": "Cancel Booking",
+        "variant": "danger",
+        "action": {
+          "event": {
+            "name": "cancel"
+          }
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "title": "Grid — Arranges cards into a clean multi-column grid that adapts to screen width",
+    "props": {
+      "columns": 3,
+      "minItemWidth": 210,
+      "gap": "md",
+      "children": [
+        "m1",
+        "m2",
+        "m3"
+      ]
+    },
+    "children": [
+      {
+        "id": "m1",
+        "component": "StatMetric",
+        "label": "Active Users",
+        "value": "28,400",
+        "delta": "+14%",
+        "trend": "up",
+        "trendSentiment": "positive",
+        "sparkline": [
+          18,
+          20,
+          22,
+          24,
+          26,
+          28
+        ]
+      },
+      {
+        "id": "m2",
+        "component": "StatMetric",
+        "label": "Avg Response",
+        "value": "210ms",
+        "delta": "-18%",
+        "trend": "down",
+        "trendSentiment": "positive",
+        "sparkline": [
+          290,
+          260,
+          245,
+          230,
+          220,
+          210
+        ]
+      },
+      {
+        "id": "m3",
+        "component": "StatMetric",
+        "label": "Satisfaction",
+        "value": "98.2%",
+        "delta": "+1.4%",
+        "trend": "up",
+        "trendSentiment": "positive",
+        "sparkline": [
+          95,
+          96,
+          96.5,
+          97,
+          97.8,
+          98.2
+        ]
+      }
+    ]
+  }
+]

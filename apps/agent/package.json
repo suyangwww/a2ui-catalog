@@ -1,0 +1,27 @@
+{
+  "name": "@a2ui-catalog/agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@a2a-js/sdk": "^0.3.13",
+    "@a2ui-catalog/core": "workspace:*",
+    "@a2ui-catalog/schema": "workspace:*",
+    "@a2ui/agent": "^0.1.0",
+    "@a2ui/web_core": "^0.15.0",
+    "@google/genai": "^3.6.1",
+    "express": "^5.1.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1"
+  }
+}

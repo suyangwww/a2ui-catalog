@@ -1,0 +1,22 @@
+[
+  {
+    "title": "DiffViewer — Highlights exact added and removed lines between before and after text or config",
+    "props": {
+      "filename": "config/rate-limit.yaml",
+      "language": "yaml",
+      "viewMode": "split",
+      "before": "max_requests_per_min: 120\nretry_backoff_ms: 100\ncircuit_breaker: false",
+      "after": "max_requests_per_min: 300\nretry_backoff_ms: 250\ncircuit_breaker: true",
+      "acceptAction": {
+        "event": {
+          "name": "accept_diff"
+        }
+      },
+      "rejectAction": {
+        "event": {
+          "name": "reject_diff"
+        }
+      }
+    }
+  }
+]

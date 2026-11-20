@@ -1,0 +1,15 @@
+[
+  {
+    "title": "CodeBlock — Presents syntax-highlighted code or queries with line numbers, line highlights, and one-click Copy",
+    "props": {
+      "filename": "queries/top_customers.sql",
+      "language": "sql",
+      "showLineNumbers": true,
+      "highlightLines": [
+        3,
+        4
+      ],
+      "code": "SELECT account_name, annual_spend_usd\nFROM enterprise_accounts\nWHERE status = 'active'\n  AND annual_spend_usd >= 100000\nORDER BY annual_spend_usd DESC;"
+    }
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "title": "ProgressIndicator — Visualizes task completion as a smooth bar, circular ring, or multi-stage segmented bar",
+    "props": {
+      "label": "Canary Rollout Stages",
+      "sublabel": "Stage 3 of 4 healthy",
+      "value": 75,
+      "variant": "segmented",
+      "segments": 4,
+      "tone": "accent"
+    },
+    "children": [
+      {
+        "id": "p2",
+        "component": "ProgressIndicator",
+        "label": "Indexing Knowledge Base",
+        "sublabel": "1,840 / 2,000 documents",
+        "value": 92,
+        "variant": "ring",
+        "tone": "success"
+      }
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "title": "KeyValueList — Presents clean label-and-value summary rows for receipts, passes, and configuration summaries",
+    "props": {
+      "title": "Reservation Pass Summary",
+      "items": [
+        {
+          "label": "Passenger",
+          "value": "Alex Morgan"
+        },
+        {
+          "label": "Flight & Seat",
+          "value": "ANA NH 105 · Seat 5A",
+          "tone": "strong"
+        },
+        {
+          "label": "Confirmation Code",
+          "value": "LUM-8842K",
+          "mono": true,
+          "copyable": true,
+          "tone": "accent"
+        }
+      ]
+    }
+  }
+]

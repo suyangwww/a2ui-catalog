@@ -1,0 +1,15 @@
+[
+  {
+    "title": "CheckBox — A tick box for explicit opt-ins, agreements, or safety confirmations",
+    "props": {
+      "label": "I confirmed passport validity (+6 months)",
+      "description": "Required for international travel check-in",
+      "value": {
+        "@path": "/passportOk"
+      }
+    },
+    "dataModel": {
+      "passportOk": true
+    }
+  }
+]

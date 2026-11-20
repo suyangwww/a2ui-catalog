@@ -1,0 +1,31 @@
+[
+  {
+    "title": "StepTimeline — Displays a step-by-step vertical tracker with completed, active, pending, or error icons",
+    "props": {
+      "title": "Automated Onboarding Workflow",
+      "steps": [
+        {
+          "id": "s1",
+          "title": "Provisioned cloud workspace",
+          "subtitle": "us-east-1 cluster ready",
+          "status": "completed",
+          "timestamp": "0.8s"
+        },
+        {
+          "id": "s2",
+          "title": "Configured SSO group permissions",
+          "subtitle": "14 engineering members synced",
+          "status": "completed",
+          "timestamp": "1.4s"
+        },
+        {
+          "id": "s3",
+          "title": "Running smoke verification suite",
+          "subtitle": "18 of 20 checks complete",
+          "status": "active",
+          "timestamp": "Now"
+        }
+      ]
+    }
+  }
+]

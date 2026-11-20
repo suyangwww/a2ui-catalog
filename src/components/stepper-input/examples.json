@@ -1,0 +1,18 @@
+[
+  {
+    "title": "StepperInput — A clean minus / plus counter for exact whole numbers like seats, guests, or nights",
+    "props": {
+      "label": "Hotel Nights",
+      "description": "Check-in May 12 · Tokyo",
+      "min": 1,
+      "max": 14,
+      "step": 1,
+      "value": {
+        "@path": "/nights"
+      }
+    },
+    "dataModel": {
+      "nights": 4
+    }
+  }
+]

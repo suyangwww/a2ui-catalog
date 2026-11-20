@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Video — Plays inline video clips with native playback controls and a preview poster frame",
+    "props": {
+      "url": "data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQ==",
+      "posterUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='v' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2314161F'/><stop offset='100%25' stop-color='%232997FF'/></linearGradient></defs><rect width='800' height='450' fill='url(%23v)'/><circle cx='400' cy='225' r='44' fill='rgba(255,255,255,0.22)'/><polygon points='388,204 388,246 424,225' fill='white'/><text x='48' y='392' fill='white' font-family='system-ui,sans-serif' font-size='26' font-weight='600'>Product Walkthrough Clip · 0:45</text></svg>",
+      "title": "Recorded Feature Walkthrough (0:45)"
+    }
+  }
+]

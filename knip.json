@@ -1,0 +1,34 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignoreWorkspaces": ["packages/*", "apps/*"],
+  "ignoreBinaries": ["ffmpeg"],
+  "workspaces": {
+    ".": {
+      "entry": [
+        "src/protocol/index.ts",
+        "src/primitives/index.ts",
+        "src/catalog/index.ts",
+        "src/catalog/react-adapter.tsx",
+        "src/components/*/index.ts",
+        "src/functions/*/index.ts",
+        "src/preview/main.tsx",
+        "src/preview/vite.config.ts",
+        "src/components/*/*.test.tsx",
+        "src/functions/*/*.test.ts",
+        "tests/**/*.ts",
+        "e2e/**/*.ts",
+        "scripts/**/*.{mjs,ts}"
+      ],
+      "project": [
+        "src/**/*.{ts,tsx}",
+        "tests/**/*.{ts,tsx}"
+      ],
+      "ignoreDependencies": [
+        "@a2ui/agent",
+        "@testing-library/jest-dom",
+        "@testing-library/user-event",
+        "clsx"
+      ]
+    }
+  }
+}

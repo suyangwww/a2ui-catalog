@@ -1,0 +1,153 @@
+{
+  "components_tour": [
+    {
+      "id": "intro",
+      "title": "A2UI Lumina · Complete 41-Component Guide",
+      "props": "All 41 Components · Visual Property Reference · Light/Dark · Desktop, iPad & iPhone",
+      "speech": "Welcome to the Lumina catalog guide. Over the next few minutes, we'll walk through all forty-one building blocks, inspect each component's properties on the right, test Light and Dark mode across Desktop, iPad, and iPhone, and wrap up with a practical playbook for teams and agents.",
+      "tts": "Welcome to the Lumina catalog guide. Over the next few minutes, we'll walk through all forty-one building blocks, inspect each component's properties on the right, test Light and Dark mode across Desktop, iPad, and iPhone, and wrap up with a practical playbook for teams and agents."
+    },
+    {
+      "id": "layout_1_to_4",
+      "title": "Components 01–04 · Row, Column, Grid & List",
+      "props": "Row (children, gap, wrap) · Column · Grid (columns, minItemWidth) · List (dividers)",
+      "speech": "Let's start with page layout. Row places items side by side using children, gap, and wrap. Column stacks items top to bottom. Grid arranges multi-column cards — watch it shift from three columns on Desktop, to two on iPad, to one column on iPhone. And List repeats rows with clean dividers.",
+      "tts": "Let's start with page layout. Row places items side by side using children, gap, and wrap. Column stacks items top to bottom. Grid arranges multi-column cards — watch it shift from three columns on Desktop, to two on iPad, to one column on iPhone. And List repeats rows with clean dividers."
+    },
+    {
+      "id": "layout_5_to_7",
+      "title": "Components 05–07 · Carousel, Card & Divider",
+      "props": "Carousel (children, itemWidth) · Card (title, subtitle, variant, footer) · Divider (label)",
+      "speech": "Carousel creates a horizontal card rail using children and itemWidth that swipes smoothly on touch screens. Card frames a section with title, subtitle, body, and footer — and toggling Dark Mode shows how surface colors adjust automatically. Divider adds a clean line with an optional label.",
+      "tts": "Carousel creates a horizontal card rail using children and item width that swipes smoothly on touch screens. Card frames a section with title, subtitle, body, and footer — and toggling Dark Mode shows how surface colors adjust automatically. Divider adds a clean line with an optional label."
+    },
+    {
+      "id": "layout_8_to_10",
+      "title": "Components 08–10 · Tabs, Accordion & Modal",
+      "props": "Tabs (tabs[], variant) · Accordion (items[], allowMultiple) · Modal (trigger, content, size)",
+      "speech": "Tabs switches between views inside one space using a tabs list and variant. Accordion keeps optional details tucked into expandable items. And Modal pairs a trigger button with overlay content — opening as a centered dialog on Desktop and iPad, then becoming a slide-up bottom sheet on iPhone.",
+      "tts": "Tabs switches between views inside one space using a tabs list and variant. Accordion keeps optional details tucked into expandable items. And Modal pairs a trigger button with overlay content — opening as a centered dialog on Desktop and iPad, then becoming a slide-up bottom sheet on iPhone."
+    },
+    {
+      "id": "media_11_to_13",
+      "title": "Components 11–13 · Text, Image & Icon",
+      "props": "Text (text, variant, tone) · Image (url, aspectRatio, zoomable) · Icon (name, size, tone)",
+      "speech": "Back in Light Mode, Text displays headings, body copy, and bold or bulleted text using variant and tone. Image renders photos or diagrams with aspectRatio, plus tap-to-zoom when zoomable is true. And Icon gives you eighty-three built-in symbols sized from extra-small to extra-large.",
+      "tts": "Back in Light Mode, Text displays headings, body copy, and bold or bulleted text using variant and tone. Image renders photos or diagrams with aspect ratio, plus tap-to-zoom when zoomable is true. And Icon gives you eighty-three built-in symbols sized from extra-small to extra-large."
+    },
+    {
+      "id": "media_14_to_17",
+      "title": "Components 14–17 · Avatar, StatusBadge, Video & AudioPlayer",
+      "props": "Avatar (name, status) · StatusBadge (label, tone, pulse) · Video (url, posterUrl) · AudioPlayer",
+      "speech": "Avatar shows a person or specialist agent with initials and an online or thinking dot. StatusBadge highlights states like Confirmed or Action Required using tone and pulse. Video plays inline clips with a preview poster, and AudioPlayer plays spoken briefings with speed controls.",
+      "tts": "Avatar shows a person or specialist agent with initials and an online or thinking dot. Status Badge highlights states like Confirmed or Action Required using tone and pulse. Video plays inline clips with a preview poster, and Audio Player plays spoken briefings with speed controls."
+    },
+    {
+      "id": "inputs_18_to_21",
+      "title": "Components 18–21 · Button, TextField, CheckBox & Switch",
+      "props": "Button (label, variant, action) · TextField (value, clearable) · CheckBox · Switch",
+      "speech": "Next are interactive inputs. Button triggers an action in primary, secondary, subtle, or destructive styles. TextField captures typed text with placeholder, helperText, and a quick clear button. CheckBox records explicit sign-off, and Switch flips settings on or off in both Light and Dark mode.",
+      "tts": "Next are interactive inputs. Button triggers an action in primary, secondary, subtle, or destructive styles. Text Field captures typed text with placeholder, helper text, and a quick clear button. Check Box records explicit sign-off, and Switch flips settings on or off in both Light and Dark mode."
+    },
+    {
+      "id": "inputs_22_to_26",
+      "title": "Components 22–26 · SegmentedControl, ChoicePicker, Slider, StepperInput & DateTimeInput",
+      "props": "SegmentedControl · ChoicePicker (chips/cards) · Slider (min, max, unit) · StepperInput · DateTimeInput",
+      "speech": "To let people tap instead of type, SegmentedControl switches between two to four options. ChoicePicker selects one or multiple tags as chips or cards. Slider drags smoothly between min and max, StepperInput counts whole numbers with plus and minus buttons, and DateTimeInput picks dates cleanly on Desktop, iPad, and iPhone.",
+      "tts": "To let people tap instead of type, Segmented Control switches between two to four options. Choice Picker selects one or multiple tags as chips or cards. Slider drags smoothly between min and max, Stepper Input counts whole numbers with plus and minus buttons, and Date-Time Input picks dates cleanly on Desktop, iPad, and iPhone."
+    },
+    {
+      "id": "thinking_27_to_30",
+      "title": "Components 27–30 · ThoughtTrace, StepTimeline, ApprovalCard & ProgressIndicator",
+      "props": "ThoughtTrace (summary, steps) · StepTimeline · ApprovalCard (riskLevel, approveAction) · ProgressIndicator",
+      "speech": "Now for agent transparency and safety. ThoughtTrace summarizes how the agent reasoned and expands to show steps. StepTimeline tracks live workflow steps. ApprovalCard puts a clear sign-off gate in front of important actions — locking the approve button until required checks pass, and stacking full-width buttons on iPhone. ProgressIndicator shows bar, ring, or stage progress.",
+      "tts": "Now for agent transparency and safety. Thought Trace summarizes how the agent reasoned and expands to show steps. Step Timeline tracks live workflow steps. Approval Card puts a clear sign-off gate in front of important actions — locking the approve button until required checks pass, and stacking full-width buttons on iPhone. Progress Indicator shows bar, ring, or stage progress."
+    },
+    {
+      "id": "sources_31_to_33",
+      "title": "Components 31–33 · SourceList, CodeBlock & DiffViewer",
+      "props": "SourceList (sources[], variant) · CodeBlock (code, highlightLines) · DiffViewer (before, after)",
+      "speech": "To ground answers in proof, SourceList displays numbered reference cards or compact pills. CodeBlock formats code or queries with line numbers, highlighted lines, and one-click Copy. DiffViewer compares before and after text — showing two columns on Desktop and iPad, and automatically switching to one column on iPhone.",
+      "tts": "To ground answers in proof, Source List displays numbered reference cards or compact pills. Code Block formats code or queries with line numbers, highlighted lines, and one-click Copy. Diff Viewer compares before and after text — showing two columns on Desktop and iPad, and automatically switching to one column on iPhone."
+    },
+    {
+      "id": "docs_34_to_35",
+      "title": "Components 34–35 · ArtifactCard & Callout",
+      "props": "ArtifactCard (title, kind, version, preview, child) · Callout (title, body, tone, actionLabel)",
+      "speech": "ArtifactCard keeps long reports or schedules tidy as a summary card — opening a side panel on Desktop, a dialog on iPad, or a bottom sheet on iPhone. And Callout highlights key tips, warnings, or alerts using title, body, and tone in both Dark and Light mode.",
+      "tts": "Artifact Card keeps long reports or schedules tidy as a summary card — opening a side panel on Desktop, a dialog on iPad, or a bottom sheet on iPhone. And Call-out highlights key tips, warnings, or alerts using title, body, and tone in both Dark and Light mode."
+    },
+    {
+      "id": "data_36_to_37",
+      "title": "Components 36–37 · StatMetric & Chart",
+      "props": "StatMetric (label, value, delta, trendSentiment, sparkline) · Chart (type, data, xKey, series)",
+      "speech": "For data and numbers, StatMetric spotlights a headline figure with a change badge, positive or negative sentiment color, and a mini trend line. Chart plots area, line, bar, stacked bar, or donut views — hover with a mouse on Desktop, or drag your finger across iPad and iPhone to inspect exact values.",
+      "tts": "For data and numbers, Stat Metric spotlights a headline figure with a change badge, positive or negative sentiment color, and a mini trend line. Chart plots area, line, bar, stacked bar, or donut views — hover with a mouse on Desktop, or drag your finger across iPad and iPhone to inspect exact values."
+    },
+    {
+      "id": "data_38_to_41",
+      "title": "Components 38–41 · DataTable, KeyValueList, ComparisonMatrix & FollowUpSuggestions",
+      "props": "DataTable (columns, rows) · KeyValueList (copyable) · ComparisonMatrix · FollowUpSuggestions",
+      "speech": "Finishing all forty-one components: DataTable formats currency and badges with one-click sorting. KeyValueList displays clean receipt rows with copyable codes. ComparisonMatrix compares options in a table on Desktop and iPad, and turns into swipeable cards on iPhone. And FollowUpSuggestions offers one-tap next steps.",
+      "tts": "Finishing all forty-one components: Data Table formats currency and badges with one-click sorting. Key-Value List displays clean receipt rows with copyable codes. Comparison Matrix compares options in a table on Desktop and iPad, and turns into swipeable cards on iPhone. And Follow-Up Suggestions offers one-tap next steps."
+    },
+    {
+      "id": "tl_playbook",
+      "title": "Practical Playbook · How People & Agents Use Lumina",
+      "props": "5 Core Recipes · One A2UI v1.0 Payload -> Automatic Light/Dark & Desktop/iPad/iPhone",
+      "speech": "Finally, here is our practical playbook. Start with the user's goal: show progress with ThoughtTrace and StepTimeline, back up facts with SourceList and Charts, replace typing with quick pickers and sliders, gate real actions with ApprovalCard, and tuck long docs into ArtifactCard. Agents send one simple JSON payload, and Lumina handles every theme and screen automatically.",
+      "tts": "Finally, here is our practical playbook. Start with the user's goal: show progress with Thought Trace and Step Timeline, back up facts with Source List and Charts, replace typing with quick pickers and sliders, gate real actions with Approval Card, and tuck long docs into Artifact Card. Agents send one simple J-SON payload, and Lumina handles every theme and screen automatically."
+    }
+  ],
+  "hero_studio_tour": [
+    {
+      "id": "studio_intro",
+      "title": "Lumina Studio · Web × Mobile Side by Side",
+      "props": "Web Surface (Left) + Synced Mobile Surface (Right) · Same Component, Adaptive Layout",
+      "speech": "Welcome to Lumina Studio, running Web on the left and Mobile on the right from one live agent stream. Notice how every component keeps the exact same look, colors, and live state, while automatically adapting its layout to fit each platform surface.",
+      "tts": "Welcome to Lumina Studio, running Web on the left and Mobile on the right from one live agent stream. Notice how every component keeps the exact same look, colors, and live state, while automatically adapting its layout to fit each platform surface."
+    },
+    {
+      "id": "hero1_turn1",
+      "title": "Workflow 1 · Tokyo Trip · Table on Web vs Swipeable Cards on Mobile",
+      "props": "ThoughtTrace · StepTimeline · ComparisonMatrix (Table <-> Cards) · Carousel",
+      "speech": "First, planning a Tokyo business trip. Both screens render the same ThoughtTrace and StepTimeline — while ComparisonMatrix displays a full side-by-side flight table on Web, and automatically adapts into swipeable flight cards on Mobile above the hotel Carousel.",
+      "tts": "First, planning a Tokyo business trip. Both screens render the same Thought Trace and Step Timeline — while Comparison Matrix displays a full side-by-side flight table on Web, and automatically adapts into swipeable flight cards on Mobile above the hotel Carousel."
+    },
+    {
+      "id": "hero1_turn2",
+      "title": "Workflow 1 · Live Synced Controls & Mobile Touch Approval",
+      "props": "SegmentedControl · StepperInput · Switch · ApprovalCard (Row <-> Full-Width Stack)",
+      "speech": "Choosing flight ANA NH 105 streams a live fare builder. Switching to First Suite or adding a traveler updates Web and Mobile at the exact same instant — while ApprovalCard places buttons side by side on Web and stacks full-width tap buttons on Mobile.",
+      "tts": "Choosing flight A-N-A N-H one-oh-five streams a live fare builder. Switching to First Suite or adding a traveler updates Web and Mobile at the exact same instant — while Approval Card places buttons side by side on Web and stacks full-width tap buttons on Mobile."
+    },
+    {
+      "id": "hero1_turn3",
+      "title": "Workflow 1 · ArtifactCard · Web Side Panel vs Mobile Bottom Sheet",
+      "props": "StatusBadge · KeyValueList (copyable) · ArtifactCard (Split Panel <-> Bottom Sheet)",
+      "speech": "Confirming issues a matching boarding summary with a copyable confirmation code on both screens. Now watch ArtifactCard adapt to each surface: clicking Open slides out a split side panel on Web, while sliding up a bottom sheet right inside the Mobile screen.",
+      "tts": "Confirming issues a matching boarding summary with a copyable confirmation code on both screens. Now watch Artifact Card adapt to each surface: clicking Open slides out a split side panel on Web, while sliding up a bottom sheet right inside the Mobile screen."
+    },
+    {
+      "id": "hero2_research",
+      "title": "Workflow 2 · Market Research in Dark Mode · 3-Column Grid vs Mobile Stack",
+      "props": "SourceList · Grid + StatMetric (3 Cols <-> 1 Col) · Area Chart · Sortable DataTable",
+      "speech": "Next, toggling Dark Mode updates Web and Mobile together for AI semiconductor research. SourceList, StatMetric cards, the interactive area Chart, and the sortable DataTable keep the exact same visual design, while reflowing from a three-column grid on Web into a clean vertical stack on Mobile.",
+      "tts": "Next, toggling Dark Mode updates Web and Mobile together for AI semiconductor research. Source List, Stat Metric cards, the interactive area Chart, and the sortable Data Table keep the exact same visual design, while reflowing from a three-column grid on Web into a clean vertical stack on Mobile."
+    },
+    {
+      "id": "hero3_devops",
+      "title": "Workflow 3 · Outage Fix · Split Diff on Web vs Single-Column Diff on Mobile",
+      "props": "Callout · Line Chart · CodeBlock · DiffViewer (Split <-> Unified) · Synced ApprovalCard",
+      "speech": "Third, triaging a service slowdown. Callout, the latency Chart, and CodeBlock look identical across both surfaces — while DiffViewer shows two side-by-side columns on Web and adapts into a single-column diff on Mobile with no sideways scrolling. Checking the safety box unlocks both ApprovalCards together.",
+      "tts": "Third, triaging a service slowdown. Call-out, the latency Chart, and Code Block look identical across both surfaces — while Diff Viewer shows two side-by-side columns on Web and adapts into a single-column diff on Mobile with no sideways scrolling. Checking the safety box unlocks both Approval Cards together."
+    },
+    {
+      "id": "hero4_wealth",
+      "title": "Workflow 4 · Budget Simulator & Single Stream X-Ray",
+      "props": "Donut Chart (Row <-> Stacked Legend) · Switch List · Live Slider · Protocol X-Ray",
+      "speech": "Finally, our monthly budget optimizer shows a cashflow donut Chart beside its legend on Web and centered above its legend on Mobile. Dragging the monthly savings Slider updates the dollar total live across both screens, and opening X-Ray shows the single A2UI stream powering both platforms.",
+      "tts": "Finally, our monthly budget optimizer shows a cashflow donut Chart beside its legend on Web and centered above its legend on Mobile. Dragging the monthly savings Slider updates the dollar total live across both screens, and opening X-Ray shows the single A-two-U-I stream powering both platforms."
+    }
+  ]
+}

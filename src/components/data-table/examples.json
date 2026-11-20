@@ -1,0 +1,53 @@
+[
+  {
+    "title": "DataTable — Displays structured rows with automatic currency, percentage, badge formatting, and column sorting",
+    "props": {
+      "caption": "Regional Performance (Click headers to sort)",
+      "columns": [
+        {
+          "key": "region",
+          "header": "Region",
+          "sortable": true
+        },
+        {
+          "key": "arr",
+          "header": "Annual Revenue",
+          "align": "end",
+          "format": "currency",
+          "sortable": true
+        },
+        {
+          "key": "growth",
+          "header": "Growth",
+          "align": "end",
+          "sortable": true
+        },
+        {
+          "key": "status",
+          "header": "Status",
+          "format": "badge"
+        }
+      ],
+      "rows": [
+        {
+          "region": "North America",
+          "arr": 24800000,
+          "growth": "+34%",
+          "status": "Exceeding"
+        },
+        {
+          "region": "Europe",
+          "arr": 14200000,
+          "growth": "+28%",
+          "status": "On Track"
+        },
+        {
+          "region": "Asia-Pacific",
+          "arr": 9600000,
+          "growth": "+52%",
+          "status": "Outperforming"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "title": "ChoicePicker — Lets users pick one or multiple tags using tap-friendly chips, list rows, or cards",
+    "props": {
+      "label": "Active Deployment Regions",
+      "variant": "multipleSelection",
+      "displayStyle": "chips",
+      "value": {
+        "@path": "/regions"
+      },
+      "options": [
+        {
+          "label": "US East (Virginia)",
+          "value": "us-east"
+        },
+        {
+          "label": "EU West (Frankfurt)",
+          "value": "eu-west"
+        },
+        {
+          "label": "Asia Pacific (Tokyo)",
+          "value": "ap-northeast"
+        },
+        {
+          "label": "US West (Oregon)",
+          "value": "us-west"
+        }
+      ]
+    },
+    "dataModel": {
+      "regions": [
+        "us-east",
+        "ap-northeast"
+      ]
+    }
+  }
+]

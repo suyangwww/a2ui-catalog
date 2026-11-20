@@ -1,0 +1,29 @@
+name: Weekly Architecture & Doc GC Audit
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  gc-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build workspace packages
+        run: pnpm build:packages
+      - name: Unused export & dead file audit (knip)
+        run: pnpm gc:knip
+      - name: Recompute component quality scorecard
+        run: pnpm quality:score
+      - name: Verify documentation freshness & links
+        run: node scripts/check-docs.mjs
+      - name: Ensure generated artifacts are clean
+        run: git diff --exit-code docs/QUALITY_SCORE.md packages/schema/catalog.json

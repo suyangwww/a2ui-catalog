@@ -1,0 +1,42 @@
+{
+  "name": "@a2ui-catalog/react",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/packages/react/src/index.js",
+  "types": "./dist/packages/react/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/packages/react/src/index.d.ts",
+      "default": "./dist/packages/react/src/index.js"
+    },
+    "./styles.css": "./dist/lumina-react.css"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json && cp src/styles/lumina-react.css dist/lumina-react.css",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@a2ui-catalog/core": "workspace:*",
+    "@a2ui-catalog/tokens": "workspace:*",
+    "@a2ui/markdown-it": "^0.2.2",
+    "@a2ui/react": "^0.15.0",
+    "@a2ui/web_core": "^0.15.0",
+    "@radix-ui/react-accordion": "^1.2.3",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.76.0",
+    "motion": "^14.14.0",
+    "zod": "^3.25.76"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@a2ui-catalog/schema": "workspace:*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Slider — A smooth drag bar for adjusting budgets, allocations, or thresholds",
+    "props": {
+      "label": "Index Fund Auto-Invest",
+      "min": 100,
+      "max": 2000,
+      "steps": 50,
+      "unit": "USD/mo",
+      "value": {
+        "@path": "/invest"
+      }
+    },
+    "dataModel": {
+      "invest": 750
+    }
+  }
+]

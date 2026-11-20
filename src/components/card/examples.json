@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Card — Groups related information and actions inside a clean rounded surface",
+    "props": {
+      "variant": "elevated",
+      "title": "Q4 Launch Readiness",
+      "subtitle": "All automated checks passed",
+      "headerTrailing": "badge",
+      "child": "body",
+      "footer": "foot"
+    },
+    "children": [
+      {
+        "id": "badge",
+        "component": "StatusBadge",
+        "label": "Ready",
+        "tone": "success",
+        "pulse": true
+      },
+      {
+        "id": "body",
+        "component": "Text",
+        "variant": "body",
+        "text": " Security review, load testing, and localization sign-off are complete for all 14 regions."
+      },
+      {
+        "id": "foot",
+        "component": "Row",
+        "justify": "end",
+        "children": [
+          "btn"
+        ]
+      },
+      {
+        "id": "btn",
+        "component": "Button",
+        "label": "View Launch Checklist",
+        "variant": "secondary",
+        "action": {
+          "event": {
+            "name": "open_checklist"
+          }
+        }
+      }
+    ]
+  }
+]

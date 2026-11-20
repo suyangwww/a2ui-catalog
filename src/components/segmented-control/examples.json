@@ -1,0 +1,29 @@
+[
+  {
+    "title": "SegmentedControl — A sliding pill selector for choosing one option out of 2 to 4 clear choices",
+    "props": {
+      "label": "Cabin Class",
+      "fullWidth": true,
+      "value": {
+        "@path": "/cabin"
+      },
+      "options": [
+        {
+          "label": "Economy",
+          "value": "eco"
+        },
+        {
+          "label": "Business",
+          "value": "biz"
+        },
+        {
+          "label": "First Suite",
+          "value": "first"
+        }
+      ]
+    },
+    "dataModel": {
+      "cabin": "biz"
+    }
+  }
+]

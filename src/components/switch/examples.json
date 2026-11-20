@@ -1,0 +1,15 @@
+[
+  {
+    "title": "Switch — An instant on/off toggle switch for preferences, features, or subscriptions",
+    "props": {
+      "label": "Airport Chauffeur Pickup",
+      "description": "Driver meets you at international arrivals",
+      "value": {
+        "@path": "/pickup"
+      }
+    },
+    "dataModel": {
+      "pickup": true
+    }
+  }
+]

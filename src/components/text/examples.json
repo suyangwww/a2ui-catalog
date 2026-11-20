@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Text — Renders headings, body paragraphs, captions, and clean Markdown formatting",
+    "props": {
+      "variant": "overline",
+      "text": "Quarterly Briefing"
+    },
+    "children": [
+      {
+        "id": "h",
+        "component": "Text",
+        "variant": "h2",
+        "text": "Revenue Grew 34% Across Cloud Accounts"
+      },
+      {
+        "id": "b",
+        "component": "Text",
+        "variant": "body",
+        "text": "Supports **bold emphasis**, *italics*, and inline `code` right out of the box without custom HTML."
+      },
+      {
+        "id": "c",
+        "component": "Text",
+        "variant": "caption",
+        "tone": "secondary",
+        "text": "Updated 2 minutes ago from verified billing ledger."
+      }
+    ]
+  }
+]

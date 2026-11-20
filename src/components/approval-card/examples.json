@@ -1,0 +1,44 @@
+[
+  {
+    "title": "ApprovalCard — A clear human sign-off gate before an agent spends money, changes data, or deploys code",
+    "props": {
+      "title": "Issue Refund of $480.00 to Customer",
+      "description": "Credits original Visa ending in 4412 and sends confirmation email.",
+      "riskLevel": "high",
+      "details": "chk",
+      "approveLabel": "Approve & Send Refund",
+      "rejectLabel": "Hold for Review",
+      "approveAction": {
+        "event": {
+          "name": "approve_refund"
+        }
+      },
+      "rejectAction": {
+        "event": {
+          "name": "hold_refund"
+        }
+      },
+      "checks": [
+        {
+          "condition": {
+            "@path": "/verifiedOrder"
+          },
+          "message": "Confirm order return status above to unlock refund."
+        }
+      ]
+    },
+    "children": [
+      {
+        "id": "chk",
+        "component": "CheckBox",
+        "label": "I verified warehouse return scan #RT-9042",
+        "value": {
+          "@path": "/verifiedOrder"
+        }
+      }
+    ],
+    "dataModel": {
+      "verifiedOrder": false
+    }
+  }
+]

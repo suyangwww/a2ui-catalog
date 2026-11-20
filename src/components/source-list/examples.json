@@ -1,0 +1,27 @@
+[
+  {
+    "title": "SourceList — Displays clickable source citations with numbered badges, domain names, and snippets",
+    "props": {
+      "title": "Verified Citations (2)",
+      "variant": "cards",
+      "sources": [
+        {
+          "id": "1",
+          "title": "A2UI v1.0 Protocol Specification",
+          "url": "https://a2ui.org",
+          "domain": "a2ui.org",
+          "snippet": "Defines declarative JSON component surfaces and reactive DataModel paths.",
+          "publishedAt": "v1.0 Spec"
+        },
+        {
+          "id": "2",
+          "title": "Q3 Cloud Infrastructure Report",
+          "url": "https://example.com/report",
+          "domain": "research.example.com",
+          "snippet": "Enterprise inference workloads grew 68% quarter-over-quarter.",
+          "publishedAt": "Oct 2026"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "springs": {
+    "tactile": { "type": "spring", "stiffness": 520, "damping": 34, "mass": 0.75 },
+    "fluid": { "type": "spring", "stiffness": 360, "damping": 32, "mass": 0.95 },
+    "sheet": { "type": "spring", "stiffness": 400, "damping": 38, "mass": 1.0 },
+    "stream": { "type": "spring", "stiffness": 320, "damping": 30, "mass": 0.85 }
+  },
+  "durations": {
+    "instant": 0.12,
+    "fast": 0.18,
+    "normal": 0.28,
+    "metric": 0.35,
+    "chart": 0.55
+  },
+  "stagger": {
+    "list": 0.035,
+    "suggestions": 0.04
+  }
+}

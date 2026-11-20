@@ -1,0 +1,27 @@
+name: Verify A2UI Catalog
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build design tokens & workspace packages
+        run: pnpm build:packages
+      - name: Run deterministic verification gate
+        run: ./scripts/verify.sh
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Run Layer 3 isolated preview smoke suite
+        run: pnpm test:smoke

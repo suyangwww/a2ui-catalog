@@ -1,0 +1,25 @@
+{
+  "name": "@a2ui-catalog/schema",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./catalog.json": "./catalog.json",
+    "./vendor/*": "./vendor/*"
+  },
+  "scripts": {
+    "sync": "node scripts/sync-upstream-spec.mjs",
+    "build": "node scripts/export-and-validate.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -f catalog.json"
+  },
+  "dependencies": {
+    "@a2ui-catalog/core": "workspace:*",
+    "@a2ui/agent": "^0.1.0",
+    "@a2ui/web_core": "^0.15.0"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

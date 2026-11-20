@@ -1,0 +1,47 @@
+[
+  {
+    "title": "List — Renders a clean list of rows, either from fixed items or automatically repeated from data",
+    "props": {
+      "dividers": true,
+      "children": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "children": [
+      {
+        "id": "s1",
+        "component": "Switch",
+        "label": "Instant Incident Alerts",
+        "description": "Push notification for high-priority events",
+        "value": {
+          "@path": "/alerts"
+        }
+      },
+      {
+        "id": "s2",
+        "component": "Switch",
+        "label": "Daily Summary Email",
+        "description": "Sent every morning at 8:00 AM",
+        "value": {
+          "@path": "/digest"
+        }
+      },
+      {
+        "id": "s3",
+        "component": "Switch",
+        "label": "Weekly Cost Report",
+        "description": "Cloud spend breakdown every Monday",
+        "value": {
+          "@path": "/cost"
+        }
+      }
+    ],
+    "dataModel": {
+      "alerts": true,
+      "digest": true,
+      "cost": false
+    }
+  }
+]

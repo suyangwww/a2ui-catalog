@@ -1,0 +1,55 @@
+[
+  {
+    "title": "Carousel — Displays cards in a smooth horizontal rail that users can swipe or click through",
+    "props": {
+      "title": "Recommended Boutique Hotels",
+      "itemWidth": "standard",
+      "children": [
+        "h1",
+        "h2",
+        "h3"
+      ]
+    },
+    "children": [
+      {
+        "id": "h1",
+        "component": "Card",
+        "title": "Aman Tokyo",
+        "subtitle": "$1,180 / night · Otemachi",
+        "child": "h1t"
+      },
+      {
+        "id": "h1t",
+        "component": "Text",
+        "variant": "caption",
+        "text": "Panoramic skyline views, spa sanctuary, and 5-minute walk to Tokyo Station."
+      },
+      {
+        "id": "h2",
+        "component": "Card",
+        "title": "Hoshinoya Tokyo",
+        "subtitle": "$890 / night · Chiyoda",
+        "child": "h2t"
+      },
+      {
+        "id": "h2t",
+        "component": "Text",
+        "variant": "caption",
+        "text": "Modern ryokan hospitality with rooftop natural hot spring."
+      },
+      {
+        "id": "h3",
+        "component": "Card",
+        "title": "Janu Tokyo",
+        "subtitle": "$940 / night · Azabudai Hills",
+        "child": "h3t"
+      },
+      {
+        "id": "h3t",
+        "component": "Text",
+        "variant": "caption",
+        "text": "Contemporary suites and wellness club in central Tokyo."
+      }
+    ]
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "title": "ArtifactCard — Packages a long report, itinerary, or spec as a clean preview card that opens in a side panel",
+    "props": {
+      "title": "Q3 Product Strategy Memo",
+      "subtitle": "Executive summary & roadmap · 3 sections",
+      "kind": "report",
+      "version": "v2.0",
+      "preview": "Click Open to inspect how long-form documents expand cleanly on Desktop, iPad, and iPhone.",
+      "child": "doc_body"
+    },
+    "children": [
+      {
+        "id": "doc_body",
+        "component": "Column",
+        "gap": "md",
+        "children": [
+          "d_h",
+          "d_p",
+          "d_kv"
+        ]
+      },
+      {
+        "id": "d_h",
+        "component": "Text",
+        "variant": "h3",
+        "text": "Key Priorities for Q3"
+      },
+      {
+        "id": "d_p",
+        "component": "Text",
+        "text": "Focus engineering capacity on self-serve onboarding, mobile responsiveness, and automated cost guardrails."
+      },
+      {
+        "id": "d_kv",
+        "component": "KeyValueList",
+        "items": [
+          {
+            "label": "Owner",
+            "value": "Product & Platform"
+          },
+          {
+            "label": "Target Launch",
+            "value": "August 15",
+            "tone": "accent"
+          }
+        ]
+      }
+    ]
+  }
+]

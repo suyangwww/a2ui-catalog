@@ -1,0 +1,16 @@
+[
+  {
+    "title": "DateTimeInput — Picks a calendar date, time, or both using native platform pickers",
+    "props": {
+      "label": "Target Departure Date",
+      "enableDate": true,
+      "enableTime": false,
+      "value": {
+        "@path": "/date"
+      }
+    },
+    "dataModel": {
+      "date": "2026-05-18"
+    }
+  }
+]

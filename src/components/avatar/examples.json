@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Avatar — Shows a person or specialist agent badge with photo or initials and live availability dot",
+    "props": {
+      "name": "Maya Lin",
+      "subtitle": "Staff SRE · On-Call Lead",
+      "status": "online",
+      "size": "md",
+      "shape": "circle"
+    },
+    "children": [
+      {
+        "id": "col",
+        "component": "Column",
+        "gap": "md",
+        "children": [
+          "a1",
+          "a2"
+        ]
+      },
+      {
+        "id": "a2",
+        "component": "Avatar",
+        "name": "Incident Triage Agent",
+        "subtitle": "Analyzing telemetry logs",
+        "status": "thinking",
+        "size": "md",
+        "shape": "rounded"
+      }
+    ]
+  }
+]
