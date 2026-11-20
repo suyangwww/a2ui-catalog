@@ -1,72 +1,60 @@
 [
   {
-    "title": "AnnotatedDiagram — 7-Speed Bicycle five connected systems explorer",
+    "title": "AnnotatedDiagram — Distributed inference & tool-execution pipeline",
     "props": {
-      "title": "7-Speed Bicycle",
-      "subtitle": "Five connected systems — select a system or pin to explore its role.",
-      "preset": "bicycle-7speed",
+      "title": "Agentic Inference & Tool Pipeline",
+      "subtitle": "Select a subsystem pill or numbered pin to isolate request routing, model reasoning, and sandboxed tool execution.",
+      "viewBox": "0 0 640 240",
+      "statusBadge": "p95 142 ms · 99.98% SLA",
       "value": {
-        "@path": "/bikeSystem"
+        "@path": "/activeSubsystem"
       },
-      "activeStep": 4,
       "groups": [
-        { "id": "all", "label": "All" },
-        { "id": "frame", "label": "Frame" },
-        { "id": "wheels", "label": "Wheels" },
-        { "id": "drivetrain", "label": "Drivetrain" },
-        { "id": "brakes", "label": "Brakes" },
-        { "id": "cockpit", "label": "Cockpit" }
+        { "id": "all", "label": "All stages" },
+        { "id": "ingress", "label": "Edge & Auth" },
+        { "id": "reasoning", "label": "Model Core" },
+        { "id": "tools", "label": "Tool Sandbox" }
+      ],
+      "shapes": [
+        { "kind": "rect", "group": "ingress", "x": 44, "y": 76, "width": 136, "height": 88, "rx": 14, "stroke": "#0071E3", "strokeWidth": 2.5 },
+        { "kind": "rect", "group": "reasoning", "x": 248, "y": 56, "width": 152, "height": 128, "rx": 18, "stroke": "#10A37F", "strokeWidth": 3 },
+        { "kind": "circle", "group": "reasoning", "cx": 324, "cy": 120, "r": 30, "stroke": "#10A37F", "strokeWidth": 2 },
+        { "kind": "rect", "group": "tools", "x": 464, "y": 76, "width": 132, "height": 88, "rx": 14, "stroke": "#5E5CE6", "strokeWidth": 2.5 },
+        { "kind": "line", "group": "ingress", "x1": 180, "y1": 120, "x2": 248, "y2": 120, "stroke": "#0071E3", "strokeWidth": 2.6, "strokeDasharray": "6 4", "animatedFlow": true },
+        { "kind": "path", "group": "tools", "d": "M 400 108 L 464 108 M 464 134 L 400 134", "stroke": "#5E5CE6", "strokeWidth": 2.6, "strokeDasharray": "6 4", "animatedFlow": true }
       ],
       "hotspots": [
         {
-          "id": "frame",
-          "group": "frame",
-          "x": 47,
-          "y": 42,
-          "badge": "Frame",
-          "label": "A strong foundation",
-          "detail": "Two triangles connect the saddle, steering and pedals. The fork holds the front wheel and turns with the bars."
+          "id": "gateway",
+          "group": "ingress",
+          "x": 18,
+          "y": 50,
+          "badge": "Edge",
+          "label": "Zero-Trust API Gateway",
+          "detail": "Terminates TLS, enforces per-tenant token budgets, and streams JSON-RPC SSE frames."
         },
         {
-          "id": "wheels",
-          "group": "wheels",
-          "x": 77,
-          "y": 66,
-          "badge": "Wheels",
-          "label": "Made to keep rolling",
-          "detail": "Spokes connect each hub to its rim and support the rider. The tires surround the rims and grip the ground."
+          "id": "planner",
+          "group": "reasoning",
+          "x": 51,
+          "y": 50,
+          "badge": "Core",
+          "label": "Spec-Constrained Planner",
+          "detail": "Streams structured A2UI v1.0 surface envelopes validated against the catalog JSON Schema."
         },
         {
-          "id": "drivetrain",
-          "group": "drivetrain",
-          "x": 38,
-          "y": 69,
-          "badge": "Drivetrain",
-          "label": "Seven ways to move",
-          "detail": "The pedals turn the chain, driving the rear wheel. Seven gears let the rider adjust pedaling effort for climbs, flats and descents."
-        },
-        {
-          "id": "brakes",
-          "group": "brakes",
-          "x": 66,
-          "y": 40,
-          "badge": "Brakes",
-          "label": "Control at the rim",
-          "detail": "Hand levers pull cables that bring the brake pads against the rims, turning a squeeze into controlled slowing."
-        },
-        {
-          "id": "cockpit",
-          "group": "cockpit",
-          "x": 63,
-          "y": 21,
-          "badge": "Cockpit",
-          "label": "Steering and support",
-          "detail": "The handlebars and stem steer the front wheel. The saddle and seatpost support the rider and set the sitting position."
+          "id": "sandbox",
+          "group": "tools",
+          "x": 83,
+          "y": 50,
+          "badge": "Sandbox",
+          "label": "Ephemeral Tool Runner",
+          "detail": "Executes read/write tool calls inside isolated worker sandboxes with strict egress policies."
         }
       ]
     },
     "dataModel": {
-      "bikeSystem": "all"
+      "activeSubsystem": "all"
     }
   }
 ]

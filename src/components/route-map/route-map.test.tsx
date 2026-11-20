@@ -21,13 +21,13 @@ describe('component slice: route-map', () => {
   });
 
   it('selects route stops interactively on pin click', () => {
-    const firstProps = { ...(examples[0]?.props ?? {}), value: 'ferry' };
+    const firstProps = { ...(examples[0]?.props ?? {}), value: 'ginkakuji' };
     const SeamRenderer = routeMapComponent.renderer;
     const { container, getByRole } = render(
       <SeamRenderer props={firstProps} buildChild={(id) => <span>{id}</span>} />,
     );
-    expect(container.textContent).toContain('Embarcadero');
-    fireEvent.click(getByRole('button', { name: '4. Golden Gate Bridge' }));
-    expect(container.textContent).toContain('Battery Spencer');
+    expect(container.textContent).toContain('Raked white-sand garden');
+    fireEvent.click(getByRole('button', { name: '3. Honen-in Teahouse' }));
+    expect(container.textContent).toContain('thatched moss gate');
   });
 });

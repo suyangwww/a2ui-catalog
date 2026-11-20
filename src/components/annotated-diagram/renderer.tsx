@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import {
   invokeSetter,
   isCallable,
+  readBoolean,
   readNumber,
   readOptionalNumber,
   readOptionalString,
@@ -12,18 +13,17 @@ import {
   weightStyle,
   type LuminaReactRenderArgs,
 } from '../../primitives/index.js';
-import { BicycleSchematicSvg } from './bicycle-svg.js';
 
 export function AnnotatedDiagramRenderer({ props }: LuminaReactRenderArgs): React.ReactNode {
   const pillLayoutId = React.useId();
   const title = readOptionalString(props.title);
   const subtitle = readOptionalString(props.subtitle);
-  const preset = readString(props.preset, 'custom');
+  const viewBox = readString(props.viewBox, '0 0 640 280');
+  const statusBadge = readOptionalString(props.statusBadge);
   const groups = readRecordArray(props.groups);
   const hotspots = readRecordArray(props.hotspots);
   const shapes = readRecordArray(props.shapes);
-  const gear = readNumber(props.activeStep, 4);
-  const cadence = readOptionalNumber(props.cadence);
+  const activeStep = readOptionalNumber(props.activeStep);
 
   const propGroup = readString(props.value, 'all');
   const [localGroup, setLocalGroup] = React.useState(propGroup);
@@ -45,7 +45,9 @@ export function AnnotatedDiagramRenderer({ props }: LuminaReactRenderArgs): Reac
     activeGroup === 'all'
       ? hotspots
       : hotspots.filter(
-          (h) => readString(h.group, readString(h.id)) === activeGroup || readString(h.id) === activeGroup,
+          (h) =>
+            readString(h.group, readString(h.id)) === activeGroup ||
+            readString(h.id) === activeGroup,
         );
 
   return (
@@ -94,74 +96,103 @@ export function AnnotatedDiagramRenderer({ props }: LuminaReactRenderArgs): Reac
       )}
 
       <div className="lumina-diagram-stage">
-        {preset === 'bicycle-7speed' ? (
-          <BicycleSchematicSvg activeGroup={activeGroup} gear={gear} />
-        ) : (
-          <svg viewBox="0 0 640 280" className="lumina-diagram-svg" role="img" aria-label={title ?? 'Schematic'}>
-            {shapes.map((sh, idx) => {
-              const kind = readString(sh.kind);
-              const sGroup = readOptionalString(sh.group);
-              const dimmed = activeGroup !== 'all' && sGroup && sGroup !== activeGroup;
-              const stroke = readString(sh.stroke, 'var(--lumina-accent-primary)');
-              const fill = readString(sh.fill, 'var(--lumina-bg-elevated)');
-              const opacity = dimmed ? 0.22 : 1;
-              if (kind === 'line') {
-                return (
-                  <line
-                    key={idx}
-                    x1={readNumber(sh.x1)}
-                    y1={readNumber(sh.y1)}
-                    x2={readNumber(sh.x2)}
-                    y2={readNumber(sh.y2)}
-                    stroke={stroke}
-                    strokeWidth="3"
-                    opacity={opacity}
-                  />
-                );
-              }
-              if (kind === 'circle') {
-                return (
-                  <circle
-                    key={idx}
-                    cx={readNumber(sh.cx)}
-                    cy={readNumber(sh.cy)}
-                    r={readNumber(sh.r, 24)}
-                    fill={fill}
-                    stroke={stroke}
-                    strokeWidth="2.5"
-                    opacity={opacity}
-                  />
-                );
-              }
-              if (kind === 'rect') {
-                return (
-                  <rect
-                    key={idx}
-                    x={readNumber(sh.x)}
-                    y={readNumber(sh.y)}
-                    width={readNumber(sh.width, 120)}
-                    height={readNumber(sh.height, 64)}
-                    rx="12"
-                    fill={fill}
-                    stroke={stroke}
-                    strokeWidth="2"
-                    opacity={opacity}
-                  />
-                );
-              }
+        <svg
+          viewBox={viewBox}
+          className="lumina-diagram-svg"
+          role="img"
+          aria-label={title ?? 'Schematic'}
+        >
+          {shapes.map((sh, idx) => {
+            const kind = readString(sh.kind);
+            const sGroup = readOptionalString(sh.group);
+            const sStep = readOptionalNumber(sh.step);
+            const isGroupHighlighted = activeGroup !== 'all' && sGroup === activeGroup;
+            const isStepHighlighted =
+              activeStep !== undefined && sStep !== undefined && Math.round(activeStep) === sStep;
+            const dimmed = Boolean(activeGroup !== 'all' && sGroup && sGroup !== activeGroup);
+            const baseStroke = readString(sh.stroke, 'var(--lumina-accent-primary)');
+            const stroke =
+              isGroupHighlighted || isStepHighlighted
+                ? readString(sh.activeStroke, isStepHighlighted ? '#10A37F' : baseStroke)
+                : baseStroke;
+            const baseWidth = readNumber(sh.strokeWidth, kind === 'rect' ? 2 : 2.8);
+            const strokeWidth = isStepHighlighted ? baseWidth + 1.4 : baseWidth;
+            const dash = readOptionalString(sh.strokeDasharray);
+            const fill = readString(sh.fill, kind === 'rect' ? 'var(--lumina-bg-elevated)' : 'none');
+            const fillOpacity = readOptionalNumber(sh.fillOpacity);
+            const flowClass = readBoolean(sh.animatedFlow, false) ? 'lumina-diagram-flow' : undefined;
+            const styleObj = { opacity: dimmed ? 0.2 : 1, transition: 'opacity 220ms ease' };
+
+            if (kind === 'line') {
               return (
-                <path
+                <line
                   key={idx}
-                  d={readString(sh.d)}
-                  fill="none"
+                  x1={readNumber(sh.x1)}
+                  y1={readNumber(sh.y1)}
+                  x2={readNumber(sh.x2)}
+                  y2={readNumber(sh.y2)}
                   stroke={stroke}
-                  strokeWidth="3"
-                  opacity={opacity}
+                  strokeWidth={strokeWidth}
+                  strokeDasharray={dash}
+                  strokeLinecap="round"
+                  className={flowClass}
+                  style={styleObj}
                 />
               );
-            })}
-          </svg>
-        )}
+            }
+            if (kind === 'circle') {
+              return (
+                <circle
+                  key={idx}
+                  cx={readNumber(sh.cx)}
+                  cy={readNumber(sh.cy)}
+                  r={readNumber(sh.r, 24)}
+                  fill={fill}
+                  fillOpacity={fillOpacity}
+                  stroke={stroke}
+                  strokeWidth={strokeWidth}
+                  strokeDasharray={dash}
+                  className={flowClass}
+                  style={styleObj}
+                />
+              );
+            }
+            if (kind === 'rect') {
+              return (
+                <rect
+                  key={idx}
+                  x={readNumber(sh.x)}
+                  y={readNumber(sh.y)}
+                  width={readNumber(sh.width, 120)}
+                  height={readNumber(sh.height, 64)}
+                  rx={readNumber(sh.rx, 10)}
+                  fill={fill}
+                  fillOpacity={fillOpacity}
+                  stroke={stroke}
+                  strokeWidth={strokeWidth}
+                  strokeDasharray={dash}
+                  className={flowClass}
+                  style={styleObj}
+                />
+              );
+            }
+            return (
+              <path
+                key={idx}
+                d={readString(sh.d)}
+                fill={fill}
+                fillOpacity={fillOpacity}
+                stroke={stroke}
+                strokeWidth={strokeWidth}
+                strokeDasharray={dash}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={flowClass}
+                style={styleObj}
+              />
+            );
+          })}
+        </svg>
 
         {hotspots.map((hs, idx) => {
           const hid = readString(hs.id, `hs-${idx}`);
@@ -185,8 +216,8 @@ export function AnnotatedDiagramRenderer({ props }: LuminaReactRenderArgs): Reac
           );
         })}
 
-        {cadence !== undefined && (
-          <div className="lumina-diagram-cadence lumina-tabular">{cadence} RPM</div>
+        {statusBadge && (
+          <div className="lumina-diagram-cadence lumina-tabular">{statusBadge}</div>
         )}
       </div>
 

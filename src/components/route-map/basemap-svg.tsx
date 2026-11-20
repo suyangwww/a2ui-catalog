@@ -1,4 +1,17 @@
 import React from 'react';
+import {
+  readNumber,
+  readOptionalNumber,
+  readOptionalString,
+  readString,
+} from '../../primitives/index.js';
+
+export interface GeoBounds {
+  minLat: number;
+  maxLat: number;
+  minLng: number;
+  maxLng: number;
+}
 
 export interface ProjectedStop {
   id: string;
@@ -13,7 +26,7 @@ export interface ProjectedStop {
 }
 
 export function projectStops(
-  preset: string,
+  bounds: GeoBounds | undefined,
   rawStops: Array<{
     id: string;
     title: string;
@@ -27,22 +40,12 @@ export function projectStops(
 ): ProjectedStop[] {
   if (rawStops.length === 0) return [];
 
-  let minLat = Infinity;
-  let maxLat = -Infinity;
-  let minLng = Infinity;
-  let maxLng = -Infinity;
+  let minLat = bounds?.minLat ?? Infinity;
+  let maxLat = bounds?.maxLat ?? -Infinity;
+  let minLng = bounds?.minLng ?? Infinity;
+  let maxLng = bounds?.maxLng ?? -Infinity;
 
-  if (preset === 'sf-bay') {
-    minLat = 37.735;
-    maxLat = 37.832;
-    minLng = -122.518;
-    maxLng = -122.355;
-  } else if (preset === 'pnw') {
-    minLat = 43.8;
-    maxLat = 48.2;
-    minLng = -124.8;
-    maxLng = -120.8;
-  } else {
+  if (!bounds) {
     for (const s of rawStops) {
       if (s.lat < minLat) minLat = s.lat;
       if (s.lat > maxLat) maxLat = s.lat;
@@ -72,11 +75,11 @@ export function projectStops(
   });
 }
 
-export function buildManhattanRoutePath(points: ProjectedStop[]): string {
+export function buildRoutePath(points: ProjectedStop[], routeStyle: string): string {
   if (points.length === 0) return '';
   const first = points[0];
   if (!first) return '';
-  let d = `M ${first.x * 6.4} ${first.y * 3.4}`;
+  let d = `M ${(first.x * 6.4).toFixed(1)} ${(first.y * 3.4).toFixed(1)}`;
   for (let i = 1; i < points.length; i++) {
     const prev = points[i - 1]!;
     const curr = points[i]!;
@@ -84,70 +87,109 @@ export function buildManhattanRoutePath(points: ProjectedStop[]): string {
     const y1 = prev.y * 3.4;
     const x2 = curr.x * 6.4;
     const y2 = curr.y * 3.4;
-    const midX = x1 + (x2 - x1) * 0.56;
-    d += ` L ${midX.toFixed(1)} ${y1.toFixed(1)} L ${midX.toFixed(1)} ${y2.toFixed(1)} L ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+    if (routeStyle === 'direct') {
+      d += ` L ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+    } else {
+      const midX = x1 + (x2 - x1) * 0.56;
+      d += ` L ${midX.toFixed(1)} ${y1.toFixed(1)} L ${midX.toFixed(1)} ${y2.toFixed(1)} L ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+    }
   }
   return d;
 }
 
-export function BasemapBackdropSvg({ preset }: { preset: string }): React.ReactNode {
-  if (preset === 'sf-bay') {
+export function BasemapBackdropSvg({
+  features,
+}: {
+  features: ReadonlyArray<Record<string, unknown>>;
+}): React.ReactNode {
+  if (features.length > 0) {
     return (
-      <svg viewBox="0 0 640 340" preserveAspectRatio="none" className="lumina-map-svg-bg" aria-hidden="true">
-        {/* Bay & Pacific Water */}
-        <rect width="640" height="340" className="lumina-map-water" />
-        {/* Marin Headlands North */}
-        <path
-          d="M 0 0 L 245 0 L 218 42 L 164 56 L 118 44 L 58 64 L 0 54 Z"
-          className="lumina-map-land"
-        />
-        <path d="M 48 0 L 210 0 L 188 38 L 95 40 Z" className="lumina-map-park" />
-        {/* Oakland / East Bay */}
-        <path d="M 552 0 L 640 0 L 640 270 L 582 225 L 548 135 Z" className="lumina-map-land" />
-        {/* SF Peninsula Landmass */}
-        <path
-          d="M 74 128 L 138 96 L 208 86 L 272 88 L 352 74 L 418 92 L 456 132 L 474 214 L 486 340 L 62 340 L 66 226 Z"
-          className="lumina-map-land"
-        />
-        {/* Presidio & Golden Gate Park & Twin Peaks */}
-        <path d="M 135 98 L 228 89 L 236 136 L 146 142 Z" className="lumina-map-park" />
-        <rect x="68" y="196" width="168" height="34" rx="6" className="lumina-map-park" />
-        <circle cx="268" cy="248" r="22" className="lumina-map-park" />
-        {/* Urban Street Grid & Arterials */}
-        <g className="lumina-map-streets">
-          {[130, 162, 194, 226, 258, 290].map((y) => (
-            <line key={`h-${y}`} x1="76" y1={y} x2="462" y2={y} strokeWidth="1.2" />
-          ))}
-          {[126, 172, 218, 264, 310, 356, 402].map((x) => (
-            <line key={`v-${x}`} x1={x} y1="92" x2={x} y2="336" strokeWidth="1.2" />
-          ))}
-          {/* Market St diagonal + Golden Gate Bridge + Bay Bridge */}
-          <line x1="250" y1="262" x2="444" y2="128" strokeWidth="2.8" />
-          <line x1="172" y1="52" x2="176" y2="98" className="lumina-map-bridge" strokeWidth="3.5" />
-          <line x1="448" y1="126" x2="568" y2="82" className="lumina-map-bridge" strokeWidth="3" />
-        </g>
-        {/* Subtle neighborhood labels */}
-        <g className="lumina-map-neighborhoods">
-          <text x="115" y="176">RICHMOND</text>
-          <text x="112" y="256">SUNSET</text>
-          <text x="355" y="246">MISSION</text>
-          <text x="590" y="128">OAKLAND</text>
-        </g>
+      <svg
+        viewBox="0 0 640 340"
+        preserveAspectRatio="none"
+        className="lumina-map-svg-bg"
+        aria-hidden="true"
+      >
+        <rect width="640" height="340" className="lumina-map-land" />
+        {features.map((f, idx) => {
+          const kind = readString(f.kind, 'land');
+          const d = readOptionalString(f.d);
+          const r = readOptionalNumber(f.r);
+          const w = readOptionalNumber(f.width);
+          const h = readOptionalNumber(f.height);
+          const cls =
+            kind === 'water'
+              ? 'lumina-map-water'
+              : kind === 'park'
+                ? 'lumina-map-park'
+                : kind === 'bridge'
+                  ? 'lumina-map-bridge'
+                  : 'lumina-map-land';
+
+          if (kind === 'label') {
+            return (
+              <g key={idx} className="lumina-map-neighborhoods">
+                <text x={readNumber(f.x)} y={readNumber(f.y)}>
+                  {readString(f.text)}
+                </text>
+              </g>
+            );
+          }
+          if (kind === 'road' || kind === 'bridge') {
+            return (
+              <g key={idx} className="lumina-map-streets">
+                <line
+                  x1={readNumber(f.x1)}
+                  y1={readNumber(f.y1)}
+                  x2={readNumber(f.x2)}
+                  y2={readNumber(f.y2)}
+                  className={kind === 'bridge' ? 'lumina-map-bridge' : undefined}
+                  strokeWidth={readNumber(f.strokeWidth, kind === 'bridge' ? 3.2 : 1.3)}
+                />
+              </g>
+            );
+          }
+          if (r !== undefined) {
+            return <circle key={idx} cx={readNumber(f.x)} cy={readNumber(f.y)} r={r} className={cls} />;
+          }
+          if (w !== undefined && h !== undefined) {
+            return (
+              <rect
+                key={idx}
+                x={readNumber(f.x)}
+                y={readNumber(f.y)}
+                width={w}
+                height={h}
+                rx={6}
+                className={cls}
+              />
+            );
+          }
+          if (d) {
+            return <path key={idx} d={d} className={cls} />;
+          }
+          return null;
+        })}
       </svg>
     );
   }
 
   return (
-    <svg viewBox="0 0 640 340" preserveAspectRatio="none" className="lumina-map-svg-bg" aria-hidden="true">
+    <svg
+      viewBox="0 0 640 340"
+      preserveAspectRatio="none"
+      className="lumina-map-svg-bg"
+      aria-hidden="true"
+    >
       <rect width="640" height="340" className="lumina-map-land" />
-      <path d="M 0 0 L 138 0 L 106 142 L 128 248 L 86 340 L 0 340 Z" className="lumina-map-water" />
-      <ellipse cx="470" cy="110" rx="95" ry="52" className="lumina-map-park" />
-      <ellipse cx="320" cy="255" rx="84" ry="44" className="lumina-map-park" />
+      <path d="M 0 0 L 128 0 L 96 146 L 118 250 L 82 340 L 0 340 Z" className="lumina-map-water" />
+      <ellipse cx="476" cy="108" rx="92" ry="50" className="lumina-map-park" />
+      <ellipse cx="316" cy="256" rx="80" ry="42" className="lumina-map-park" />
       <g className="lumina-map-streets">
         {[68, 136, 204, 272].map((y) => (
-          <line key={`gh-${y}`} x1="96" y1={y} x2="640" y2={y} strokeWidth="1.2" />
+          <line key={`gh-${y}`} x1="88" y1={y} x2="640" y2={y} strokeWidth="1.2" />
         ))}
-        {[180, 290, 400, 510].map((x) => (
+        {[176, 286, 396, 506].map((x) => (
           <line key={`gv-${x}`} x1={x} y1="0" x2={x} y2="340" strokeWidth="1.2" />
         ))}
       </g>

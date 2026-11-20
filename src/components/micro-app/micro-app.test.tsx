@@ -20,15 +20,18 @@ describe('component slice: micro-app', () => {
     ).toBe(false);
   });
 
-  it('switches between Snake, Breakout, and Pong cartridges on the Pixel Palace console', () => {
+  it('mounts a CSP-hardened sandbox="allow-scripts" iframe without allow-same-origin and supports reset', () => {
     const firstProps = examples[0]?.props ?? {};
     const SeamRenderer = microAppComponent.renderer;
-    const { container, getByText } = render(
+    const { container, getByLabelText } = render(
       <SeamRenderer props={firstProps} buildChild={(id) => <span>{id}</span>} />,
     );
-    expect(container.textContent).toContain('PIXEL PALACE');
-    expect(container.textContent).toContain('EAT THE FRUIT');
-    fireEvent.click(getByText('BREAKOUT'));
-    expect(container.textContent).toContain('BREAK ALL THE BRICKS');
+    expect(container.textContent).toContain('Harmonic Superposition Lab');
+    const iframe = container.querySelector('iframe');
+    expect(iframe).not.toBeNull();
+    expect(iframe?.getAttribute('sandbox')).toBe('allow-scripts');
+    expect(iframe?.getAttribute('srcdoc')).toContain("default-src 'none'");
+    fireEvent.click(getByLabelText('Reset Harmonic Superposition Lab'));
+    expect(container.querySelector('iframe')).not.toBeNull();
   });
 });

@@ -5,7 +5,7 @@
   "title": "A2UI Lumina Catalog",
   "description": "Modern, cross-platform A2UI v1.0 agentic UI catalog covering 49 components and 24 functions across Web and Mobile.",
   "catalogId": "https://wsyang0309.github.io/a2ui-catalog/specification/v1_0/lumina/catalog.json",
-  "instructions": "# A2UI Lumina Catalog (v1.0) Guidelines\n\nYou are generating declarative A2UI v1.0 surfaces using the **Lumina Catalog** (`https://wsyang0309.github.io/a2ui-catalog/specification/v1_0/lumina/catalog.json`).\n\n## Core Authoring Principles\n\n1. **Prefer High-Order Semantic Components Over Nested Primitives:**\n   - Use `KeyValueList` for receipts, booking summaries, confirmations, and entity metadata.\n   - Use `StatMetric` inside a `Grid` for KPIs and trend deltas instead of stacking `Text` nodes.\n   - Use `ComparisonMatrix` for side-by-side option evaluations (flights, plans, vendors).\n   - Use `StepTimeline` for multi-step execution traces, workflows, and itineraries.\n   - Use `ThoughtTrace` for concise collapsible reasoning summaries.\n   - Use `SourceList` for grounded web citations and references.\n   - Use `Chart` (`line`, `area`, `bar`, `stackedBar`, `donut`), `ProportionBar`, and `DataTable` for quantitative analysis and proportional splits.\n   - Use `AnnotatedDiagram` for interactive technical schematics with subsystem filters and hotspot pins, and `RouteMap` for multi-stop sightseeing/logistics routes.\n   - Use `ChecklistCard` for interactive step-by-step cooking, packing, or runbook checklists, `QuizCard` for comprehension checks, `SwatchPicker` for color/finish palettes, and `SplitLedger` for itemized multi-diner bill splitting.\n   - Use `MicroApp` for self-contained playable retro arcade canvases, step sequencers, or strictly sandboxed bespoke interactive simulations.\n   - Use `CodeBlock` and `DiffViewer` for code snippets, queries, logs, and patch reviews.\n   - Use `ArtifactCard` for long-form deliverables (memos, full itineraries, plans) that expand into a focused Canvas drawer.\n\n2. **Concise Button Authoring:**\n   - Prefer `Button` with `label` and optional `icon` instead of creating a separate child `Text` component, unless custom composite child layout is needed.\n\n3. **Reactive Client Formatting, Math & Data Binding (A2UI v1.0):**\n   - Use `{\"@path\": \"/...\"}` for root data model bindings and `{\"@path\": \"field\"}` for relative paths inside `TemplateChildList`.\n   - Use `computeMath`, `compoundGrowth`, `selectByValue`, `formatString`, `formatCurrency`, `formatNumber`, `formatCompactNumber`, `formatPercent`, `formatDate`, and `formatRelativeTime` via `{\"@call\": \"...\", \"args\": {...}}` so interactive inputs (`Slider`, `StepperInput`, `Switch`, `SegmentedControl`, `ChoicePicker`, `SwatchPicker`) update displayed metrics immediately on the client with zero network round-trips.\n\n4. **Human-in-the-Loop Safety:**\n   - Wrap irreversible, financial, or production-impacting actions in `ApprovalCard` with an accurate `riskLevel` (`low`, `medium`, `high`).\n   - Attach `@checks` validation rules directly to inputs or `ApprovalCard` instead of rendering manual error text nodes.\n\n5. **Conversational Continuity & Mobile Ergonomics:**\n   - Keep layouts compact and scannable on mobile screens (use `Carousel` for multi-item visual cards, `Accordion` for optional detail).\n   - End exploratory or analytical surfaces with `FollowUpSuggestions` (2 to 4 concise action pills) to support one-tap continuation.\n",
+  "instructions": "# A2UI Lumina Catalog (v1.0) Guidelines\n\nYou are generating declarative A2UI v1.0 surfaces using the **Lumina Catalog** (`https://wsyang0309.github.io/a2ui-catalog/specification/v1_0/lumina/catalog.json`).\n\n## Core Authoring Principles\n\n1. **Prefer High-Order Semantic Components Over Nested Primitives:**\n   - Use `KeyValueList` for receipts, booking summaries, confirmations, and entity metadata.\n   - Use `StatMetric` inside a `Grid` for KPIs and trend deltas instead of stacking `Text` nodes.\n   - Use `ComparisonMatrix` for side-by-side option evaluations (flights, plans, vendors).\n   - Use `StepTimeline` for multi-step execution traces, workflows, and itineraries.\n   - Use `ThoughtTrace` for concise collapsible reasoning summaries.\n   - Use `SourceList` for grounded web citations and references.\n   - Use `Chart` (`line`, `area`, `bar`, `stackedBar`, `donut`), `ProportionBar`, and `DataTable` for quantitative analysis and proportional splits.\n   - Use `AnnotatedDiagram` for interactive data-driven vector schematics with subsystem filters and hotspot pins, and `RouteMap` for multi-stop itineraries and geographic routes.\n   - Use `ChecklistCard` for interactive step-by-step checklists, `QuizCard` for comprehension checks, `SwatchPicker` for color/material palettes, and `SplitLedger` for itemized multi-participant expense or bill splitting.\n   - Use `MicroApp` for strictly sandboxed (`sandbox=\"allow-scripts\"`) interactive `<canvas>` simulations, WebAudio synthesizers, or custom visual tools.\n   - Use `CodeBlock` and `DiffViewer` for code snippets, queries, logs, and patch reviews.\n   - Use `ArtifactCard` for long-form deliverables (memos, full itineraries, plans) that expand into a focused Canvas drawer.\n\n2. **Concise Button Authoring:**\n   - Prefer `Button` with `label` and optional `icon` instead of creating a separate child `Text` component, unless custom composite child layout is needed.\n\n3. **Reactive Client Formatting, Math & Data Binding (A2UI v1.0):**\n   - Use `{\"@path\": \"/...\"}` for root data model bindings and `{\"@path\": \"field\"}` for relative paths inside `TemplateChildList`.\n   - Use `computeMath`, `compoundGrowth`, `selectByValue`, `sampleDistribution`, `formatString`, `formatCurrency`, `formatNumber`, `formatCompactNumber`, `formatPercent`, `formatDate`, and `formatRelativeTime` via `{\"@call\": \"...\", \"args\": {...}}` so interactive inputs (`Slider`, `StepperInput`, `Switch`, `SegmentedControl`, `ChoicePicker`, `SwatchPicker`) update displayed metrics immediately on the client with zero network round-trips.\n\n4. **Human-in-the-Loop Safety:**\n   - Wrap irreversible, financial, or production-impacting actions in `ApprovalCard` with an accurate `riskLevel` (`low`, `medium`, `high`).\n   - Attach `@checks` validation rules directly to inputs or `ApprovalCard` instead of rendering manual error text nodes.\n\n5. **Conversational Continuity & Mobile Ergonomics:**\n   - Keep layouts compact and scannable on mobile screens (use `Carousel` for multi-item visual cards, `Accordion` for optional detail).\n   - End exploratory or analytical surfaces with `FollowUpSuggestions` (2 to 4 concise action pills) to support one-tap continuation.\n",
   "components": {
     "Row": {
       "type": "object",
@@ -988,25 +988,28 @@
         },
         "title": {
           "$ref": "common_types.json#/$defs/DynamicString",
-          "description": "Optional diagram header title (e.g., \"7-Speed Bicycle\")."
+          "description": "Optional diagram header title."
         },
         "subtitle": {
           "$ref": "common_types.json#/$defs/DynamicString",
           "description": "Optional diagram summary caption."
         },
-        "preset": {
+        "viewBox": {
           "type": "string",
-          "enum": [
-            "bicycle-7speed",
-            "architecture",
-            "custom"
-          ],
-          "default": "custom",
-          "description": "Built-in technical illustration preset or custom declarative shapes."
+          "default": "0 0 640 280",
+          "description": "SVG coordinate viewBox string (default \"0 0 640 280\")."
+        },
+        "statusBadge": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "Optional corner HUD status pill rendered inside the schematic stage."
         },
         "value": {
           "$ref": "common_types.json#/$defs/DynamicString",
           "description": "Two-way bound active subsystem group ID (\"all\" or a group/hotspot ID)."
+        },
+        "activeStep": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "description": "Optional 1-based stage or step index highlighting shapes whose step matches."
         },
         "groups": {
           "type": "array",
@@ -1015,11 +1018,11 @@
             "properties": {
               "id": {
                 "type": "string",
-                "description": "Group identifier (e.g., \"all\", \"frame\", \"drivetrain\")."
+                "description": "Subsystem group identifier (e.g., \"all\", \"ingress\", \"compute\")."
               },
               "label": {
                 "$ref": "common_types.json#/$defs/DynamicString",
-                "description": "Pill label."
+                "description": "Filter pill label."
               }
             },
             "required": [
@@ -1057,11 +1060,11 @@
               },
               "label": {
                 "$ref": "common_types.json#/$defs/DynamicString",
-                "description": "System or part title (e.g., \"Seven ways to move\")."
+                "description": "Subsystem or component title."
               },
               "badge": {
                 "$ref": "common_types.json#/$defs/DynamicString",
-                "description": "Optional short tag (e.g., \"Drivetrain\")."
+                "description": "Optional short tag pill."
               },
               "detail": {
                 "$ref": "common_types.json#/$defs/DynamicString",
@@ -1079,7 +1082,7 @@
           },
           "minItems": 1,
           "maxItems": 16,
-          "description": "Interactive callout pins and subsystem descriptions."
+          "description": "Interactive numbered callout pins and subsystem detail cards."
         },
         "shapes": {
           "type": "array",
@@ -1097,6 +1100,9 @@
               },
               "group": {
                 "type": "string"
+              },
+              "step": {
+                "type": "integer"
               },
               "d": {
                 "type": "string"
@@ -1134,11 +1140,31 @@
               "height": {
                 "type": "number"
               },
+              "rx": {
+                "type": "number"
+              },
               "stroke": {
+                "type": "string"
+              },
+              "activeStroke": {
+                "type": "string"
+              },
+              "strokeWidth": {
+                "type": "number"
+              },
+              "strokeDasharray": {
                 "type": "string"
               },
               "fill": {
                 "type": "string"
+              },
+              "fillOpacity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "animatedFlow": {
+                "type": "boolean"
               }
             },
             "required": [
@@ -1146,14 +1172,6 @@
             ],
             "additionalProperties": false
           }
-        },
-        "activeStep": {
-          "$ref": "common_types.json#/$defs/DynamicNumber",
-          "description": "Optional numeric gear or step (e.g., 1..7) highlighted in the diagram."
-        },
-        "cadence": {
-          "$ref": "common_types.json#/$defs/DynamicNumber",
-          "description": "Optional RPM cadence driving motion speed."
         },
         "weight": {
           "type": "number",
@@ -1180,16 +1198,6 @@
           "$ref": "common_types.json#/$defs/DynamicString",
           "description": "Optional route overview caption."
         },
-        "regionPreset": {
-          "type": "string",
-          "enum": [
-            "sf-bay",
-            "pnw",
-            "auto"
-          ],
-          "default": "auto",
-          "description": "Cartographic basemap preset or automatic lat/lng bounding projection."
-        },
         "value": {
           "$ref": "common_types.json#/$defs/DynamicString",
           "description": "Two-way bound selected stop ID."
@@ -1197,6 +1205,108 @@
         "categoryFilter": {
           "$ref": "common_types.json#/$defs/DynamicString",
           "description": "Optional active category filter (\"all\" by default)."
+        },
+        "bounds": {
+          "type": "object",
+          "properties": {
+            "minLat": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "maxLat": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "minLng": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            },
+            "maxLng": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          },
+          "required": [
+            "minLat",
+            "maxLat",
+            "minLng",
+            "maxLng"
+          ],
+          "additionalProperties": false,
+          "description": "Optional geographic bounding box; when omitted, bounds are computed automatically from stops."
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "water",
+                  "land",
+                  "park",
+                  "road",
+                  "bridge",
+                  "label"
+                ]
+              },
+              "d": {
+                "type": "string"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "x1": {
+                "type": "number"
+              },
+              "y1": {
+                "type": "number"
+              },
+              "x2": {
+                "type": "number"
+              },
+              "y2": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              },
+              "r": {
+                "type": "number"
+              },
+              "strokeWidth": {
+                "type": "number"
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind"
+            ],
+            "additionalProperties": false
+          },
+          "description": "Optional declarative cartographic backdrop features in 640x340 viewport space."
+        },
+        "routeStyle": {
+          "type": "string",
+          "enum": [
+            "orthogonal",
+            "direct"
+          ],
+          "default": "orthogonal",
+          "description": "Connecting route path geometry between stops."
         },
         "stops": {
           "type": "array",
@@ -1209,7 +1319,7 @@
               },
               "title": {
                 "$ref": "common_types.json#/$defs/DynamicString",
-                "description": "Landmark or stop name (e.g., \"Ferry Building\")."
+                "description": "Landmark or stop name."
               },
               "subtitle": {
                 "$ref": "common_types.json#/$defs/DynamicString",
@@ -1221,7 +1331,7 @@
               },
               "category": {
                 "type": "string",
-                "description": "Category tag (e.g., \"Food\", \"Landmark\", \"Views\")."
+                "description": "Category tag (e.g., \"Food\", \"Views\")."
               },
               "lat": {
                 "type": "number",
@@ -1240,7 +1350,7 @@
               },
               "badge": {
                 "$ref": "common_types.json#/$defs/DynamicString",
-                "description": "Optional badge pill (e.g., \"Must see\")."
+                "description": "Optional badge pill."
               },
               "detourNote": {
                 "$ref": "common_types.json#/$defs/DynamicString",
@@ -2538,44 +2648,33 @@
         },
         "title": {
           "$ref": "common_types.json#/$defs/DynamicString",
-          "description": "Application header title (e.g., \"PIXEL PALACE\" or \"DRUM / LAB 01\")."
+          "description": "Sandbox header title."
         },
         "subtitle": {
           "$ref": "common_types.json#/$defs/DynamicString",
-          "description": "Optional subtitle or instructions."
+          "description": "Optional subtitle or interaction hint."
         },
         "badge": {
           "$ref": "common_types.json#/$defs/DynamicString",
-          "description": "Optional edition or status badge (e.g., \"1989 EDITION\" or \"READY\")."
-        },
-        "preset": {
-          "type": "string",
-          "enum": [
-            "retro-arcade",
-            "drum-sequencer",
-            "customHtml"
-          ],
-          "default": "retro-arcade",
-          "description": "Built-in playable interactive experience or isolated sandboxed customHtml escape hatch."
-        },
-        "defaultGame": {
-          "type": "string",
-          "enum": [
-            "snake",
-            "breakout",
-            "pong"
-          ],
-          "default": "snake",
-          "description": "Initial game cartridge when preset is retro-arcade."
+          "description": "Optional status or runtime badge pill."
         },
         "html": {
-          "type": "string",
-          "description": "Self-contained HTML/CSS/JS document rendered inside a sandbox=\"allow-scripts\" iframe without same-origin access when preset is customHtml."
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "Self-contained HTML/CSS/JS document rendered inside a sandbox=\"allow-scripts\" iframe without same-origin access and with CSP blocking network egress."
         },
         "height": {
           "type": "number",
-          "minimum": 220,
-          "maximum": 780
+          "minimum": 180,
+          "maximum": 860,
+          "default": 420
+        },
+        "expandable": {
+          "type": "boolean",
+          "default": true
+        },
+        "chromeless": {
+          "type": "boolean",
+          "default": false
         },
         "weight": {
           "type": "number",
@@ -2584,7 +2683,8 @@
       },
       "required": [
         "component",
-        "title"
+        "title",
+        "html"
       ],
       "unevaluatedProperties": false
     },
@@ -3257,28 +3357,32 @@
         },
         "eyebrow": {
           "$ref": "common_types.json#/$defs/DynamicString",
-          "description": "Optional top masthead label (e.g., \"THE DINNER LEDGER\")."
+          "description": "Optional top masthead label."
         },
         "title": {
           "$ref": "common_types.json#/$defs/DynamicString",
-          "description": "Ledger heading (e.g., \"The Check, Please.\")."
+          "description": "Ledger heading."
         },
         "subtitle": {
           "$ref": "common_types.json#/$defs/DynamicString",
-          "description": "Optional subtitle (e.g., \"TABLE OF FIVE · ITEMIZED BILL\")."
+          "description": "Optional subtitle."
         },
         "footerNote": {
           "$ref": "common_types.json#/$defs/DynamicString",
           "description": "Optional bottom sign-off line."
         },
+        "ctaLabel": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "Optional submit button label (e.g., \"Calculate split\" or \"Split the check\")."
+        },
         "variant": {
           "type": "string",
           "enum": [
-            "clipboard",
-            "card"
+            "card",
+            "clipboard"
           ],
-          "default": "clipboard",
-          "description": "Visual container material: physical clipboard paper or standard elevated card."
+          "default": "card",
+          "description": "Visual container material: elevated card or tactile clipboard paper."
         },
         "currency": {
           "type": "string",
@@ -3304,7 +3408,7 @@
               },
               "name": {
                 "type": "string",
-                "description": "Dish or expense description."
+                "description": "Expense or item description."
               },
               "price": {
                 "type": "number",
@@ -3317,7 +3421,7 @@
                   "type": "integer",
                   "minimum": 0
                 },
-                "description": "Zero-based guest indices sharing this item."
+                "description": "Zero-based participant indices sharing this item."
               }
             },
             "required": [
@@ -3329,11 +3433,11 @@
             "additionalProperties": false
           },
           "minItems": 1,
-          "description": "Initial itemized dishes or expenses."
+          "description": "Initial itemized expenses."
         },
         "taxAmount": {
           "$ref": "common_types.json#/$defs/DynamicNumber",
-          "description": "Initial tax dollar amount or percentage."
+          "description": "Initial tax amount or percentage."
         },
         "taxMode": {
           "type": "string",
@@ -3345,7 +3449,7 @@
         },
         "tipPercent": {
           "$ref": "common_types.json#/$defs/DynamicNumber",
-          "description": "Initial tip percentage (0..40)."
+          "description": "Initial tip/gratuity percentage (0..40)."
         },
         "tipPresets": {
           "type": "array",
@@ -4232,57 +4336,49 @@
         "args"
       ]
     },
-    "runSimulation": {
+    "sampleDistribution": {
       "type": "object",
-      "description": "Runs interactive statistical or probability simulations (CLT histograms, Monty Hall trials) in the local Data Model.",
+      "description": "Draws or resets continuous random samples and binned histogram data ({ values, bins, count, mean, stdev }) in the local Data Model.",
       "returnType": "void",
       "allowedCallers": "rendererOnly",
       "properties": {
         "@call": {
-          "const": "runSimulation"
+          "const": "sampleDistribution"
         },
         "args": {
           "type": "object",
           "properties": {
-            "mode": {
+            "action": {
               "type": "string",
               "enum": [
-                "cltDraw",
-                "cltReset",
-                "montyPick",
-                "montyResolve",
-                "montySim",
-                "montyReset"
+                "draw",
+                "reset"
               ],
-              "description": "Simulation action mode."
+              "description": "Draw additional random samples or reset the target Data Model state."
             },
             "path": {
               "type": "string",
               "description": "Target JSON pointer path in the Surface Data Model."
             },
-            "count": {
-              "$ref": "common_types.json#/$defs/DynamicNumber",
-              "description": "Number of Monte Carlo samples or games to draw."
+            "distribution": {
+              "$ref": "common_types.json#/$defs/DynamicString",
+              "description": "Continuous distribution family (\"uniform\" | \"normal\" | \"skewed\" | \"bimodal\")."
             },
             "sampleSize": {
               "$ref": "common_types.json#/$defs/DynamicNumber",
-              "description": "Sample size n per draw for CLT."
+              "description": "Observations averaged per draw (n >= 1; n > 1 draws sample means)."
             },
-            "distribution": {
-              "$ref": "common_types.json#/$defs/DynamicString",
-              "description": "Population distribution (\"Skewed\" | \"Uniform\" | \"Bimodal\")."
-            },
-            "door": {
+            "count": {
               "$ref": "common_types.json#/$defs/DynamicNumber",
-              "description": "Chosen door index (0, 1, or 2) in Monty Hall."
+              "description": "Number of draws to append (1..2000)."
             },
-            "strategy": {
-              "$ref": "common_types.json#/$defs/DynamicString",
-              "description": "Resolution choice (\"switch\" | \"stay\") in Monty Hall."
+            "bins": {
+              "$ref": "common_types.json#/$defs/DynamicNumber",
+              "description": "Histogram bucket count (4..32, default 14)."
             }
           },
           "required": [
-            "mode",
+            "action",
             "path"
           ],
           "unevaluatedProperties": false
@@ -4525,7 +4621,7 @@
           "$ref": "#/functions/selectByValue"
         },
         {
-          "$ref": "#/functions/runSimulation"
+          "$ref": "#/functions/sampleDistribution"
         }
       ]
     }

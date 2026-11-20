@@ -13,7 +13,7 @@ Generated deterministically by `pnpm quality:score` ([scripts/compute-quality-sc
 | Slice (`src/components/*`) | Strict Schema | Examples | Seam Test | Semantic/A11y | Prompt Size | Renderer Lines | Grade |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | `accordion` | Pass | 1 | Pass | Pass | 316c | 80L | **A** |
-| `annotated-diagram` | Pass | 1 | Pass | Pass | 517c | 207L | **A** |
+| `annotated-diagram` | Pass | 1 | Pass | Pass | 593c | 237L | **A** |
 | `approval-card` | Pass | 1 | Pass | Pass | 427c | 159L | **A** |
 | `artifact-card` | Pass | 1 | Pass | Pass | 397c | 113L | **A** |
 | `audio-player` | Pass | 1 | Pass | Pass | 322c | 99L | **A** |
@@ -39,17 +39,17 @@ Generated deterministically by `pnpm quality:score` ([scripts/compute-quality-sc
 | `image` | Pass | 1 | Pass | Pass | 378c | 84L | **A** |
 | `key-value-list` | Pass | 1 | Pass | Pass | 334c | 66L | **A** |
 | `list` | Pass | 1 | Pass | Pass | 347c | 35L | **A** |
-| `micro-app` | Pass | 2 | Pass | Pass | 641c | 67L | **A** |
+| `micro-app` | Pass | 1 | Pass | Pass | 659c | 139L | **A** |
 | `modal` | Pass | 1 | Pass | Pass | 387c | 35L | **A** |
 | `progress-indicator` | Pass | 1 | Pass | Pass | 355c | 121L | **A** |
 | `proportion-bar` | Pass | 2 | Pass | Pass | 533c | 132L | **A** |
 | `quiz-card` | Pass | 1 | Pass | Pass | 515c | 211L | **A** |
-| `route-map` | Pass | 1 | Pass | Pass | 515c | 236L | **A** |
+| `route-map` | Pass | 1 | Pass | Pass | 637c | 262L | **A** |
 | `row` | Pass | 1 | Pass | Pass | 322c | 36L | **A** |
 | `segmented-control` | Pass | 1 | Pass | Pass | 323c | 63L | **A** |
 | `slider` | Pass | 1 | Pass | Pass | 343c | 105L | **A** |
 | `source-list` | Pass | 1 | Pass | Pass | 339c | 67L | **A** |
-| `split-ledger` | Pass | 1 | Pass | Pass | 673c | 284L | **A** |
+| `split-ledger` | Pass | 1 | Pass | Pass | 717c | 288L | **A** |
 | `stat-metric` | Pass | 1 | Pass | Pass | 388c | 92L | **A** |
 | `status-badge` | Pass | 1 | Pass | Pass | 336c | 26L | **A** |
 | `step-timeline` | Pass | 1 | Pass | Pass | 320c | 73L | **A** |

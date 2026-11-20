@@ -20,14 +20,14 @@ describe('component slice: annotated-diagram', () => {
     ).toBe(false);
   });
 
-  it('filters bicycle subsystems interactively via filter pills', () => {
+  it('filters declarative schematic subsystems interactively via filter pills', () => {
     const firstProps = { ...(examples[0]?.props ?? {}), value: 'all' };
     const SeamRenderer = annotatedDiagramComponent.renderer;
     const { container, getByRole } = render(
       <SeamRenderer props={firstProps} buildChild={(id) => <span>{id}</span>} />,
     );
-    expect(container.textContent).toContain('Seven ways to move');
-    fireEvent.click(getByRole('tab', { name: 'Brakes' }));
-    expect(container.textContent).toContain('Control at the rim');
+    expect(container.textContent).toContain('Spec-Constrained Planner');
+    fireEvent.click(getByRole('tab', { name: 'Tool Sandbox' }));
+    expect(container.textContent).toContain('Ephemeral Tool Runner');
   });
 });

@@ -45,8 +45,8 @@ import {
   ComputeMathImplementation,
 } from '../../../src/functions/compute-math/index.js';
 import {
-  RunSimulationApi,
-  RunSimulationImplementation,
+  SampleDistributionApi,
+  SampleDistributionImplementation,
   SelectByValueApi,
   SelectByValueImplementation,
 } from '../../../src/functions/select-by-value/index.js';
@@ -193,7 +193,7 @@ export const LUMINA_CUSTOM_FUNCTIONS: readonly FunctionImplementation[] = [
   ComputeMathImplementation,
   CompoundGrowthImplementation,
   SelectByValueImplementation,
-  RunSimulationImplementation,
+  SampleDistributionImplementation,
 ];
 
 export const LUMINA_FUNCTIONS: readonly FunctionImplementation[] = [
@@ -256,8 +256,8 @@ export {
   QuizCardApi,
   RouteMapApi,
   RowApi,
-  RunSimulationApi,
-  RunSimulationImplementation,
+  SampleDistributionApi,
+  SampleDistributionImplementation,
   SegmentedControlApi,
   SelectByValueApi,
   SelectByValueImplementation,

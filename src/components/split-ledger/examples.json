@@ -1,26 +1,22 @@
 [
   {
-    "title": "SplitLedger — Trattoria party-of-five clipboard bill splitter",
+    "title": "SplitLedger — Group retreat shared expense ledger",
     "props": {
-      "eyebrow": "THE DINNER LEDGER",
-      "title": "The Check, Please.",
-      "subtitle": "TABLE OF FIVE · ITEMIZED BILL",
-      "footerNote": "GOOD FOOD. FAIR SPLITS. NO MATH.",
-      "variant": "clipboard",
+      "eyebrow": "SHARED EXPENSE LEDGER",
+      "title": " Tahoe Team Offsite Split",
+      "subtitle": "FOUR PARTICIPANTS · ITEMIZED RECEIPT",
+      "variant": "card",
       "currency": "USD",
-      "guests": ["Person 1", "Person 2", "Person 3", "Person 4", "Person 5"],
+      "guests": ["Alex", "Jordan", "Sam", "Taylor"],
       "items": [
-        { "id": "i1", "name": "Margherita", "price": 14, "sharedBy": [0] },
-        { "id": "i2", "name": "Margherita", "price": 14, "sharedBy": [1] },
-        { "id": "i3", "name": "Cacio e Pepe", "price": 16, "sharedBy": [2] },
-        { "id": "i4", "name": "Rigatoni Vodka", "price": 17, "sharedBy": [3] },
-        { "id": "i5", "name": "Insalata", "price": 14, "sharedBy": [4] },
-        { "id": "i6", "name": "House Red (L)", "price": 24, "sharedBy": [0, 1, 2, 3, 4] }
+        { "id": "i1", "name": "Airport shuttle van", "price": 68, "sharedBy": [0, 1, 2, 3] },
+        { "id": "i2", "name": "Ski locker rental", "price": 32, "sharedBy": [0, 2] },
+        { "id": "i3", "name": "Cabin grocery run", "price": 84, "sharedBy": [0, 1, 2, 3] }
       ],
-      "taxAmount": 8.78,
+      "taxAmount": 15.18,
       "taxMode": "amount",
       "tipPercent": 0,
-      "tipPresets": [15, 18, 20, 25]
+      "tipPresets": [10, 15, 20]
     }
   }
 ]
