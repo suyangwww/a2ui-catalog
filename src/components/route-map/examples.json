@@ -1,62 +1,54 @@
 [
   {
-    "title": "RouteMap — San Francisco one-day sightseeing route",
+    "title": "RouteMap — Kyoto Philosopher's Path half-day walking loop",
     "props": {
-      "regionPreset": "sf-bay",
+      "title": "Eastern Hills Walking Loop",
+      "subtitle": "Four temple and teahouse stops projected automatically from decimal coordinates.",
       "value": {
         "@path": "/selectedStop"
       },
       "stops": [
         {
-          "id": "ferry",
-          "title": "Ferry Building",
-          "time": "9:00–9:45 AM",
+          "id": "ginkakuji",
+          "title": "Silver Pavilion Gate",
+          "time": "8:30 AM",
+          "category": "Landmarks",
+          "lat": 35.027,
+          "lng": 135.7982,
+          "subtitle": "Raked white-sand garden and moss hillside overlook before crowds arrive."
+        },
+        {
+          "id": "canal-walk",
+          "title": "Canal Stone Path",
+          "time": "10:00 AM",
+          "category": "Nature",
+          "lat": 35.0205,
+          "lng": 135.7955,
+          "subtitle": "Cherry-lined aqueduct walk past quiet craft studios."
+        },
+        {
+          "id": "matcha-house",
+          "title": "Honen-in Teahouse",
+          "time": "11:15 AM",
           "category": "Food",
-          "lat": 37.7955,
-          "lng": -122.3937,
-          "subtitle": "Coffee, breakfast, and a waterfront walk along the Embarcadero."
+          "lat": 35.0226,
+          "lng": 135.7974,
+          "detourNote": "Step through the thatched moss gate 120m east of the canal.",
+          "subtitle": "Uji matcha and roasted chestnut wagashi in a cedar courtyard."
         },
         {
-          "id": "lombard",
-          "title": "Lombard Street",
-          "time": "11:15 AM–12:00 PM",
-          "category": "Landmarks",
-          "lat": 37.8021,
-          "lng": -122.4187,
-          "subtitle": "Walk the eight-hairpin flowerbed block and take in Russian Hill views."
-        },
-        {
-          "id": "palace",
-          "title": "Palace of Fine Arts",
-          "time": "2:00–2:45 PM",
-          "category": "Landmarks",
-          "lat": 37.8029,
-          "lng": -122.4484,
-          "subtitle": "Stroll the lagoon rotunda on your way toward Crissy Field."
-        },
-        {
-          "id": "golden-gate",
-          "title": "Golden Gate Bridge",
-          "time": "3:00–4:15 PM",
+          "id": "nanzenji",
+          "title": "Nanzen-ji Aqueduct",
+          "time": "12:30 PM",
           "category": "Views",
-          "lat": 37.8077,
-          "lng": -122.475,
-          "detourNote": "Battery Spencer across the span adds 20 minutes for iconic tower views.",
-          "subtitle": "Walk out from Welcome Center overlooking the Marin Headlands."
-        },
-        {
-          "id": "twin-peaks",
-          "title": "Twin Peaks",
-          "time": "6:00–7:00 PM",
-          "category": "Views",
-          "lat": 37.7544,
-          "lng": -122.4477,
-          "subtitle": "Panoramic 360-degree sunset view from downtown to the Pacific."
+          "lat": 35.0112,
+          "lng": 135.7936,
+          "subtitle": "Meiji red-brick waterways framed by mountain maples."
         }
       ]
     },
     "dataModel": {
-      "selectedStop": "ferry"
+      "selectedStop": "ginkakuji"
     }
   }
 ]

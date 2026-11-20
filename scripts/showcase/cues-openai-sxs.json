@@ -17,21 +17,21 @@
     {
       "id": "pixel_palace",
       "title": "03 · Pixel Palace Retro Arcade & Drum Lab 01",
-      "props": "MicroApp (retro-arcade, drum-sequencer, sandbox=\"allow-scripts\") · Tabs",
+      "props": "MicroApp (html, sandbox=\"allow-scripts\", CSP) · Tabs",
       "speech": "Third, OpenAI's Pixel Palace 1989 handheld console and Drum Lab sequencer. Lumina's MicroApp component runs playable sixty frames-per-second Snake, Breakout, and Pong on matching dot-matrix L C D screens, and switches cleanly to a sixteen-step synthesized WebAudio groovebox—while isolating any custom HTML inside a locked-down script-only sandbox.",
       "tts": "Third, Open A I's Pixel Palace nineteen eighty-nine handheld console and Drum Lab sequencer. Lumina's Micro App component runs playable sixty frames-per-second Snake, Breakout, and Pong on matching dot-matrix L C D screens, and switches cleanly to a sixteen-step synthesized Web Audio groovebox, while isolating any custom H T M L inside a locked-down script-only sandbox."
     },
     {
       "id": "bicycle_7speed",
       "title": "04 · How a 7-Speed Bicycle Works — Subsystem Schematic",
-      "props": "AnnotatedDiagram (bicycle-7speed, groups, hotspots) · Slider · @computeMath",
+      "props": "AnnotatedDiagram (shapes, groups, hotspots) · Slider · @computeMath",
       "speech": "Fourth, the interactive seven-speed commuter bicycle schematic. AnnotatedDiagram pairs spring-animated subsystem filter pills and numbered hotspot callouts with an animated drivetrain chain. Filtering to Drivetrain and shifting from Gear four up to sprint Gear seven updates mechanical advantage and road speed live on both sides.",
       "tts": "Fourth, the interactive seven-speed commuter bicycle schematic. Annotated Diagram pairs spring-animated subsystem filter pills and numbered hotspot callouts with an animated drivetrain chain. Filtering to Drivetrain and shifting from Gear four up to sprint Gear seven updates mechanical advantage and road speed live on both sides."
     },
     {
       "id": "sf_route",
       "title": "05 · San Francisco in One Day — Cartographic RouteMap & Dark Mode",
-      "props": "RouteMap (sf-bay, stops, expandable) · SourceList · StepTimeline",
+      "props": "RouteMap (bounds, features, stops) · SourceList · StepTimeline",
       "speech": "Fifth, San Francisco in One Day combines a three-photo landmark strip and grounded Fleet Week citation with Lumina's cartographic RouteMap. Clicking numbered stops from the Ferry Building to Crissy Field reveals detour notes, and toggling Dark Mode shifts water, parks, and street geometry across both surfaces simultaneously.",
       "tts": "Fifth, San Francisco in One Day combines a three-photo landmark strip and grounded Fleet Week citation with Lumina's cartographic Route Map. Clicking numbered stops from the Ferry Building to Crissy Field reveals detour notes, and toggling Dark Mode shifts water, parks, and street geometry across both surfaces simultaneously."
     },
@@ -52,7 +52,7 @@
     {
       "id": "gdp_clt_quiz",
       "title": "08 · GDP Identity, Central Limit Theorem & Quiz + Live A2UI Wire JSON",
-      "props": "ProportionBar (inlineLabels) · @runSimulation · Chart · QuizCard",
+      "props": "ProportionBar (inlineLabels) · @sampleDistribution · Chart · QuizCard",
       "speech": "Finally, interactive STEM learning and comprehension checks. Dragging Net Exports negative surfaces a trade-deficit note, clicking Draw one hundred samples runs client-side Monte Carlo Central Limit Theorem convergence into a bell-curve Chart, and QuizCard verifies comprehension with instant emerald feedback—all driven by compact, schema-validated A2UI v1.0 JSON.",
       "tts": "Finally, interactive STEM learning and comprehension checks. Dragging Net Exports negative surfaces a trade-deficit note, clicking Draw one hundred samples runs client-side Monte Carlo Central Limit Theorem convergence into a bell-curve Chart, and Quiz Card verifies comprehension with instant emerald feedback, all driven by compact, schema-validated A 2 U I version one JSON."
     }

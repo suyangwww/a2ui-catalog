@@ -22,10 +22,14 @@ import {
 
 export function SplitLedgerRenderer({ props }: LuminaReactRenderArgs): React.ReactNode {
   const eyebrow = readOptionalString(props.eyebrow);
-  const title = readString(props.title, 'The Check, Please.');
+  const title = readString(props.title, 'Shared Expense Split');
   const subtitle = readOptionalString(props.subtitle);
   const footerNote = readOptionalString(props.footerNote);
-  const variant = readString(props.variant, 'clipboard');
+  const variant = readString(props.variant, 'card');
+  const ctaLabel = readString(
+    props.ctaLabel,
+    variant === 'clipboard' ? 'Split the check' : 'Calculate split',
+  );
   const currency = readString(props.currency, 'USD');
   const initGuests = readStringArray(props.guests);
   const guestCount = Math.max(2, initGuests.length);
@@ -263,7 +267,7 @@ export function SplitLedgerRenderer({ props }: LuminaReactRenderArgs): React.Rea
           disabled={!isValid}
           onClick={() => setShowReceipt(true)}
         >
-          <span>Split the check</span>
+          <span>{ctaLabel}</span>
           <ArrowRight size={15} />
         </button>
 

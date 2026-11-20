@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { DataContext, DataModel } from '@a2ui/web_core';
 import {
-  RunSimulationImplementation,
+  SampleDistributionImplementation,
   SelectByValueImplementation,
   selectByValueSlice,
 } from './index.js';
 
 describe('function slice: select-by-value', () => {
-  it('resolves conditional lookup cases and executes CLT/Monty simulations in DataModel', () => {
-    const dm = new DataModel({ clt: {}, monty: {} });
+  it('resolves conditional lookup cases and draws continuous statistical histograms in DataModel', () => {
+    const dm = new DataModel({ samples: {} });
     const ctx = new DataContext(dm, '/');
     expect(selectByValueSlice.slug).toBe('select-by-value');
 
@@ -21,24 +21,25 @@ describe('function slice: select-by-value', () => {
 
     expect(
       SelectByValueImplementation.execute(
-        { value: -40, whenNegative: 'Net imports reduce GDP', whenNonNegative: 'Trade surplus' },
+        { value: -40, whenNegative: 'Deficit', whenNonNegative: 'Surplus' },
         ctx,
       ),
-    ).toBe('Net imports reduce GDP');
+    ).toBe('Deficit');
 
-    RunSimulationImplementation.execute(
-      { mode: 'cltDraw', path: '/clt', count: 100, sampleSize: 10, distribution: 'Skewed' },
+    SampleDistributionImplementation.execute(
+      { action: 'draw', path: '/samples', count: 120, sampleSize: 10, distribution: 'skewed', bins: 10 },
       ctx,
     );
-    const clt = dm.get('/clt') as Record<string, unknown>;
-    expect(clt.sampleCount).toBe('100');
-    expect(Array.isArray(clt.sampleBins)).toBe(true);
+    const out = dm.get('/samples') as Record<string, unknown>;
+    expect(out.count).toBe('120');
+    expect(Array.isArray(out.bins)).toBe(true);
+    expect((out.bins as unknown[]).length).toBe(10);
 
-    RunSimulationImplementation.execute(
-      { mode: 'montySim', path: '/monty', count: 500 },
+    SampleDistributionImplementation.execute(
+      { action: 'reset', path: '/samples', bins: 10 },
       ctx,
     );
-    const monty = dm.get('/monty') as Record<string, unknown>;
-    expect(Array.isArray(monty.chartData)).toBe(true);
+    const cleared = dm.get('/samples') as Record<string, unknown>;
+    expect(cleared.count).toBe('0');
   });
 });

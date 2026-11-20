@@ -1,5 +1,12 @@
 import { LUMINA_V1_CATALOG_ID } from '@a2ui-catalog/core';
 import { SXS_IMAGES } from './openai-sxs-assets';
+import {
+  BICYCLE_7SPEED_SHAPES,
+  DRUM_LAB_HTML,
+  PIXEL_PALACE_HTML,
+  SF_BAY_BOUNDS,
+  SF_BAY_FEATURES,
+} from './openai-sxs-microapps';
 
 export interface OpenAiSxsShowcaseItem {
   id:
@@ -305,6 +312,7 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
         title: 'The Check, Please.',
         subtitle: 'TABLE OF FIVE · ITEMIZED BILL',
         footerNote: 'GOOD FOOD. FAIR SPLITS. NO MATH.',
+        ctaLabel: 'Split the check',
         guests: ['Person 1', 'Person 2', 'Person 3', 'Person 4', 'Person 5'],
         items: [
           { id: 'item-1', name: 'Margherita', price: 14, sharedBy: [0] },
@@ -336,7 +344,7 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
     componentsUsed: ['Column', 'Tabs', 'MicroApp', 'Callout'],
     functionsUsed: [],
     parityNote:
-      'Pairs playable 60fps Snake / Breakout / Pong on the PIXELBOY handheld console with a 16-step synthesized WebAudio Drum Lab inside MicroApp.',
+      'Streams playable 60fps Snake / Breakout / Pong and a 16-step WebAudio Drum Lab as self-contained HTML payloads inside MicroApp’s CSP-locked sandbox.',
     messages: surface('sxs-pixel-palace', [
       {
         id: 'root',
@@ -356,25 +364,28 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
       {
         id: 'arcade_app',
         component: 'MicroApp',
-        preset: 'retro-arcade',
         title: 'PIXEL PALACE',
         badge: '1989 EDITION',
-        defaultGame: 'snake',
+        chromeless: true,
+        height: 548,
+        html: PIXEL_PALACE_HTML,
       },
       {
         id: 'drum_app',
         component: 'MicroApp',
-        preset: 'drum-sequencer',
         title: 'DRUM / LAB 01',
         subtitle: 'Rhythm playground · 16-step WebAudio machine',
         badge: 'READY',
+        chromeless: true,
+        height: 528,
+        html: DRUM_LAB_HTML,
       },
       {
         id: 'sandbox_note',
         component: 'Callout',
         tone: 'info',
-        title: 'Built-In Presets + Sandboxed Escape Hatch',
-        body: 'MicroApp ships native theme-aware presets for 60fps arcade games and WebAudio synthesis, plus a strict sandbox="allow-scripts" iframe mode with CSP blocking network egress.',
+        title: 'Pure CSP-Locked Sandboxed Escape Hatch',
+        body: 'MicroApp has zero hardcoded game presets: it isolates untrusted 60fps <canvas> and WebAudio payloads inside sandbox="allow-scripts" with default-src \'none\' CSP and live Light/Dark CSS variable sync.',
       },
     ]),
   },
@@ -392,7 +403,7 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
     componentsUsed: ['Column', 'AnnotatedDiagram', 'Card', 'Slider', 'Grid', 'StatMetric'],
     functionsUsed: ['computeMath', 'formatNumber', 'formatString'],
     parityNote:
-      'Interactive SVG schematic with spring-animated subsystem pills, clickable numbered pins, animated chain dash, and live gear-ratio physics.',
+      '100% data-driven AnnotatedDiagram (declarative SVG shapes + groups + hotspots) with spring-animated subsystem pills, animated chain dash, and live gear-ratio physics.',
     messages: surface(
       'sxs-bicycle',
       [
@@ -407,10 +418,16 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
           component: 'AnnotatedDiagram',
           title: '7-Speed Commuter Bicycle',
           subtitle: 'Filter by subsystem or tap numbered pins to inspect mechanical assemblies',
-          preset: 'bicycle-7speed',
+          viewBox: '0 0 640 300',
           value: { '@path': '/subsystem' },
           activeStep: { '@path': '/gear' },
-          cadence: { '@path': '/cadence' },
+          statusBadge: {
+            '@call': 'formatString',
+            args: {
+              value: 'Gear ${/gear} of 7 · ${/cadence} RPM',
+            },
+          },
+          shapes: BICYCLE_7SPEED_SHAPES,
           groups: [
             { id: 'all', label: 'All systems' },
             { id: 'drivetrain', label: 'Drivetrain' },
@@ -635,7 +652,8 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
         {
           id: 'sf_map',
           component: 'RouteMap',
-          regionPreset: 'sf-bay',
+          bounds: SF_BAY_BOUNDS,
+          features: SF_BAY_FEATURES,
           value: { '@path': '/selectedStop' },
           expandable: true,
           height: 300,
@@ -1035,9 +1053,9 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
     prompt: 'Explain GDP (C + I + G + NX) and the Central Limit Theorem interactively, then quiz me',
     sourceBadge: 'OpenAI GPT-6 Intelligent UI Showcase (STEM + Quiz)',
     componentsUsed: ['Column', 'Tabs', 'Card', 'ProportionBar', 'Slider', 'SegmentedControl', 'Button', 'Chart', 'QuizCard'],
-    functionsUsed: ['computeMath', 'selectByValue', 'runSimulation', 'formatString'],
+    functionsUsed: ['computeMath', 'selectByValue', 'sampleDistribution', 'formatString'],
     parityNote:
-      'Combines live macroeconomic C+I+G+NX ProportionBar, client-side Monte Carlo Central Limit Theorem sampling via runSimulation, and a 3-question QuizCard.',
+      'Combines live macroeconomic C+I+G+NX ProportionBar, client-side Monte Carlo Central Limit Theorem sampling via sampleDistribution, and a QuizCard.',
     messages: surface(
       'sxs-stem-quiz',
       [
@@ -1108,7 +1126,7 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
           subtitle: {
             '@call': 'formatString',
             args: {
-              value: 'Samples drawn: ${/clt/sampleCount} · Mean of means: ${/clt/meanOfMeans} · Spread: ${/clt/spreadOfMeans}',
+              value: 'Samples drawn: ${/clt/count} · Mean of means: ${/clt/mean} · Spread: ${/clt/stdev}',
             },
           },
           children: ['clt_controls', 'clt_btns', 'clt_chart'],
@@ -1127,9 +1145,9 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
           label: 'Population shape',
           value: { '@path': '/cltDist' },
           options: [
-            { label: 'Skewed', value: 'Skewed' },
-            { label: 'Bimodal', value: 'Bimodal' },
-            { label: 'Uniform', value: 'Uniform' },
+            { label: 'Skewed', value: 'skewed' },
+            { label: 'Bimodal', value: 'bimodal' },
+            { label: 'Uniform', value: 'uniform' },
           ],
         },
         {
@@ -1156,13 +1174,14 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
           icon: 'sparkles',
           action: {
             functionCall: {
-              '@call': 'runSimulation',
+              '@call': 'sampleDistribution',
               args: {
-                mode: 'cltDraw',
+                action: 'draw',
                 path: '/clt',
                 distribution: { '@path': '/cltDist' },
                 sampleSize: { '@path': '/cltN' },
                 count: 100,
+                bins: 14,
               },
             },
           },
@@ -1174,13 +1193,14 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
           variant: 'tonal',
           action: {
             functionCall: {
-              '@call': 'runSimulation',
+              '@call': 'sampleDistribution',
               args: {
-                mode: 'cltDraw',
+                action: 'draw',
                 path: '/clt',
                 distribution: { '@path': '/cltDist' },
                 sampleSize: { '@path': '/cltN' },
                 count: 500,
+                bins: 14,
               },
             },
           },
@@ -1192,12 +1212,11 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
           variant: 'ghost',
           action: {
             functionCall: {
-              '@call': 'runSimulation',
+              '@call': 'sampleDistribution',
               args: {
-                mode: 'cltReset',
+                action: 'reset',
                 path: '/clt',
-                distribution: { '@path': '/cltDist' },
-                sampleSize: { '@path': '/cltN' },
+                bins: 14,
               },
             },
           },
@@ -1207,7 +1226,7 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
           component: 'Chart',
           type: 'bar',
           title: 'Distribution of Sample Means (Bell Curve Convergence)',
-          data: { '@path': '/clt/sampleBins' },
+          data: { '@path': '/clt/bins' },
           xKey: 'bin',
           height: 190,
           showLegend: false,
@@ -1247,15 +1266,14 @@ export const OPENAI_SXS_SHOWCASES: OpenAiSxsShowcaseItem[] = [
       ],
       {
         gdp: { c: 600, i: 225, g: 200, nx: 50 },
-        cltDist: 'Skewed',
+        cltDist: 'skewed',
         cltN: 12,
         clt: {
-          means: [],
-          sampleCount: '250',
-          meanOfMeans: '0.251',
-          spreadOfMeans: '0.074',
-          theorySpread: '0.074',
-          sampleBins: [
+          values: [],
+          count: '250',
+          mean: '0.251',
+          stdev: '0.074',
+          bins: [
             { bin: '0.06', count: 2 },
             { bin: '0.12', count: 14 },
             { bin: '0.18', count: 48 },

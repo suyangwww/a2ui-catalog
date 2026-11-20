@@ -33,7 +33,7 @@ flowchart LR
 | **Layer 0** | `src/protocol/` | A2UI v1.0 constants, Zod `Dynamic*` / `Action` / `Checkable` schemas, wire normalization, toast pub/sub, and `defineCatalogComponent` / `defineCatalogFunction` descriptors. **Zero React or DOM imports.** | None (leaf layer) |
 | **Layer 0.5** | `src/primitives/` | Shared UI helpers (`AdaptiveOverlay`, icon registry, motion springs, theme context, safe runtime value readers). | `src/protocol/` |
 | **Layer 1A** | `src/components/<slug>/` | Vertical Deep-Module slice for a single A2UI v1.0 component (49 slices total). | `src/protocol/`, `src/primitives/`, or own slice files |
-| **Layer 1B** | `src/functions/<slug>/` | Vertical Deep-Module slice for A2UI v1.0 functions (`formatCompactNumber`, `formatPercent`, `formatRelativeTime`, `copyToClipboard`, `shareContent`, `setValue`, `computeMath`, `compoundGrowth`, `selectByValue`, `runSimulation`, plus `basic-v1`). | `src/protocol/` or own slice files |
+| **Layer 1B** | `src/functions/<slug>/` | Vertical Deep-Module slice for A2UI v1.0 functions (`formatCompactNumber`, `formatPercent`, `formatRelativeTime`, `copyToClipboard`, `shareContent`, `setValue`, `computeMath`, `compoundGrowth`, `selectByValue`, `sampleDistribution`, plus `basic-v1`). | `src/protocol/` or own slice files |
 | **Layer 2** | `src/catalog/` | Canonical `catalogRegistry`, `catalog.json` compiler (`compiler.ts`), LLM prompt builder, domain profile slicer, and React `Catalog` adapter. | `src/protocol/`, `src/primitives/`, `src/components/<slug>/index.ts`, `src/functions/<slug>/index.ts` |
 | **Layer 3** | `src/preview/` | Isolated worktree-safe Vite preview harness rendering every component's `examples.json` fixtures. | `src/catalog/`, `src/protocol/`, `src/primitives/` |
 

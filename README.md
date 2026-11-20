@@ -81,7 +81,7 @@ Compares **8 flagship OpenAI Intelligent UI showcases on the left** (including o
 
 **Client-Side Catalog Functions (24):**
 - **14 Standard A2UI v1.0 Functions:** `required`, `regex`, `length`, `numeric`, `email`, `and`, `or`, `not`, `formatString`, `formatNumber`, `formatCurrency`, `formatDate`, `pluralize`, `openUrl`
-- **10 Lumina Agentic & Reactive Math Functions:** `formatCompactNumber`, `formatPercent`, `formatRelativeTime`, `copyToClipboard`, `shareContent`, `setValue`, `computeMath`, `compoundGrowth`, `selectByValue`, `runSimulation`
+- **10 Lumina Agentic & Reactive Math Functions:** `formatCompactNumber`, `formatPercent`, `formatRelativeTime`, `copyToClipboard`, `shareContent`, `setValue`, `computeMath`, `compoundGrowth`, `selectByValue`, `sampleDistribution`
 
 ---
 

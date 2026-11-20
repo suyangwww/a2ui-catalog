@@ -549,28 +549,30 @@ Conversational next-step prompt pills placed at the end of an agent surface.
 - **Motion:** Pills stagger in (`40ms` interval) after the primary surface settles; clicking a pill highlights it and dispatches `action`.
 
 ### 7.7 `AnnotatedDiagram` *(Intelligent UI Visual Explanation Primitive)*
-Interactive SVG schematic and hotspot callout Component for breaking down mechanical systems, anatomy, hardware, or step-by-step diagrams.
+Data-driven interactive SVG schematic and hotspot callout Component for breaking down system architectures, hardware assemblies, scientific mechanisms, or multi-stage pipelines.
 - **Properties:**
   - `title` (`DynamicString?`), `subtitle` (`DynamicString?`)
-  - `preset` (`enum: ['bicycle-7speed', 'architecture', 'custom']`, default `'custom'`)
-  - `value` (`DynamicString?`): Two-way bound active group or hotspot ID (`"all"`, `"frame"`, `"wheels"`, `"drivetrain"`, `"brakes"`, `"cockpit"`).
+  - `viewBox` (`string`, default `'0 0 640 280'`)
+  - `statusBadge` (`DynamicString?`): Optional corner HUD status pill inside the schematic stage.
+  - `value` (`DynamicString?`): Two-way bound active group or hotspot ID (`"all"` by default).
+  - `activeStep` (`DynamicNumber?`): Optional 1-based stage/step index highlighting shapes whose `step` matches.
   - `groups` (`array?`): Filter pills `{ id: string, label: DynamicString }`.
   - `hotspots` (`array`, `minItems: 1`, **required**): `{ id: string, group?: string, x: number, y: number, label: DynamicString, badge?: DynamicString, detail: DynamicString }`.
-  - `shapes` (`array?`): Custom declarative SVG primitives (`line`, `circle`, `rect`, `path`).
-  - `activeStep` (`DynamicNumber?`): Optional numeric state (e.g., gear `1..7`) driving live mechanical animation.
-  - `cadence` (`DynamicNumber?`): Optional RPM animation rate.
+  - `shapes` (`array?`): Declarative SVG vector primitives (`line`, `circle`, `rect`, `path`) with `group`, `step`, `stroke`, `activeStroke`, `strokeWidth`, `strokeDasharray`, and `animatedFlow`.
   - `weight` (`number?`)
 
 ### 7.8 `RouteMap` *(Intelligent UI Spatial Planning Primitive)*
-Interactive cartographic route and landmark stop Component with category filtering, animated route polyline, pin selection, and adaptive overlay expansion.
+Data-driven interactive cartographic route and landmark stop Component with automatic `(lat, lng)` bounding-box projection, optional declarative cartographic backdrop `features`, category filtering, animated route polyline, pin selection, and adaptive overlay expansion.
 - **Properties:**
   - `title` (`DynamicString?`), `subtitle` (`DynamicString?`)
-  - `regionPreset` (`enum: ['sf-bay', 'pnw', 'auto']`, default `'auto'`)
   - `value` (`DynamicString?`): Two-way bound selected stop ID.
   - `categoryFilter` (`DynamicString?`): Optional active stop category filter (`"all"` by default).
+  - `bounds` (`{ minLat, maxLat, minLng, maxLng }?`): Optional explicit bounding box; computed automatically from `stops` when omitted.
+  - `features` (`array?`): Optional declarative cartographic vector shapes (`water`, `land`, `park`, `road`, `bridge`, `label`).
+  - `routeStyle` (`enum: ['orthogonal', 'direct']`, default `'orthogonal'`)
   - `stops` (`array`, `minItems: 1`, **required**): `{ id: string, title: DynamicString, subtitle?: DynamicString, time?: DynamicString, category?: string, lat: number, lng: number, icon?: string, badge?: DynamicString, detourNote?: DynamicString }`.
   - `expandable` (`boolean`, default `true`): Opens full map inside `AdaptiveOverlay` (desktop dialog / mobile bottom sheet).
-  - `height` (`number`, `180..520`, default `280`)
+  - `height` (`number`, `180..520`, default `290`)
   - `weight` (`number?`)
 
 ### 7.9 `ProportionBar` *(Intelligent UI Quantitative Breakdown Primitive)*
@@ -612,27 +614,26 @@ Tactile circular or card color swatch selector with optical concentric rings, lu
   - `variant` (`enum: ['circle', 'card']`, default `'circle'`), `size` (`enum: ['sm', 'md', 'lg']`, default `'md'`)
   - `weight` (`number?`)
 
-### 7.13 `SplitLedger` *(Intelligent UI Itemized Expense & Clipboard Bill Splitter)*
-Interactive multi-party itemized bill and expense splitter supporting clipboard paper or elevated card presentation, editable guest names, dynamic add/remove line items, per-item multi-guest assignment, `$ / %` tax and preset/slider tip controls, and largest-remainder cent-exact receipt allocation with clipboard export.
+### 7.13 `SplitLedger` *(Intelligent UI Itemized Expense & Bill Splitter)*
+Interactive multi-participant itemized expense and bill splitter supporting elevated card or tactile clipboard paper presentation, editable participant names, dynamic add/remove line items, per-item multi-participant assignment, `$ / %` tax and preset/slider gratuity controls, and largest-remainder cent-exact receipt allocation with clipboard export.
 - **Properties:**
-  - `eyebrow` (`DynamicString?`), `title` (`DynamicString`, **required**), `subtitle` (`DynamicString?`), `footerNote` (`DynamicString?`)
-  - `variant` (`enum: ['clipboard', 'card']`, default `'clipboard'`)
+  - `eyebrow` (`DynamicString?`), `title` (`DynamicString`, **required**), `subtitle` (`DynamicString?`), `footerNote` (`DynamicString?`), `ctaLabel` (`DynamicString?`)
+  - `variant` (`enum: ['card', 'clipboard']`, default `'card'`)
   - `currency` (`string`, default `'USD'`)
-  - `guests` (`array`, `minItems: 2`, `maxItems: 10`, **required**): `string[]` initial guest names.
+  - `guests` (`array`, `minItems: 2`, `maxItems: 10`, **required**): `string[]` initial participant names.
   - `items` (`array`, `minItems: 1`, **required**): `{ id: string, name: string, price: number, sharedBy: number[] }`.
   - `taxAmount` (`DynamicNumber?`), `taxMode` (`enum: ['amount', 'percent']`, default `'amount'`)
   - `tipPercent` (`DynamicNumber?`), `tipPresets` (`number[]?`, default `[15, 18, 20, 25]`)
   - `defaultExpandedReceipt` (`boolean`, default `false`)
   - `weight` (`number?`)
 
-### 7.14 `MicroApp` *(Intelligent UI Safe Playable & Generative Canvas Escape Hatch)*
-Theme-synchronized interactive micro-application Component providing zero-script built-in engines (`retro-arcade` with playable Snake, Breakout, and Pong on a tactile 8-bit console; `drum-sequencer` 16-step WebAudio synthesizer) alongside a locked-down `sandbox="allow-scripts"` `srcDoc` escape hatch.
+### 7.14 `MicroApp` *(Intelligent UI Security-Hardened Canvas Sandbox)*
+Security-hardened, theme-synchronized HTML/Canvas/WebAudio sandbox Component rendering self-contained interactive documents inside a strict `sandbox="allow-scripts"` iframe (without `allow-same-origin` and with `default-src 'none'` CSP blocking network egress), while injecting `--viz-*` Light/Dark CSS tokens and live theme updates via `postMessage`.
 - **Properties:**
   - `title` (`DynamicString`, **required**), `subtitle` (`DynamicString?`), `badge` (`DynamicString?`)
-  - `preset` (`enum: ['retro-arcade', 'drum-sequencer', 'customHtml']`, default `'retro-arcade'`)
-  - `defaultGame` (`enum: ['snake', 'breakout', 'pong']`, default `'snake'`)
-  - `html` (`string?`): Self-contained HTML/CSS/JS rendered inside an isolated `sandbox="allow-scripts"` iframe without `allow-same-origin` when `preset === 'customHtml'`.
-  - `height` (`number?`, `220..760`)
+  - `html` (`DynamicString`, **required**): Self-contained HTML/CSS/JS document rendered inside the isolated sandbox.
+  - `height` (`number?`, `180..860`, default `420`)
+  - `expandable` (`boolean`, default `true`), `chromeless` (`boolean`, default `false`)
   - `weight` (`number?`)
 
 ---
@@ -656,7 +657,7 @@ All 14 upstream Basic Catalog v1.0 functions are registered unmodified so every 
 | `computeMath` | `"number"` | `"rendererOnly"` | `false` | `op: enum['add','sub','mul','div','round','ceil','floor','clamp','abs','percentOf','sum']` *(req)*, `a: DynamicNumber` *(req)*, `b?: DynamicNumber`, `c?: DynamicNumber`, `d?: DynamicNumber`, `decimals?: DynamicNumber` | Evaluates safe client-side arithmetic for live quantity scaling, totals, and ratios at 0ms RTT. |
 | `compoundGrowth` | `"number"` | `"rendererOnly"` | `false` | `monthly: DynamicNumber` *(req)*, `years: DynamicNumber` *(req)*, `annualRate: DynamicNumber` *(req)*, `initial?: DynamicNumber` *(default `0`)*, `metric?: enum['total','contributions','growth']` *(default `'total'`)* | Computes exact monthly-compounded annuity & principal projections (`Math.expm1` / `Math.log1p` precision). |
 | `selectByValue` | `"any"` | `"rendererOnly"` | `false` | `value: DynamicValue` *(req)*, `cases?: object`, `fallback?: DynamicValue`, `whenNegative?: DynamicValue`, `whenNonNegative?: DynamicValue` | Declarative client-side conditional/lookup expression for switching copy, data arrays, or warnings based on reactive state. |
-| `runSimulation` | `"void"` | `"rendererOnly"` | `false` | `mode: enum['cltDraw','cltReset','montyPick','montyResolve','montySim','montyReset']` *(req)*, `path: string` *(req)*, `count?: DynamicNumber`, `sampleSize?: DynamicNumber`, `distribution?: DynamicString`, `door?: DynamicNumber`, `strategy?: DynamicString` | Executes deterministic-safe client-side Monte Carlo and probability state updates directly in the Surface `Data Model`. |
+| `sampleDistribution` | `"void"` | `"rendererOnly"` | `false` | `action: enum['draw','reset']` *(req)*, `path: string` *(req)*, `distribution?: DynamicString`, `sampleSize?: DynamicNumber`, `count?: DynamicNumber`, `bins?: DynamicNumber` | Draws or resets continuous random samples and binned histogram data (`{ values, bins, count, mean, stdev }`) directly in the Surface `Data Model`. |
 
 ---
 

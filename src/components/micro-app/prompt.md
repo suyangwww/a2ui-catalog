@@ -1,4 +1,4 @@
-A safe, theme-synchronized interactive micro-application Component for real-time playable games, WebAudio synthesizers, and sandboxed canvases that exceed declarative form inputs. Use `preset: "retro-arcade"` for playable Snake, Breakout, and Pong on a tactile 8-bit console, `preset: "drum-sequencer"` for a 16-step rhythm machine, or `preset: "customHtml"` for isolated `sandbox="allow-scripts"` micro-tools.
-Platform behavior: Includes >= 44px on-screen D-pad and performance pad touch controls for mobile play alongside desktop keyboard shortcuts.
+A security-hardened, theme-synchronized interactive sandbox Component (`sandbox="allow-scripts"` without `allow-same-origin` and with strict CSP blocking network egress) for real-time 60fps `<canvas>` simulations, WebAudio synthesizers, interactive physics, and custom visual widgets that exceed declarative form inputs. Automatically injects `--viz-*` Light/Dark CSS variables and broadcasts live theme updates without losing state.
+Platform behavior: Provides >= 44px Reset and Expand controls on coarse pointers, opening an AdaptiveOverlay Bottom Sheet on mobile.
 
-Props: `title`, `subtitle`, `badge`, `preset`, `defaultGame`, `html`, `height`, `weight`
+Props: `title`, `subtitle`, `badge`, `html`, `height`, `expandable`, `chromeless`, `weight`

@@ -5,6 +5,7 @@ import {
   AdaptiveOverlay,
   invokeSetter,
   isCallable,
+  isPlainRecord,
   readBoolean,
   readNumber,
   readOptionalString,
@@ -16,8 +17,9 @@ import {
 } from '../../primitives/index.js';
 import {
   BasemapBackdropSvg,
-  buildManhattanRoutePath,
+  buildRoutePath,
   projectStops,
+  type GeoBounds,
   type ProjectedStop,
 } from './basemap-svg.js';
 
@@ -29,8 +31,19 @@ const CATEGORY_COLORS: Readonly<Record<string, string>> = {
   Culture: '#5E5CE6',
 };
 
+function readGeoBounds(raw: unknown): GeoBounds | undefined {
+  if (!isPlainRecord(raw)) return undefined;
+  const minLat = readNumber(raw.minLat, NaN);
+  const maxLat = readNumber(raw.maxLat, NaN);
+  const minLng = readNumber(raw.minLng, NaN);
+  const maxLng = readNumber(raw.maxLng, NaN);
+  if ([minLat, maxLat, minLng, maxLng].some((n) => Number.isNaN(n))) return undefined;
+  return { minLat, maxLat, minLng, maxLng };
+}
+
 function MapCanvas({
-  preset,
+  features,
+  routeStyle,
   stops,
   selectedId,
   onSelect,
@@ -41,7 +54,8 @@ function MapCanvas({
   onExpand,
   height,
 }: {
-  preset: string;
+  features: ReadonlyArray<Record<string, unknown>>;
+  routeStyle: string;
   stops: ProjectedStop[];
   selectedId: string;
   onSelect: (id: string) => void;
@@ -54,17 +68,29 @@ function MapCanvas({
 }) {
   const filtered =
     activeCat === 'all' ? stops : stops.filter((s) => s.category === activeCat);
-  const routePath = buildManhattanRoutePath(filtered.length > 1 ? filtered : stops);
+  const routePath = buildRoutePath(filtered.length > 1 ? filtered : stops, routeStyle);
   const activeStop = stops.find((s) => s.id === selectedId) ?? stops[0];
 
   return (
     <div className="lumina-map-viewport" style={{ height: `${height}px` }}>
-      <BasemapBackdropSvg preset={preset} />
+      <BasemapBackdropSvg features={features} />
 
-      <svg viewBox="0 0 640 340" preserveAspectRatio="none" className="lumina-map-route-svg" aria-hidden="true">
+      <svg
+        viewBox="0 0 640 340"
+        preserveAspectRatio="none"
+        className="lumina-map-route-svg"
+        aria-hidden="true"
+      >
         {routePath && (
           <>
-            <path d={routePath} fill="none" stroke="rgba(255,255,255,0.75)" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d={routePath}
+              fill="none"
+              stroke="rgba(255,255,255,0.75)"
+              strokeWidth="6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
             <motion.path
               d={routePath}
               fill="none"
@@ -80,7 +106,6 @@ function MapCanvas({
         )}
       </svg>
 
-      {/* Top Floating Controls */}
       <div className="lumina-map-HUD-top">
         <div className="lumina-map-HUD-left">
           {categories.length > 1 && (
@@ -119,7 +144,6 @@ function MapCanvas({
         )}
       </div>
 
-      {/* Interactive Stop Pins */}
       {filtered.map((stop) => {
         const isSelected = stop.id === activeStop?.id;
         const pinColor = CATEGORY_COLORS[stop.category] ?? '#0071E3';
@@ -143,7 +167,6 @@ function MapCanvas({
         );
       })}
 
-      {/* Selected Stop Bottom Card */}
       {activeStop && (
         <div className="lumina-map-stop-card" role="status" aria-live="polite">
           <div className="lumina-map-stop-top">
@@ -166,7 +189,9 @@ function MapCanvas({
 export function RouteMapRenderer({ props }: LuminaReactRenderArgs): React.ReactNode {
   const title = readOptionalString(props.title);
   const subtitle = readOptionalString(props.subtitle);
-  const preset = readString(props.regionPreset, 'auto');
+  const bounds = readGeoBounds(props.bounds);
+  const features = readRecordArray(props.features);
+  const routeStyle = readString(props.routeStyle, 'orthogonal');
   const expandable = readBoolean(props.expandable, true);
   const height = readNumber(props.height, 290);
   const rawStops = readRecordArray(props.stops);
@@ -178,11 +203,11 @@ export function RouteMapRenderer({ props }: LuminaReactRenderArgs): React.ReactN
     time: readOptionalString(s.time),
     category: readString(s.category, 'Stops'),
     detourNote: readOptionalString(s.detourNote),
-    lat: readNumber(s.lat, 37.78),
-    lng: readNumber(s.lng, -122.42),
+    lat: readNumber(s.lat, 0),
+    lng: readNumber(s.lng, 0),
   }));
 
-  const projected = projectStops(preset, normalized);
+  const projected = projectStops(bounds, normalized);
   const categories = Array.from(new Set(normalized.map((s) => s.category)));
 
   const fallbackId = projected[0]?.id ?? '';
@@ -219,7 +244,8 @@ export function RouteMapRenderer({ props }: LuminaReactRenderArgs): React.ReactN
       )}
 
       <MapCanvas
-        preset={preset}
+        features={features}
+        routeStyle={routeStyle}
         stops={projected}
         selectedId={selectedId}
         onSelect={selectStop}
@@ -238,7 +264,8 @@ export function RouteMapRenderer({ props }: LuminaReactRenderArgs): React.ReactN
         size="lg"
       >
         <MapCanvas
-          preset={preset}
+          features={features}
+          routeStyle={routeStyle}
           stops={projected}
           selectedId={selectedId}
           onSelect={selectStop}

@@ -300,17 +300,19 @@ async function recordOpenAiSxsTour(browser, cues) {
   await selectExample('pixel-palace');
   await runCue('pixel_palace', async () => {
     const leftFrame = page.frameLocator('[data-testid="openai-left-pane"] iframe');
+    const rightFrame = page.frameLocator('[data-testid="lumina-right-pane"] iframe');
     await leftFrame.getByRole('button', { name: /START GAME/i }).waitFor({ state: 'visible' });
+    await rightFrame.locator('#startBtn').waitFor({ state: 'visible' });
     await sleep(1300);
 
-    // Start Snake on BOTH consoles (Right first, then Left so Left iframe keeps focus & stays running!)
-    await right.locator('.lumina-arcade-start-cta').click();
+    // Start Snake on BOTH consoles
+    await rightFrame.locator('#startBtn').click();
     await leftFrame.locator('#r-play').click();
     await sleep(2200);
     await page.screenshot({ path: path.join(ARTIFACT_DIR, 'frames/03a-pixel-palace-sxs.png') });
 
     // Switch cartridge to BREAKOUT on both
-    await right.locator('.lumina-arcade-mode-btn', { hasText: 'BREAKOUT' }).click();
+    await rightFrame.locator('.mbtn[data-m="breakout"]').click();
     await leftFrame.locator('button[data-mode="breakout"]').click();
     await sleep(1400);
 
@@ -318,9 +320,9 @@ async function recordOpenAiSxsTour(browser, cues) {
     await left.locator('[data-oai-drum-tab="1"]').click();
     await right.getByRole('tab', { name: /Drum Lab 01/i }).click();
     await sleep(900);
-    await right.locator('.lumina-drum-play-btn').click();
+    await rightFrame.locator('#playBtn').click();
     await left.locator('.oai-drum-cell').nth(2).click();
-    await right.locator('.lumina-drum-cell').nth(2).click();
+    await rightFrame.locator('.cell').nth(2).click();
     await sleep(2200);
     await page.screenshot({ path: path.join(ARTIFACT_DIR, 'frames/03b-drum-lab-sxs.png') });
   });

@@ -487,31 +487,30 @@ describe('Lumina React Renderer — Agentic Components & Interactions', () => {
             {
               id: 'diagram',
               component: 'AnnotatedDiagram',
-              title: '7-Speed Bicycle',
-              preset: 'bicycle-7speed',
-              hotspots: [{ id: 'h1', label: 'Rear Derailleur', detail: 'Shifts chain across 7 cogs.', x: 24, y: 65 }],
+              title: 'Inference Pipeline',
+              shapes: [{ kind: 'rect', x: 40, y: 60, width: 120, height: 64 }],
+              hotspots: [{ id: 'h1', label: 'Gateway Router', detail: 'Routes SSE streams.', x: 24, y: 65 }],
             },
             {
               id: 'map',
               component: 'RouteMap',
-              title: 'SF Sightseeing',
-              regionPreset: 'sf-bay',
+              title: 'Walking Loop',
               stops: [{ id: 'st1', title: 'Ferry Building', lat: 37.7955, lng: -122.3937 }],
             },
             {
               id: 'ledger',
               component: 'SplitLedger',
-              title: 'The Dinner Ledger',
+              title: 'Offsite Expense Ledger',
               guests: ['Maya', 'Theo'],
-              items: [{ id: 'd1', name: 'Margherita', price: 22, sharedBy: [0, 1] }],
+              items: [{ id: 'd1', name: 'Airport Shuttle', price: 22, sharedBy: [0, 1] }],
               taxAmount: 2,
               tipPercent: 20,
             },
             {
               id: 'arcade',
               component: 'MicroApp',
-              preset: 'drum-sequencer',
-              title: 'DRUM / LAB 01',
+              title: 'Harmonic Sandbox',
+              html: '<div>Canvas Ready</div>',
             },
           ],
         },
@@ -523,10 +522,10 @@ describe('Lumina React Renderer — Agentic Components & Interactions', () => {
       expect(container.textContent).toContain('$236,129');
       expect(container.textContent).toContain('Lamb Roast Steps');
       expect(container.textContent).toContain('Alpine Sage');
-      expect(container.textContent).toContain('7-Speed Bicycle');
+      expect(container.textContent).toContain('Inference Pipeline');
       expect(container.textContent).toContain('Ferry Building');
-      expect(container.textContent).toContain('The Dinner Ledger');
-      expect(container.textContent).toContain('DRUM / LAB 01');
+      expect(container.textContent).toContain('Offsite Expense Ledger');
+      expect(container.textContent).toContain('Harmonic Sandbox');
     });
 
     // Adjusting monthly slider updates DataModel and compoundGrowth live!

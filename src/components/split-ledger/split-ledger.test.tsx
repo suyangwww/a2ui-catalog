@@ -20,16 +20,16 @@ describe('component slice: split-ledger', () => {
     ).toBe(false);
   });
 
-  it('computes $107.78 Trattoria total, applies tip presets, and reveals cent-exact shares', () => {
+  it('computes itemized total, applies tip presets, and reveals cent-exact shares', () => {
     const firstProps = examples[0]?.props ?? {};
     const SeamRenderer = splitLedgerComponent.renderer;
     const { container, getByText } = render(
       <SeamRenderer props={firstProps} buildChild={(id) => <span>{id}</span>} />,
     );
-    expect(container.textContent).toContain('$107.78');
-    fireEvent.click(getByText('20%'));
-    expect(container.textContent).toContain('$127.58');
-    fireEvent.click(getByText('Split the check'));
+    expect(container.textContent).toContain('$199.18');
+    fireEvent.click(getByText('10%'));
+    expect(container.textContent).toContain('$217.58');
+    fireEvent.click(getByText('Calculate split'));
     expect(container.textContent).toContain("Everyone's share");
   });
 });

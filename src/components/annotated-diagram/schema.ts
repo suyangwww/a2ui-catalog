@@ -9,20 +9,28 @@ import {
 
 export const AnnotatedDiagramPropsSchema = z
   .object({
-    title: dynString('Optional diagram header title (e.g., "7-Speed Bicycle").').optional(),
+    title: dynString('Optional diagram header title.').optional(),
     subtitle: dynString('Optional diagram summary caption.').optional(),
-    preset: z
-      .enum(['bicycle-7speed', 'architecture', 'custom'])
-      .default('custom')
-      .describe('Built-in technical illustration preset or custom declarative shapes.')
+    viewBox: z
+      .string()
+      .default('0 0 640 280')
+      .describe('SVG coordinate viewBox string (default "0 0 640 280").')
       .optional(),
-    value: dynString('Two-way bound active subsystem group ID ("all" or a group/hotspot ID).').optional(),
+    statusBadge: dynString(
+      'Optional corner HUD status pill rendered inside the schematic stage.',
+    ).optional(),
+    value: dynString(
+      'Two-way bound active subsystem group ID ("all" or a group/hotspot ID).',
+    ).optional(),
+    activeStep: dynNumber(
+      'Optional 1-based stage or step index highlighting shapes whose step matches.',
+    ).optional(),
     groups: z
       .array(
         spec(
           z.object({
-            id: z.string().describe('Group identifier (e.g., "all", "frame", "drivetrain").'),
-            label: dynString('Pill label.'),
+            id: z.string().describe('Subsystem group identifier (e.g., "all", "ingress", "compute").'),
+            label: dynString('Filter pill label.'),
           }),
           { closure: 'additionalProperties' },
         ),
@@ -37,8 +45,8 @@ export const AnnotatedDiagramPropsSchema = z
             group: z.string().describe('Subsystem group ID this hotspot belongs to.').optional(),
             x: z.number().min(0).max(100).describe('Horizontal percentage coordinate (0..100).'),
             y: z.number().min(0).max(100).describe('Vertical percentage coordinate (0..100).'),
-            label: dynString('System or part title (e.g., "Seven ways to move").'),
-            badge: dynString('Optional short tag (e.g., "Drivetrain").').optional(),
+            label: dynString('Subsystem or component title.'),
+            badge: dynString('Optional short tag pill.').optional(),
             detail: dynString('Plain-language explanation of this subsystem.'),
           }),
           { closure: 'additionalProperties' },
@@ -46,13 +54,14 @@ export const AnnotatedDiagramPropsSchema = z
       )
       .min(1)
       .max(16)
-      .describe('Interactive callout pins and subsystem descriptions.'),
+      .describe('Interactive numbered callout pins and subsystem detail cards.'),
     shapes: z
       .array(
         spec(
           z.object({
             kind: z.enum(['line', 'circle', 'rect', 'path']),
             group: z.string().optional(),
+            step: z.number().int().optional(),
             d: z.string().optional(),
             x1: z.number().optional(),
             y1: z.number().optional(),
@@ -65,19 +74,23 @@ export const AnnotatedDiagramPropsSchema = z
             y: z.number().optional(),
             width: z.number().optional(),
             height: z.number().optional(),
+            rx: z.number().optional(),
             stroke: z.string().optional(),
+            activeStroke: z.string().optional(),
+            strokeWidth: z.number().optional(),
+            strokeDasharray: z.string().optional(),
             fill: z.string().optional(),
+            fillOpacity: z.number().min(0).max(1).optional(),
+            animatedFlow: z.boolean().optional(),
           }),
           { closure: 'additionalProperties' },
         ),
       )
       .optional(),
-    activeStep: dynNumber('Optional numeric gear or step (e.g., 1..7) highlighted in the diagram.').optional(),
-    cadence: dynNumber('Optional RPM cadence driving motion speed.').optional(),
     weight: WeightSchema.optional(),
   })
   .describe(
-    'Interactive technical SVG schematic with subsystem filter pills and clickable hotspot callouts.',
+    'Data-driven interactive SVG schematic with subsystem filter pills, declarative vector shapes, and clickable hotspot callouts.',
   )
   .strict();
 

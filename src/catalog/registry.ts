@@ -110,8 +110,8 @@ import {
   computeMathSlice,
 } from '../functions/compute-math/index.js';
 import {
-  RunSimulationApi,
-  RunSimulationImplementation,
+  SampleDistributionApi,
+  SampleDistributionImplementation,
   SelectByValueApi,
   SelectByValueImplementation,
   selectByValueSlice,
@@ -208,7 +208,7 @@ export const LUMINA_CUSTOM_FUNCTIONS: readonly FunctionImplementation[] = [
   ComputeMathImplementation,
   CompoundGrowthImplementation,
   SelectByValueImplementation,
-  RunSimulationImplementation,
+  SampleDistributionImplementation,
 ];
 
 export const LUMINA_FUNCTIONS: readonly FunctionImplementation[] = ALL_FUNCTION_SLICES.flatMap(
@@ -260,8 +260,8 @@ export {
   FormatPercentImplementation,
   FormatRelativeTimeApi,
   FormatRelativeTimeImplementation,
-  RunSimulationApi,
-  RunSimulationImplementation,
+  SampleDistributionApi,
+  SampleDistributionImplementation,
   SelectByValueApi,
   SelectByValueImplementation,
   SetValueApi,

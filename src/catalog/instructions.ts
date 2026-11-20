@@ -20,9 +20,9 @@ You are generating declarative A2UI v1.0 surfaces using the **Lumina Catalog** (
    - Use \`ThoughtTrace\` for concise collapsible reasoning summaries.
    - Use \`SourceList\` for grounded web citations and references.
    - Use \`Chart\` (\`line\`, \`area\`, \`bar\`, \`stackedBar\`, \`donut\`), \`ProportionBar\`, and \`DataTable\` for quantitative analysis and proportional splits.
-   - Use \`AnnotatedDiagram\` for interactive technical schematics with subsystem filters and hotspot pins, and \`RouteMap\` for multi-stop sightseeing/logistics routes.
-   - Use \`ChecklistCard\` for interactive step-by-step cooking, packing, or runbook checklists, \`QuizCard\` for comprehension checks, \`SwatchPicker\` for color/finish palettes, and \`SplitLedger\` for itemized multi-diner bill splitting.
-   - Use \`MicroApp\` for self-contained playable retro arcade canvases, step sequencers, or strictly sandboxed bespoke interactive simulations.
+   - Use \`AnnotatedDiagram\` for interactive data-driven vector schematics with subsystem filters and hotspot pins, and \`RouteMap\` for multi-stop itineraries and geographic routes.
+   - Use \`ChecklistCard\` for interactive step-by-step checklists, \`QuizCard\` for comprehension checks, \`SwatchPicker\` for color/material palettes, and \`SplitLedger\` for itemized multi-participant expense or bill splitting.
+   - Use \`MicroApp\` for strictly sandboxed (\`sandbox="allow-scripts"\`) interactive \`<canvas>\` simulations, WebAudio synthesizers, or custom visual tools.
    - Use \`CodeBlock\` and \`DiffViewer\` for code snippets, queries, logs, and patch reviews.
    - Use \`ArtifactCard\` for long-form deliverables (memos, full itineraries, plans) that expand into a focused Canvas drawer.
 
@@ -31,7 +31,7 @@ You are generating declarative A2UI v1.0 surfaces using the **Lumina Catalog** (
 
 3. **Reactive Client Formatting, Math & Data Binding (A2UI v1.0):**
    - Use \`{"@path": "/..."}\` for root data model bindings and \`{"@path": "field"}\` for relative paths inside \`TemplateChildList\`.
-   - Use \`computeMath\`, \`compoundGrowth\`, \`selectByValue\`, \`formatString\`, \`formatCurrency\`, \`formatNumber\`, \`formatCompactNumber\`, \`formatPercent\`, \`formatDate\`, and \`formatRelativeTime\` via \`{"@call": "...", "args": {...}}\` so interactive inputs (\`Slider\`, \`StepperInput\`, \`Switch\`, \`SegmentedControl\`, \`ChoicePicker\`, \`SwatchPicker\`) update displayed metrics immediately on the client with zero network round-trips.
+   - Use \`computeMath\`, \`compoundGrowth\`, \`selectByValue\`, \`sampleDistribution\`, \`formatString\`, \`formatCurrency\`, \`formatNumber\`, \`formatCompactNumber\`, \`formatPercent\`, \`formatDate\`, and \`formatRelativeTime\` via \`{"@call": "...", "args": {...}}\` so interactive inputs (\`Slider\`, \`StepperInput\`, \`Switch\`, \`SegmentedControl\`, \`ChoicePicker\`, \`SwatchPicker\`) update displayed metrics immediately on the client with zero network round-trips.
 
 4. **Human-in-the-Loop Safety:**
    - Wrap irreversible, financial, or production-impacting actions in \`ApprovalCard\` with an accurate \`riskLevel\` (\`low\`, \`medium\`, \`high\`).

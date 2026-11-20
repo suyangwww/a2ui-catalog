@@ -33,35 +33,32 @@ export const SelectByValueApi = {
   schema: SelectByValuePropsSchema,
 };
 
-const RunSimulationPropsSchema = z
+const SampleDistributionPropsSchema = z
   .object({
-    mode: z
-      .enum(['cltDraw', 'cltReset', 'montyPick', 'montyResolve', 'montySim', 'montyReset'])
-      .describe('Simulation action mode.'),
+    action: z
+      .enum(['draw', 'reset'])
+      .describe('Draw additional random samples or reset the target Data Model state.'),
     path: z.string().describe('Target JSON pointer path in the Surface Data Model.'),
-    count: DynamicNumberSchema.describe(
-      'REF:#/$defs/DynamicNumber|Number of Monte Carlo samples or games to draw.',
+    distribution: DynamicStringSchema.describe(
+      'REF:#/$defs/DynamicString|Continuous distribution family ("uniform" | "normal" | "skewed" | "bimodal").',
     ).optional(),
     sampleSize: DynamicNumberSchema.describe(
-      'REF:#/$defs/DynamicNumber|Sample size n per draw for CLT.',
+      'REF:#/$defs/DynamicNumber|Observations averaged per draw (n >= 1; n > 1 draws sample means).',
     ).optional(),
-    distribution: DynamicStringSchema.describe(
-      'REF:#/$defs/DynamicString|Population distribution ("Skewed" | "Uniform" | "Bimodal").',
+    count: DynamicNumberSchema.describe(
+      'REF:#/$defs/DynamicNumber|Number of draws to append (1..2000).',
     ).optional(),
-    door: DynamicNumberSchema.describe(
-      'REF:#/$defs/DynamicNumber|Chosen door index (0, 1, or 2) in Monty Hall.',
-    ).optional(),
-    strategy: DynamicStringSchema.describe(
-      'REF:#/$defs/DynamicString|Resolution choice ("switch" | "stay") in Monty Hall.',
+    bins: DynamicNumberSchema.describe(
+      'REF:#/$defs/DynamicNumber|Histogram bucket count (4..32, default 14).',
     ).optional(),
   })
   .strict();
 
-export const RunSimulationApi = {
-  name: 'runSimulation',
+export const SampleDistributionApi = {
+  name: 'sampleDistribution',
   returnType: 'void' as const,
   allowedCallers: 'rendererOnly' as const,
   description:
-    'Runs interactive statistical or probability simulations (CLT histograms, Monty Hall trials) in the local Data Model.',
-  schema: RunSimulationPropsSchema,
+    'Draws or resets continuous random samples and binned histogram data ({ values, bins, count, mean, stdev }) in the local Data Model.',
+  schema: SampleDistributionPropsSchema,
 };
