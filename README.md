@@ -36,7 +36,7 @@ Shows **Web on the left** and a **live synchronized Mobile surface on the right*
   </a>
 </video>
 
-> **[▶ Open Narrated Video (`1:55` · MP4 with Voiceover)](docs/media/lumina-hero-agent-studio-narrated.mp4)** · **[Direct Raw Stream](https://github.com/wsyang0309/a2ui-catalog/raw/main/docs/media/lumina-hero-agent-studio-narrated.mp4)**
+> **[▶ Open Narrated Video (`1:55` · MP4 with Voiceover)](docs/media/lumina-hero-agent-studio-narrated.mp4)** · **[Direct Raw Stream](docs/media/lumina-hero-agent-studio-narrated.mp4?raw=1)**
 
 ---
 
@@ -50,7 +50,7 @@ Walks through **all 41 components (`01 Row` through `41 FollowUpSuggestions`)** 
   </a>
 </video>
 
-> **[▶ Open Narrated Video (`4:11` · MP4 with Voiceover)](docs/media/lumina-components-deep-dive-narrated.mp4)** · **[Direct Raw Stream](https://github.com/wsyang0309/a2ui-catalog/raw/main/docs/media/lumina-components-deep-dive-narrated.mp4)** · **[Standalone Mobile Clip (`0:09`)](docs/media/lumina-studio-mobile.mp4)**
+> **[▶ Open Narrated Video (`4:11` · MP4 with Voiceover)](docs/media/lumina-components-deep-dive-narrated.mp4)** · **[Direct Raw Stream](docs/media/lumina-components-deep-dive-narrated.mp4?raw=1)** · **[Standalone Mobile Clip (`0:09`)](docs/media/lumina-studio-mobile.mp4)**
 
 ---
 

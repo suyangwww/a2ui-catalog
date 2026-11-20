@@ -51,7 +51,8 @@ for (const docFile of ['README.md', 'AGENTS.md', 'ARCHITECTURE.md']) {
     ) {
       continue;
     }
-    const resolved = path.resolve(path.dirname(full), target);
+    const cleanPath = target.split('?')[0];
+    const resolved = path.resolve(path.dirname(full), cleanPath);
     if (!fs.existsSync(resolved)) {
       fail(
         `REMEDIATION: Broken link '${target}' in ${docFile}. Update the path or create the missing target.`,
