@@ -10,19 +10,22 @@ import {
   FormatRelativeTimeImplementation,
   SetValueImplementation,
   subscribeLuminaToasts,
+  CompoundGrowthImplementation,
+  ComputeMathImplementation,
   CopyToClipboardImplementation,
+  SelectByValueImplementation,
 } from '../src/index.js';
 import { DataContext, DataModel } from '@a2ui/web_core';
 
 describe('@a2ui-catalog/core', () => {
-  it('registers all 41 components and 20 functions under A2UI v1.0', () => {
-    expect(LUMINA_COMPONENT_APIS).toHaveLength(41);
-    // 14 Basic + @index system function + 6 Lumina functions
-    expect(LUMINA_FUNCTIONS.filter((f) => !f.name.startsWith('@'))).toHaveLength(20);
+  it('registers all 49 components and 24 functions under A2UI v1.0', () => {
+    expect(LUMINA_COMPONENT_APIS).toHaveLength(49);
+    // 14 Basic + @index system function + 10 Lumina functions
+    expect(LUMINA_FUNCTIONS.filter((f) => !f.name.startsWith('@'))).toHaveLength(24);
     expect(luminaCoreCatalog.id).toBe(LUMINA_V1_CATALOG_ID);
     expect(luminaCoreCatalog.protocolVersion).toBe('1.0');
-    expect(luminaCoreCatalog.components.size).toBe(41);
-    expect(Object.keys((luminaCoreCatalog.toJson() as { functions: Record<string, unknown> }).functions)).toHaveLength(20);
+    expect(luminaCoreCatalog.components.size).toBe(49);
+    expect(Object.keys((luminaCoreCatalog.toJson() as { functions: Record<string, unknown> }).functions)).toHaveLength(24);
   });
 
   it('produces valid domain profile slices via Catalog.copyWith', () => {
@@ -30,6 +33,7 @@ describe('@a2ui-catalog/core', () => {
     const devops = createLuminaCatalogSlice(luminaCoreCatalog, 'devops');
     expect(research.components.has('SourceList')).toBe(true);
     expect(research.components.has('Chart')).toBe(true);
+    expect(research.components.has('AnnotatedDiagram')).toBe(true);
     expect(research.components.has('DiffViewer')).toBe(false);
     expect(devops.components.has('DiffViewer')).toBe(true);
     expect(devops.components.has('ApprovalCard')).toBe(true);
@@ -50,6 +54,20 @@ describe('@a2ui-catalog/core', () => {
 
     SetValueImplementation.execute({ path: '/count', value: 42 }, ctx);
     expect(dm.get('/count')).toBe(42);
+
+    expect(ComputeMathImplementation.execute({ op: 'mul', a: 125, b: 1.5 }, ctx)).toBe(187.5);
+    expect(
+      CompoundGrowthImplementation.execute(
+        { initial: 0, monthly: 500, years: 30, annualRate: 5, metric: 'total' },
+        ctx,
+      ),
+    ).toBe(416129);
+    expect(
+      SelectByValueImplementation.execute(
+        { value: -1, whenNegative: 'Deficit', whenNonNegative: 'Surplus' },
+        ctx,
+      ),
+    ).toBe('Deficit');
 
     const toasts: string[] = [];
     const unsub = subscribeLuminaToasts((msg) => toasts.push(msg));

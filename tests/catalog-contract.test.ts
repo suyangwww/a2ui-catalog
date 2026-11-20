@@ -21,8 +21,8 @@ describe('A2UI Catalog Structural & Cross-Artifact Contract', () => {
     .map((d) => d.name)
     .sort();
 
-  it('registers all 41 component slice directories in src/catalog/registry.ts', () => {
-    expect(componentDirs).toHaveLength(41);
+  it('registers all 49 component slice directories in src/catalog/registry.ts', () => {
+    expect(componentDirs).toHaveLength(49);
     const registeredSlugs = new Set(catalogRegistry.listComponentSlugs());
     for (const dir of componentDirs) {
       expect(

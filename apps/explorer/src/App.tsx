@@ -262,7 +262,7 @@ export function App() {
           </span>
           <div>
             <div className="exp-brand-title">A2UI Lumina Explorer</div>
-            <div className="exp-brand-sub">v1.0 · 41 Components · Light/Dark · Desktop, iPad & iPhone</div>
+            <div className="exp-brand-sub">v1.0 · {CATALOG_REFERENCE.length} Components · Light/Dark · Desktop, iPad & iPhone</div>
           </div>
         </div>
 
@@ -285,7 +285,7 @@ export function App() {
             onClick={() => switchMode('components')}
           >
             <ListChecks size={14} />
-            <span>All 41 Components</span>
+            <span>All {CATALOG_REFERENCE.length} Components</span>
           </button>
           <button
             type="button"
@@ -361,7 +361,7 @@ export function App() {
               <span className="exp-comp-counter">Practical Playbook · People & AI Agents</span>
               <h1 className="exp-playbook-title">How to Build Clear Agent Screens with Lumina</h1>
               <p className="exp-playbook-lead">
-                Agents never send raw HTML or CSS. Instead, they pick from 41 ready-made building blocks and pass simple properties plus a shared Data Model. Every screen automatically works in Light and Dark mode across Desktop, iPad, and iPhone.
+                Agents never send raw HTML or CSS. Instead, they pick from {CATALOG_REFERENCE.length} ready-made building blocks and pass simple properties plus a shared Data Model. Every screen automatically works in Light and Dark mode across Desktop, iPad, and iPhone.
               </p>
             </div>
 
@@ -479,7 +479,7 @@ export function App() {
                 <div className="exp-comp-header-top">
                   <div className="exp-comp-pills">
                     <span className="exp-comp-counter">
-                      Component {selectedComponent.index} of 41 · {selectedComponent.group}
+                      Component {selectedComponent.index} of {CATALOG_REFERENCE.length} · {selectedComponent.group}
                     </span>
                     <span className="exp-env-pill">
                       {theme === 'light' ? 'Light Mode' : 'Dark Mode'} · {deviceLabel}

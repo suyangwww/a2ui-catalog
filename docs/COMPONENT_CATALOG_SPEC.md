@@ -2,8 +2,8 @@
 
 **Catalog ID:** `https://wsyang0309.github.io/a2ui-catalog/specification/v1_0/lumina/catalog.json`  
 **Protocol Version:** `"1.0"`  
-**Total Components:** `41` (`18` Superset-Compatible Basic Primitives + `23` Agentic Primitives)  
-**Total Functions:** `20` (`14` Standard Basic Functions + `6` Agentic Functions)
+**Total Components:** `49` (`18` Superset-Compatible Basic Primitives + `31` Agentic & Intelligent UI Primitives)  
+**Total Functions:** `24` (`14` Standard Basic Functions + `10` Agentic & Reactive Math Functions)
 
 > [!IMPORTANT]
 > **Normative Contract for Code Generation.**  
@@ -548,24 +548,115 @@ Conversational next-step prompt pills placed at the end of an agent surface.
   - `weight` (`number?`)
 - **Motion:** Pills stagger in (`40ms` interval) after the primary surface settles; clicking a pill highlights it and dispatches `action`.
 
+### 7.7 `AnnotatedDiagram` *(Intelligent UI Visual Explanation Primitive)*
+Interactive SVG schematic and hotspot callout Component for breaking down mechanical systems, anatomy, hardware, or step-by-step diagrams.
+- **Properties:**
+  - `title` (`DynamicString?`), `subtitle` (`DynamicString?`)
+  - `preset` (`enum: ['bicycle-7speed', 'architecture', 'custom']`, default `'custom'`)
+  - `value` (`DynamicString?`): Two-way bound active group or hotspot ID (`"all"`, `"frame"`, `"wheels"`, `"drivetrain"`, `"brakes"`, `"cockpit"`).
+  - `groups` (`array?`): Filter pills `{ id: string, label: DynamicString }`.
+  - `hotspots` (`array`, `minItems: 1`, **required**): `{ id: string, group?: string, x: number, y: number, label: DynamicString, badge?: DynamicString, detail: DynamicString }`.
+  - `shapes` (`array?`): Custom declarative SVG primitives (`line`, `circle`, `rect`, `path`).
+  - `activeStep` (`DynamicNumber?`): Optional numeric state (e.g., gear `1..7`) driving live mechanical animation.
+  - `cadence` (`DynamicNumber?`): Optional RPM animation rate.
+  - `weight` (`number?`)
+
+### 7.8 `RouteMap` *(Intelligent UI Spatial Planning Primitive)*
+Interactive cartographic route and landmark stop Component with category filtering, animated route polyline, pin selection, and adaptive overlay expansion.
+- **Properties:**
+  - `title` (`DynamicString?`), `subtitle` (`DynamicString?`)
+  - `regionPreset` (`enum: ['sf-bay', 'pnw', 'auto']`, default `'auto'`)
+  - `value` (`DynamicString?`): Two-way bound selected stop ID.
+  - `categoryFilter` (`DynamicString?`): Optional active stop category filter (`"all"` by default).
+  - `stops` (`array`, `minItems: 1`, **required**): `{ id: string, title: DynamicString, subtitle?: DynamicString, time?: DynamicString, category?: string, lat: number, lng: number, icon?: string, badge?: DynamicString, detourNote?: DynamicString }`.
+  - `expandable` (`boolean`, default `true`): Opens full map inside `AdaptiveOverlay` (desktop dialog / mobile bottom sheet).
+  - `height` (`number`, `180..520`, default `280`)
+  - `weight` (`number?`)
+
+### 7.9 `ProportionBar` *(Intelligent UI Quantitative Breakdown Primitive)*
+Horizontal proportional multi-segment allocation bar with color-swatched tabular legend statistics and negative-offset callout support (used for investment contributions vs. growth and macroeconomic GDP breakdowns).
+- **Properties:**
+  - `title` (`DynamicString?`), `subtitle` (`DynamicString?`)
+  - `variant` (`enum: ['split', 'stacked', 'inlineLabels']`, default `'split'`)
+  - `segments` (`array`, `minItems: 1`, **required**): `{ id: string, label: DynamicString, value: DynamicNumber, formattedValue?: DynamicString, color?: ChartColorEnum }`.
+  - `unitPrefix` (`string?`), `unitSuffix` (`string?`), `decimals` (`number?`)
+  - `negativeNote` (`DynamicString?`): Contextual note displayed when any segment is negative (e.g., net imports in GDP).
+  - `weight` (`number?`)
+
+### 7.10 `ChecklistCard` *(Intelligent UI Interactive Task & Timeline Primitive)*
+Tactile checkable step list with live `X of N` completion header, animated progress bar, optional time/category pills, strikethrough completion physics, and reset action.
+- **Properties:**
+  - `checks` (`CheckRule[]?`)
+  - `title` (`DynamicString`, **required**), `subtitle` (`DynamicString?`)
+  - `value` (`DynamicStringList`): Two-way bound list of completed item IDs.
+  - `items` (`array`, `minItems: 1`, **required**): `{ id: string, title: DynamicString, detail?: DynamicString, time?: DynamicString, badge?: DynamicString }`.
+  - `showProgress` (`boolean`, default `true`), `resettable` (`boolean`, default `true`)
+  - `weight` (`number?`)
+
+### 7.11 `QuizCard` *(Intelligent UI Knowledge Check & Multi-Question Quiz Primitive)*
+Interactive single-question comprehension check or `< 1 of N >` multi-question quiz with lettered `A/B/C/D` badges, emerald/coral answer verification, inline explanation disclosure, hint toggle, and score summary.
+- **Properties:**
+  - `title` (`DynamicString?`), `subtitle` (`DynamicString?`)
+  - `value` (`DynamicString?`): Optional two-way bound selected option ID for single-question checks.
+  - `questions` (`array`, `minItems: 1`, **required**): `{ id: string, prompt: DynamicString, hint?: DynamicString, correctOptionId: string, explanation?: DynamicString, options: Array<{ id: string, label: DynamicString, explanation?: DynamicString }> }`.
+  - `showScore` (`boolean`, default `true`)
+  - `weight` (`number?`)
+
+### 7.12 `SwatchPicker` *(Intelligent UI Color & Material Palette Primitive)*
+Tactile circular or card color swatch selector with optical concentric rings, luminance-aware contrast checkmarks, and color name/hex labels.
+- **Properties:**
+  - `checks` (`CheckRule[]?`)
+  - `label` (`DynamicString?`)
+  - `value` (`DynamicString`): Two-way bound selected swatch value.
+  - `swatches` (`array`, `minItems: 2`, **required**): `{ value: string, label: DynamicString, hex: string, subtitle?: DynamicString }`.
+  - `variant` (`enum: ['circle', 'card']`, default `'circle'`), `size` (`enum: ['sm', 'md', 'lg']`, default `'md'`)
+  - `weight` (`number?`)
+
+### 7.13 `SplitLedger` *(Intelligent UI Itemized Expense & Clipboard Bill Splitter)*
+Interactive multi-party itemized bill and expense splitter supporting clipboard paper or elevated card presentation, editable guest names, dynamic add/remove line items, per-item multi-guest assignment, `$ / %` tax and preset/slider tip controls, and largest-remainder cent-exact receipt allocation with clipboard export.
+- **Properties:**
+  - `eyebrow` (`DynamicString?`), `title` (`DynamicString`, **required**), `subtitle` (`DynamicString?`), `footerNote` (`DynamicString?`)
+  - `variant` (`enum: ['clipboard', 'card']`, default `'clipboard'`)
+  - `currency` (`string`, default `'USD'`)
+  - `guests` (`array`, `minItems: 2`, `maxItems: 10`, **required**): `string[]` initial guest names.
+  - `items` (`array`, `minItems: 1`, **required**): `{ id: string, name: string, price: number, sharedBy: number[] }`.
+  - `taxAmount` (`DynamicNumber?`), `taxMode` (`enum: ['amount', 'percent']`, default `'amount'`)
+  - `tipPercent` (`DynamicNumber?`), `tipPresets` (`number[]?`, default `[15, 18, 20, 25]`)
+  - `defaultExpandedReceipt` (`boolean`, default `false`)
+  - `weight` (`number?`)
+
+### 7.14 `MicroApp` *(Intelligent UI Safe Playable & Generative Canvas Escape Hatch)*
+Theme-synchronized interactive micro-application Component providing zero-script built-in engines (`retro-arcade` with playable Snake, Breakout, and Pong on a tactile 8-bit console; `drum-sequencer` 16-step WebAudio synthesizer) alongside a locked-down `sandbox="allow-scripts"` `srcDoc` escape hatch.
+- **Properties:**
+  - `title` (`DynamicString`, **required**), `subtitle` (`DynamicString?`), `badge` (`DynamicString?`)
+  - `preset` (`enum: ['retro-arcade', 'drum-sequencer', 'customHtml']`, default `'retro-arcade'`)
+  - `defaultGame` (`enum: ['snake', 'breakout', 'pong']`, default `'snake'`)
+  - `html` (`string?`): Self-contained HTML/CSS/JS rendered inside an isolated `sandbox="allow-scripts"` iframe without `allow-same-origin` when `preset === 'customHtml'`.
+  - `height` (`number?`, `220..760`)
+  - `weight` (`number?`)
+
 ---
 
-## 8. Renderer Functions Specification (20 Functions)
+## 8. Renderer Functions Specification (24 Functions)
 
 ### 8.1 Standard A2UI v1.0 Basic Functions (14 — Reused from `@a2ui/web_core/v1_0`)
 All 14 upstream Basic Catalog v1.0 functions are registered unmodified so every validation rule and string/number/currency/date formatter behaves identically to the reference specification:
 `required`, `regex`, `length`, `numeric`, `email`, `formatString`, `formatNumber`, `formatCurrency`, `formatDate`, `pluralize`, `openUrl`, `and`, `or`, `not`.
 
-### 8.2 New Lumina Agentic Functions (6)
+### 8.2 Lumina Agentic & Reactive Math Functions (10)
 
 | Function Name | `returnType` | `allowedCallers` | `requiresUserActivation` | Arguments (`args`) | Behavior |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `formatCompactNumber` | `"string"` | `"rendererOnly"` | `false` | `value: DynamicNumber` *(req)*, `decimals?: DynamicNumber` *(default `1`)* | Formats large numbers with `Intl.NumberFormat('en-US', { notation: 'compact' })` (`1420000` -> `"1.4M"`). |
 | `formatPercent` | `"string"` | `"rendererOnly"` | `false` | `value: DynamicNumber` *(req, ratio `0.124`)*, `decimals?: DynamicNumber` *(default `1`)*, `signDisplay?: enum['auto','always','never']` | Formats ratios into crisp tabular percentage strings (`"+12.4%"`). |
 | `formatRelativeTime` | `"string"` | `"rendererOnly"` | `false` | `value: DynamicString` *(req, ISO 8601)* | Formats timestamps relative to current time (`"just now"`, `"4m ago"`, `"in 2h"`). |
-| `copyToClipboard` | `"void"` | `"rendererOrAgent"` | `true` | `text: DynamicString` *(req)*, `label?: DynamicString` | Writes `text` to `navigator.clipboard` and triggers a non-intrusive floating toast pill (`"Copied to clipboard"`). |
-| `shareContent` | `"boolean"` | `"rendererOrAgent"` | `true` | `title: DynamicString` *(req)*, `text?: DynamicString`, `url?: DynamicString` | Invokes `navigator.share` on mobile browsers/WebViews; falls back cleanly to `navigator.clipboard` on desktop. |
+| `copyToClipboard` | `"void"` | `"rendererOnly"` | `true` | `text: DynamicString` *(req)*, `label?: DynamicString` | Writes `text` to `navigator.clipboard` and triggers a non-intrusive floating toast pill (`"Copied to clipboard"`). |
+| `shareContent` | `"boolean"` | `"rendererOnly"` | `true` | `title: DynamicString` *(req)*, `text?: DynamicString`, `url?: DynamicString` | Invokes `navigator.share` on mobile browsers/WebViews; falls back cleanly to `navigator.clipboard` on desktop. |
 | `setValue` | `"void"` | `"rendererOnly"` | `false` | `path: string` *(req, JSON pointer)*, `value: DynamicValue` *(req)* | Updates the surface's local `DataModel` at `path` immediately without an agent roundtrip (e.g., reset button or preset chip). |
+| `computeMath` | `"number"` | `"rendererOnly"` | `false` | `op: enum['add','sub','mul','div','round','ceil','floor','clamp','abs','percentOf','sum']` *(req)*, `a: DynamicNumber` *(req)*, `b?: DynamicNumber`, `c?: DynamicNumber`, `d?: DynamicNumber`, `decimals?: DynamicNumber` | Evaluates safe client-side arithmetic for live quantity scaling, totals, and ratios at 0ms RTT. |
+| `compoundGrowth` | `"number"` | `"rendererOnly"` | `false` | `monthly: DynamicNumber` *(req)*, `years: DynamicNumber` *(req)*, `annualRate: DynamicNumber` *(req)*, `initial?: DynamicNumber` *(default `0`)*, `metric?: enum['total','contributions','growth']` *(default `'total'`)* | Computes exact monthly-compounded annuity & principal projections (`Math.expm1` / `Math.log1p` precision). |
+| `selectByValue` | `"any"` | `"rendererOnly"` | `false` | `value: DynamicValue` *(req)*, `cases?: object`, `fallback?: DynamicValue`, `whenNegative?: DynamicValue`, `whenNonNegative?: DynamicValue` | Declarative client-side conditional/lookup expression for switching copy, data arrays, or warnings based on reactive state. |
+| `runSimulation` | `"void"` | `"rendererOnly"` | `false` | `mode: enum['cltDraw','cltReset','montyPick','montyResolve','montySim','montyReset']` *(req)*, `path: string` *(req)*, `count?: DynamicNumber`, `sampleSize?: DynamicNumber`, `distribution?: DynamicString`, `door?: DynamicNumber`, `strategy?: DynamicString` | Executes deterministic-safe client-side Monte Carlo and probability state updates directly in the Surface `Data Model`. |
 
 ---
 

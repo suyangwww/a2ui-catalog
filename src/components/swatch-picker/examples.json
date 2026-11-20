@@ -1,0 +1,21 @@
+[
+  {
+    "title": "SwatchPicker — Dog vest moodboard color direction swatches",
+    "props": {
+      "label": "Color direction",
+      "value": {
+        "@path": "/color"
+      },
+      "swatches": [
+        { "value": "olive", "label": "Olive", "hex": "#5E6647" },
+        { "value": "graphite", "label": "Graphite", "hex": "#2C2E33" },
+        { "value": "sand", "label": "Sand", "hex": "#D2C3A8" },
+        { "value": "rust", "label": "Rust", "hex": "#C86D3B" },
+        { "value": "slate", "label": "Slate", "hex": "#53738E" }
+      ]
+    },
+    "dataModel": {
+      "color": "olive"
+    }
+  }
+]

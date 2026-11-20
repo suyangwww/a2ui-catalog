@@ -2,11 +2,11 @@
 
 Status: Active
 Owner: Catalog Team
-Last Verified: 2026-11-19
+Last Verified: 2026-11-20
 
 ## Summary
 
-Defines the normative contract for the **41 A2UI v1.0 Components** (18 Basic Catalog v1.0 superset primitives + 23 agentic primitives) and **20 Catalog Functions** (14 Basic v1.0 + 6 Lumina functions) implemented across `src/components/*` and `src/functions/*`.
+Defines the normative contract for the **49 A2UI v1.0 Components** (18 Basic Catalog v1.0 superset primitives + 31 agentic & intelligent UI primitives) and **24 Catalog Functions** (14 Basic v1.0 + 10 Lumina reactive & formatting functions) implemented across `src/components/*` and `src/functions/*`.
 
 ## Normative References
 

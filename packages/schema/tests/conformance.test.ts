@@ -32,8 +32,8 @@ describe('@a2ui-catalog/schema A2UI v1.0 Conformance', () => {
     expect(validate.errors ?? []).toEqual([]);
     expect(valid).toBe(true);
     expect(catalogJson.protocolVersion).toBe('1.0');
-    expect(Object.keys(catalogJson.components)).toHaveLength(41);
-    expect(Object.keys(catalogJson.functions)).toHaveLength(20);
+    expect(Object.keys(catalogJson.components)).toHaveLength(49);
+    expect(Object.keys(catalogJson.functions)).toHaveLength(24);
   });
 
   it('loads into @a2ui/agent A2uiGenerator and compiles LLM system prompt cleanly', () => {
@@ -50,7 +50,10 @@ describe('@a2ui-catalog/schema A2UI v1.0 Conformance', () => {
     expect(processor.promptSnippet).toContain('ApprovalCard');
     expect(processor.promptSnippet).toContain('ThoughtTrace');
     expect(processor.promptSnippet).toContain('ComparisonMatrix');
+    expect(processor.promptSnippet).toContain('SplitLedger');
+    expect(processor.promptSnippet).toContain('AnnotatedDiagram');
     expect(processor.promptSnippet).toContain('formatCompactNumber');
+    expect(processor.promptSnippet).toContain('compoundGrowth');
   });
 
   it('processes all upstream Basic Catalog v1.0 golden examples without validation errors', () => {

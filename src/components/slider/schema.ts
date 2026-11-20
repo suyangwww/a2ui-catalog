@@ -9,11 +9,26 @@ export const SliderPropsSchema = z
     min: z.number().default(0).optional(),
     max: z.number().describe('Maximum slider value.'),
     value: dynNumber('Two-way bound numeric value.'),
+    step: z.number().positive().describe('Explicit numeric step increment (e.g. 25, 5, 0.5).').optional(),
     steps: z.number().int().min(1).optional(),
-    unit: dynString('Optional display unit suffix (e.g. "%", "USD", "GB").').optional(),
+    valuePrefix: dynString('Optional prefix rendered immediately before the numeric readout (e.g. "$").').optional(),
+    unit: dynString('Optional display unit suffix (e.g. "%", "years", "USD", "GB").').optional(),
+    marks: z
+      .array(
+        spec(
+          z.object({
+            value: z.number().describe('Numeric position on the slider track.'),
+            label: dynString('Label rendered beneath the tick mark.'),
+          }),
+          { closure: 'additionalProperties' },
+        ),
+      )
+      .max(8)
+      .describe('Optional scale tick labels beneath the slider track.')
+      .optional(),
     weight: WeightSchema.optional(),
   })
-  .describe('Tactile range slider with filled active track and tabular readout.')
+  .describe('Tactile range slider with filled active track, scale marks, and tabular readout.')
   .strict();
 
 export type SliderProps = z.infer<typeof SliderPropsSchema>;

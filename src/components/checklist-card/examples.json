@@ -1,0 +1,41 @@
+[
+  {
+    "title": "ChecklistCard — Sunday lamb roast timed cooking checklist",
+    "props": {
+      "title": "Cooking checklist",
+      "subtitle": "Assuming dinner is served at 5:00 PM",
+      "value": {
+        "@path": "/completedSteps"
+      },
+      "items": [
+        {
+          "id": "sat",
+          "time": "Saturday",
+          "title": "Prep ahead",
+          "detail": "Make the crumble, prepare the lamb marinade, and check serving dishes."
+        },
+        {
+          "id": "1230",
+          "time": "12:30 PM",
+          "title": "Prepare the lamb",
+          "detail": "Season with garlic, rosemary, lemon, and olive oil."
+        },
+        {
+          "id": "1330",
+          "time": "1:30 PM",
+          "title": "Start roasting",
+          "detail": "Preheat oven and roast lamb using a meat thermometer."
+        },
+        {
+          "id": "1430",
+          "time": "2:30 PM",
+          "title": "Prepare the sides",
+          "detail": "Parboil potatoes, drain, and shake to rough up fluffy edges."
+        }
+      ]
+    },
+    "dataModel": {
+      "completedSteps": ["sat"]
+    }
+  }
+]
