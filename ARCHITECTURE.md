@@ -32,8 +32,8 @@ flowchart LR
 | :--- | :--- | :--- | :--- |
 | **Layer 0** | `src/protocol/` | A2UI v1.0 constants, Zod `Dynamic*` / `Action` / `Checkable` schemas, wire normalization, toast pub/sub, and `defineCatalogComponent` / `defineCatalogFunction` descriptors. **Zero React or DOM imports.** | None (leaf layer) |
 | **Layer 0.5** | `src/primitives/` | Shared UI helpers (`AdaptiveOverlay`, icon registry, motion springs, theme context, safe runtime value readers). | `src/protocol/` |
-| **Layer 1A** | `src/components/<slug>/` | Vertical Deep-Module slice for a single A2UI v1.0 component (41 slices total). | `src/protocol/`, `src/primitives/`, or own slice files |
-| **Layer 1B** | `src/functions/<slug>/` | Vertical Deep-Module slice for A2UI v1.0 functions (`formatCompactNumber`, `formatPercent`, `formatRelativeTime`, `copyToClipboard`, `shareContent`, `setValue`, plus `basic-v1`). | `src/protocol/` or own slice files |
+| **Layer 1A** | `src/components/<slug>/` | Vertical Deep-Module slice for a single A2UI v1.0 component (49 slices total). | `src/protocol/`, `src/primitives/`, or own slice files |
+| **Layer 1B** | `src/functions/<slug>/` | Vertical Deep-Module slice for A2UI v1.0 functions (`formatCompactNumber`, `formatPercent`, `formatRelativeTime`, `copyToClipboard`, `shareContent`, `setValue`, `computeMath`, `compoundGrowth`, `selectByValue`, `runSimulation`, plus `basic-v1`). | `src/protocol/` or own slice files |
 | **Layer 2** | `src/catalog/` | Canonical `catalogRegistry`, `catalog.json` compiler (`compiler.ts`), LLM prompt builder, domain profile slicer, and React `Catalog` adapter. | `src/protocol/`, `src/primitives/`, `src/components/<slug>/index.ts`, `src/functions/<slug>/index.ts` |
 | **Layer 3** | `src/preview/` | Isolated worktree-safe Vite preview harness rendering every component's `examples.json` fixtures. | `src/catalog/`, `src/protocol/`, `src/primitives/` |
 
@@ -66,6 +66,6 @@ Workspace packages under `packages/*` and `apps/*` project the single source of 
 - `packages/core` (`@a2ui-catalog/core`) — Framework-free projection of `src/protocol`, `src/functions`, and component `ComponentApi` schemas.
 - `packages/schema` (`@a2ui-catalog/schema`) — Vendored A2UI v1.0 Draft 2020-12 meta-schemas, upstream golden examples, and compiled `catalog.json`.
 - `packages/react` (`@a2ui-catalog/react`) — React catalog binding (`@a2ui/react`) over `src/catalog` and `src/primitives`.
-- `apps/agent`, `apps/explorer`, `apps/studio` — Live A2A v1.0 SSE agent server, interactive 41-component Explorer/Playbook, and Web × Mobile SxS Studio.
+- `apps/agent`, `apps/explorer`, `apps/studio` — Live A2A v1.0 SSE agent server, interactive 49-component Explorer/Playbook, and Web × Mobile + OpenAI Intelligent UI SxS Studio.
 
 Related references: [docs/GLOSSARY.md](docs/GLOSSARY.md), [docs/adr/0001-vertical-deep-modules.md](docs/adr/0001-vertical-deep-modules.md), and [docs/QUALITY_SCORE.md](docs/QUALITY_SCORE.md).

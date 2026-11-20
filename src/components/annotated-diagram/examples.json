@@ -1,0 +1,72 @@
+[
+  {
+    "title": "AnnotatedDiagram — 7-Speed Bicycle five connected systems explorer",
+    "props": {
+      "title": "7-Speed Bicycle",
+      "subtitle": "Five connected systems — select a system or pin to explore its role.",
+      "preset": "bicycle-7speed",
+      "value": {
+        "@path": "/bikeSystem"
+      },
+      "activeStep": 4,
+      "groups": [
+        { "id": "all", "label": "All" },
+        { "id": "frame", "label": "Frame" },
+        { "id": "wheels", "label": "Wheels" },
+        { "id": "drivetrain", "label": "Drivetrain" },
+        { "id": "brakes", "label": "Brakes" },
+        { "id": "cockpit", "label": "Cockpit" }
+      ],
+      "hotspots": [
+        {
+          "id": "frame",
+          "group": "frame",
+          "x": 47,
+          "y": 42,
+          "badge": "Frame",
+          "label": "A strong foundation",
+          "detail": "Two triangles connect the saddle, steering and pedals. The fork holds the front wheel and turns with the bars."
+        },
+        {
+          "id": "wheels",
+          "group": "wheels",
+          "x": 77,
+          "y": 66,
+          "badge": "Wheels",
+          "label": "Made to keep rolling",
+          "detail": "Spokes connect each hub to its rim and support the rider. The tires surround the rims and grip the ground."
+        },
+        {
+          "id": "drivetrain",
+          "group": "drivetrain",
+          "x": 38,
+          "y": 69,
+          "badge": "Drivetrain",
+          "label": "Seven ways to move",
+          "detail": "The pedals turn the chain, driving the rear wheel. Seven gears let the rider adjust pedaling effort for climbs, flats and descents."
+        },
+        {
+          "id": "brakes",
+          "group": "brakes",
+          "x": 66,
+          "y": 40,
+          "badge": "Brakes",
+          "label": "Control at the rim",
+          "detail": "Hand levers pull cables that bring the brake pads against the rims, turning a squeeze into controlled slowing."
+        },
+        {
+          "id": "cockpit",
+          "group": "cockpit",
+          "x": 63,
+          "y": 21,
+          "badge": "Cockpit",
+          "label": "Steering and support",
+          "detail": "The handlebars and stem steer the front wheel. The saddle and seatpost support the rider and set the sitting position."
+        }
+      ]
+    },
+    "dataModel": {
+      "bikeSystem": "all"
+    }
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "title": "ProportionBar — Roth IRA contributions vs. investment growth split",
+    "props": {
+      "variant": "split",
+      "unitPrefix": "$",
+      "segments": [
+        {
+          "id": "contributions",
+          "label": "Your contributions",
+          "value": 180000,
+          "color": "blue"
+        },
+        {
+          "id": "growth",
+          "label": "Investment growth",
+          "value": 236129,
+          "color": "emerald"
+        }
+      ]
+    }
+  },
+  {
+    "title": "ProportionBar — Macroeconomic GDP four-sector composition",
+    "props": {
+      "title": "GDP Composition",
+      "variant": "inlineLabels",
+      "unitPrefix": "$",
+      "unitSuffix": "B",
+      "segments": [
+        { "id": "c", "label": "Consumer spending", "value": 600, "color": "blue" },
+        { "id": "i", "label": "Business investment", "value": 200, "color": "emerald" },
+        { "id": "g", "label": "Government spending", "value": 170, "color": "indigo" },
+        { "id": "nx", "label": "Net exports", "value": 30, "color": "amber" }
+      ]
+    }
+  }
+]

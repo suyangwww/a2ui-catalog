@@ -1,0 +1,36 @@
+[
+  {
+    "title": "QuizCard — Solar system interactive comprehension quiz",
+    "props": {
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Which planet is the largest in our solar system?",
+          "hint": "Its Great Red Spot is a storm larger than Earth.",
+          "correctOptionId": "b",
+          "options": [
+            { "id": "a", "label": "Uranus" },
+            {
+              "id": "b",
+              "label": "Jupiter",
+              "explanation": "Jupiter is the largest planet, with an equatorial diameter of about 143,000 kilometers."
+            },
+            { "id": "c", "label": "Saturn" },
+            { "id": "d", "label": "Neptune" }
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "The same goods cost 10% more this year. What changes?",
+          "correctOptionId": "b",
+          "explanation": "Real GDP adjusts for price changes, so higher prices alone raise nominal GDP but not real output.",
+          "options": [
+            { "id": "a", "label": "Real GDP increases by 10%" },
+            { "id": "b", "label": "Nominal GDP rises; real GDP is unchanged" },
+            { "id": "c", "label": "Both measures stay the same" }
+          ]
+        }
+      ]
+    }
+  }
+]

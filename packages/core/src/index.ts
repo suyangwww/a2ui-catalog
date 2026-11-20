@@ -38,6 +38,18 @@ import {
   SetValueApi,
   SetValueImplementation,
 } from '../../../src/functions/set-value/index.js';
+import {
+  CompoundGrowthApi,
+  CompoundGrowthImplementation,
+  ComputeMathApi,
+  ComputeMathImplementation,
+} from '../../../src/functions/compute-math/index.js';
+import {
+  RunSimulationApi,
+  RunSimulationImplementation,
+  SelectByValueApi,
+  SelectByValueImplementation,
+} from '../../../src/functions/select-by-value/index.js';
 
 // Component Schemas (Framework-free Layer 1A schema modules — zero React imports)
 import { RowApi } from '../../../src/components/row/schema.js';
@@ -58,6 +70,8 @@ import { AvatarApi } from '../../../src/components/avatar/schema.js';
 import { StatusBadgeApi } from '../../../src/components/status-badge/schema.js';
 import { VideoApi } from '../../../src/components/video/schema.js';
 import { AudioPlayerApi } from '../../../src/components/audio-player/schema.js';
+import { AnnotatedDiagramApi } from '../../../src/components/annotated-diagram/schema.js';
+import { RouteMapApi } from '../../../src/components/route-map/schema.js';
 
 import { ButtonApi } from '../../../src/components/button/schema.js';
 import { TextFieldApi } from '../../../src/components/text-field/schema.js';
@@ -68,17 +82,20 @@ import { ChoicePickerApi } from '../../../src/components/choice-picker/schema.js
 import { SliderApi } from '../../../src/components/slider/schema.js';
 import { StepperInputApi } from '../../../src/components/stepper-input/schema.js';
 import { DateTimeInputApi } from '../../../src/components/date-time-input/schema.js';
+import { SwatchPickerApi } from '../../../src/components/swatch-picker/schema.js';
 
 import { ThoughtTraceApi } from '../../../src/components/thought-trace/schema.js';
 import { StepTimelineApi } from '../../../src/components/step-timeline/schema.js';
 import { ApprovalCardApi } from '../../../src/components/approval-card/schema.js';
 import { ProgressIndicatorApi } from '../../../src/components/progress-indicator/schema.js';
+import { ChecklistCardApi } from '../../../src/components/checklist-card/schema.js';
 
 import { SourceListApi } from '../../../src/components/source-list/schema.js';
 import { CodeBlockApi } from '../../../src/components/code-block/schema.js';
 import { DiffViewerApi } from '../../../src/components/diff-viewer/schema.js';
 import { ArtifactCardApi } from '../../../src/components/artifact-card/schema.js';
 import { CalloutApi } from '../../../src/components/callout/schema.js';
+import { MicroAppApi } from '../../../src/components/micro-app/schema.js';
 
 import { StatMetricApi } from '../../../src/components/stat-metric/schema.js';
 import { ChartApi } from '../../../src/components/chart/schema.js';
@@ -86,6 +103,9 @@ import { DataTableApi } from '../../../src/components/data-table/schema.js';
 import { KeyValueListApi } from '../../../src/components/key-value-list/schema.js';
 import { ComparisonMatrixApi } from '../../../src/components/comparison-matrix/schema.js';
 import { FollowUpSuggestionsApi } from '../../../src/components/follow-up-suggestions/schema.js';
+import { ProportionBarApi } from '../../../src/components/proportion-bar/schema.js';
+import { QuizCardApi } from '../../../src/components/quiz-card/schema.js';
+import { SplitLedgerApi } from '../../../src/components/split-ledger/schema.js';
 
 export const LAYOUT_COMPONENT_APIS = [
   RowApi,
@@ -108,6 +128,8 @@ export const MEDIA_COMPONENT_APIS = [
   StatusBadgeApi,
   VideoApi,
   AudioPlayerApi,
+  AnnotatedDiagramApi,
+  RouteMapApi,
 ] as const;
 
 export const INPUT_COMPONENT_APIS = [
@@ -120,6 +142,7 @@ export const INPUT_COMPONENT_APIS = [
   SliderApi,
   StepperInputApi,
   DateTimeInputApi,
+  SwatchPickerApi,
 ] as const;
 
 export const REASONING_COMPONENT_APIS = [
@@ -127,6 +150,7 @@ export const REASONING_COMPONENT_APIS = [
   StepTimelineApi,
   ApprovalCardApi,
   ProgressIndicatorApi,
+  ChecklistCardApi,
 ] as const;
 
 export const GROUNDING_COMPONENT_APIS = [
@@ -135,6 +159,7 @@ export const GROUNDING_COMPONENT_APIS = [
   DiffViewerApi,
   ArtifactCardApi,
   CalloutApi,
+  MicroAppApi,
 ] as const;
 
 export const DATA_COMPONENT_APIS = [
@@ -144,6 +169,9 @@ export const DATA_COMPONENT_APIS = [
   KeyValueListApi,
   ComparisonMatrixApi,
   FollowUpSuggestionsApi,
+  ProportionBarApi,
+  QuizCardApi,
+  SplitLedgerApi,
 ] as const;
 
 export const LUMINA_COMPONENT_APIS = [
@@ -162,6 +190,10 @@ export const LUMINA_CUSTOM_FUNCTIONS: readonly FunctionImplementation[] = [
   CopyToClipboardImplementation,
   ShareContentImplementation,
   SetValueImplementation,
+  ComputeMathImplementation,
+  CompoundGrowthImplementation,
+  SelectByValueImplementation,
+  RunSimulationImplementation,
 ];
 
 export const LUMINA_FUNCTIONS: readonly FunctionImplementation[] = [
@@ -179,6 +211,7 @@ export const luminaCoreCatalog = new Catalog<ComponentApi, FunctionImplementatio
 
 export {
   AccordionApi,
+  AnnotatedDiagramApi,
   ApprovalCardApi,
   ArtifactCardApi,
   AudioPlayerApi,
@@ -189,10 +222,15 @@ export {
   CarouselApi,
   ChartApi,
   CheckBoxApi,
+  ChecklistCardApi,
   ChoicePickerApi,
   CodeBlockApi,
   ColumnApi,
   ComparisonMatrixApi,
+  CompoundGrowthApi,
+  CompoundGrowthImplementation,
+  ComputeMathApi,
+  ComputeMathImplementation,
   CopyToClipboardApi,
   CopyToClipboardImplementation,
   DataTableApi,
@@ -211,20 +249,30 @@ export {
   ImageApi,
   KeyValueListApi,
   ListApi,
+  MicroAppApi,
   ModalApi,
   ProgressIndicatorApi,
+  ProportionBarApi,
+  QuizCardApi,
+  RouteMapApi,
   RowApi,
+  RunSimulationApi,
+  RunSimulationImplementation,
   SegmentedControlApi,
+  SelectByValueApi,
+  SelectByValueImplementation,
   SetValueApi,
   SetValueImplementation,
   ShareContentApi,
   ShareContentImplementation,
   SliderApi,
   SourceListApi,
+  SplitLedgerApi,
   StatMetricApi,
   StatusBadgeApi,
   StepTimelineApi,
   StepperInputApi,
+  SwatchPickerApi,
   SwitchApi,
   TabsApi,
   TextApi,

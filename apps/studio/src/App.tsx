@@ -32,6 +32,7 @@ import {
   streamA2aTurn,
   type AgentHealth,
 } from './a2a-client';
+import { OpenAiSxsShowcase } from './OpenAiSxsShowcase';
 import './App.css';
 
 interface ChatTurn {
@@ -95,9 +96,20 @@ function initialSxsFromUrl(): boolean {
   return new URLSearchParams(window.location.search).get('sxs') === '1';
 }
 
+function initialOpenAiSxsFromUrl(): boolean {
+  if (typeof window === 'undefined') return false;
+  return new URLSearchParams(window.location.search).get('view') === 'openai-sxs';
+}
+
+function initialThemeFromUrl(): 'light' | 'dark' {
+  if (typeof window === 'undefined') return 'light';
+  return new URLSearchParams(window.location.search).get('theme') === 'dark' ? 'dark' : 'light';
+}
+
 export function App() {
-  const [theme, setTheme] = React.useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = React.useState<'light' | 'dark'>(initialThemeFromUrl);
   const [sxsOpen, setSxsOpen] = React.useState<boolean>(initialSxsFromUrl);
+  const [openAiSxs, setOpenAiSxs] = React.useState<boolean>(initialOpenAiSxsFromUrl);
   const [health, setHealth] = React.useState<AgentHealth | null>(null);
   const [turns, setTurns] = React.useState<ChatTurn[]>([]);
   const [input, setInput] = React.useState('');
@@ -401,7 +413,7 @@ export function App() {
         </div>
 
         <div className="studio-header-right">
-          {turns.length > 0 && (
+          {turns.length > 0 && !openAiSxs && (
             <button type="button" className="studio-icon-pill" onClick={resetSession} title="New session">
               <RotateCcw size={15} />
               <span className="studio-hide-mobile">New Chat</span>
@@ -409,31 +421,46 @@ export function App() {
           )}
           <button
             type="button"
-            className={`studio-icon-pill studio-hide-mobile ${sxsOpen ? 'is-active' : ''}`}
-            aria-pressed={sxsOpen}
-            onClick={() => setSxsOpen((v) => !v)}
-            title="Compare Web and Mobile surfaces side by side"
+            data-testid="toggle-openai-sxs"
+            className={`studio-icon-pill ${openAiSxs ? 'is-active' : ''}`}
+            aria-pressed={openAiSxs}
+            onClick={() => setOpenAiSxs((v) => !v)}
+            title="Compare OpenAI Intelligent UI showcases side by side with A2UI Lumina"
           >
             <Columns2 size={15} />
-            <span>Web × Mobile</span>
+            <span>OpenAI × Lumina SxS</span>
           </button>
-          <button
-            type="button"
-            className={`studio-icon-pill ${xrayOpen ? 'is-active' : ''}`}
-            onClick={() => setXrayOpen((v) => !v)}
-            title="Toggle A2UI v1.0 Protocol X-Ray"
-          >
-            <Code2 size={15} />
-            <span className="studio-hide-mobile">X-Ray</span>
-          </button>
-          <button
-            type="button"
-            className="studio-icon-circle"
-            aria-label="API Key Settings"
-            onClick={() => setSettingsOpen(true)}
-          >
-            <KeyRound size={15} />
-          </button>
+          {!openAiSxs && (
+            <>
+              <button
+                type="button"
+                className={`studio-icon-pill studio-hide-mobile ${sxsOpen ? 'is-active' : ''}`}
+                aria-pressed={sxsOpen}
+                onClick={() => setSxsOpen((v) => !v)}
+                title="Compare Web and Mobile surfaces side by side"
+              >
+                <Columns2 size={15} />
+                <span>Web × Mobile</span>
+              </button>
+              <button
+                type="button"
+                className={`studio-icon-pill ${xrayOpen ? 'is-active' : ''}`}
+                onClick={() => setXrayOpen((v) => !v)}
+                title="Toggle A2UI v1.0 Protocol X-Ray"
+              >
+                <Code2 size={15} />
+                <span className="studio-hide-mobile">X-Ray</span>
+              </button>
+              <button
+                type="button"
+                className="studio-icon-circle"
+                aria-label="API Key Settings"
+                onClick={() => setSettingsOpen(true)}
+              >
+                <KeyRound size={15} />
+              </button>
+            </>
+          )}
           <button
             type="button"
             className="studio-icon-circle"
@@ -445,6 +472,9 @@ export function App() {
         </div>
       </header>
 
+      {openAiSxs ? (
+        <OpenAiSxsShowcase theme={theme} />
+      ) : (
       <div className={`studio-main-grid ${sxsOpen ? 'is-sxs' : ''}`}>
         {/* Left / Primary Web Workspace */}
         <div className="studio-web-workspace">
@@ -643,6 +673,7 @@ export function App() {
           </aside>
         )}
       </div>
+      )}
 
       {/* Runtime Gemini API Key Configuration Modal */}
       <AdaptiveOverlay

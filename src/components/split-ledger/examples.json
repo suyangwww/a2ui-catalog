@@ -1,0 +1,26 @@
+[
+  {
+    "title": "SplitLedger — Trattoria party-of-five clipboard bill splitter",
+    "props": {
+      "eyebrow": "THE DINNER LEDGER",
+      "title": "The Check, Please.",
+      "subtitle": "TABLE OF FIVE · ITEMIZED BILL",
+      "footerNote": "GOOD FOOD. FAIR SPLITS. NO MATH.",
+      "variant": "clipboard",
+      "currency": "USD",
+      "guests": ["Person 1", "Person 2", "Person 3", "Person 4", "Person 5"],
+      "items": [
+        { "id": "i1", "name": "Margherita", "price": 14, "sharedBy": [0] },
+        { "id": "i2", "name": "Margherita", "price": 14, "sharedBy": [1] },
+        { "id": "i3", "name": "Cacio e Pepe", "price": 16, "sharedBy": [2] },
+        { "id": "i4", "name": "Rigatoni Vodka", "price": 17, "sharedBy": [3] },
+        { "id": "i5", "name": "Insalata", "price": 14, "sharedBy": [4] },
+        { "id": "i6", "name": "House Red (L)", "price": 24, "sharedBy": [0, 1, 2, 3, 4] }
+      ],
+      "taxAmount": 8.78,
+      "taxMode": "amount",
+      "tipPercent": 0,
+      "tipPresets": [15, 18, 20, 25]
+    }
+  }
+]

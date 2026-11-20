@@ -111,8 +111,8 @@ export function PreviewApp(): React.ReactNode {
           className={`preview-nav-btn ${mode === 'all' ? 'is-active' : ''}`.trim()}
           onClick={() => setMode('all')}
         >
-          <span>All 41 Fixtures</span>
-          <span>41</span>
+          <span>All {slices.length} Fixtures</span>
+          <span>{slices.length}</span>
         </button>
         {slices.map((slice) => {
           const isCurrent = mode === 'single' && slice.slug === activeSlice?.slug;
@@ -135,7 +135,7 @@ export function PreviewApp(): React.ReactNode {
       <div className="preview-stage">
         <header className="preview-toolbar">
           <div>
-            <strong>{mode === 'all' ? 'All 41 Component Fixtures' : activeSlice?.id}</strong>
+            <strong>{mode === 'all' ? `All ${slices.length} Component Fixtures` : activeSlice?.id}</strong>
           </div>
           <div className="preview-controls">
             <button

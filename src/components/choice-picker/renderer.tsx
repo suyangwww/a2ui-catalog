@@ -5,11 +5,13 @@ import {
   LuminaIconGlyph,
   ValidationErrors,
   invokeSetter,
+  isCallable,
   readBoolean,
   readOptionalString,
   readRecordArray,
   readString,
   readStringArray,
+  safeUrl,
   springTactile,
   weightStyle,
   type LuminaReactRenderArgs,
@@ -22,7 +24,13 @@ export function ChoicePickerRenderer({
 }: LuminaReactRenderArgs): React.ReactNode {
   const label = readOptionalString(props.label);
   const options = readRecordArray(props.options);
-  const selected = readStringArray(props.value);
+  const propSelected = readStringArray(props.value);
+  const [localSelected, setLocalSelected] = React.useState<string[]>(propSelected);
+  React.useEffect(() => {
+    setLocalSelected(propSelected);
+  }, [props.value]);
+
+  const selected = isCallable(props.setValue) ? propSelected : localSelected;
   const isMulti = props.variant === 'multipleSelection';
   const displayStyle = readString(props.displayStyle, 'chips');
   const filterable = readBoolean(props.filterable, false);
@@ -35,13 +43,15 @@ export function ChoicePickerRenderer({
   }, [options, query]);
 
   const toggle = (val: string) => {
-    if (isMulti) {
-      const next = selected.includes(val)
+    const next = isMulti
+      ? selected.includes(val)
         ? selected.filter((s) => s !== val)
-        : [...selected, val];
+        : [...selected, val]
+      : [val];
+    if (isCallable(props.setValue)) {
       invokeSetter(props.setValue, next);
     } else {
-      invokeSetter(props.setValue, [val]);
+      setLocalSelected(next);
     }
   };
 
@@ -74,17 +84,29 @@ export function ChoicePickerRenderer({
           const isSelected = selected.includes(val);
           const icon = readOptionalString(opt.icon);
           const description = readOptionalString(opt.description);
+          const eyebrow = readOptionalString(opt.eyebrow);
           const badge = readOptionalString(opt.badge);
+          const imgUrl = safeUrl(readOptionalString(opt.imageUrl));
           return (
             <motion.button
               key={val}
               type="button"
               aria-pressed={isSelected}
-              whileTap={{ scale: 0.97 }}
+              whileTap={{ scale: 0.98 }}
               transition={springTactile}
-              className={`lumina-choice-item ${isSelected ? 'is-selected' : ''}`.trim()}
+              className={`lumina-choice-item ${displayStyle === 'gallery' ? 'is-gallery-card' : ''} ${isSelected ? 'is-selected' : ''}`.trim()}
               onClick={() => toggle(val)}
             >
+              {displayStyle === 'gallery' && imgUrl && (
+                <span className="lumina-choice-gallery-media">
+                  <img src={imgUrl} alt={readString(opt.label)} loading="lazy" />
+                  {isSelected && (
+                    <span className="lumina-choice-gallery-check" aria-hidden="true">
+                      <Check size={12} strokeWidth={3} />
+                    </span>
+                  )}
+                </span>
+              )}
               {displayStyle === 'checkbox' && (
                 <span
                   className={`lumina-checkbox-box ${isSelected ? 'is-checked' : ''}`.trim()}
@@ -92,8 +114,9 @@ export function ChoicePickerRenderer({
                   {isSelected && <Check size={12} strokeWidth={3} />}
                 </span>
               )}
-              {icon && <LuminaIconGlyph name={icon} size="sm" />}
+              {icon && displayStyle !== 'gallery' && <LuminaIconGlyph name={icon} size="sm" />}
               <span className="lumina-choice-text">
+                {eyebrow && <span className="lumina-choice-eyebrow">{eyebrow}</span>}
                 <span className="lumina-choice-label">{readString(opt.label)}</span>
                 {description && <span className="lumina-choice-desc">{description}</span>}
               </span>

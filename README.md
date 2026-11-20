@@ -1,6 +1,6 @@
 # A2UI Lumina Catalog (`v1.0`)
 
-**A2UI Lumina** is a 41-component, 20-function **A2UI v1.0** UI catalog purpose-built for intelligent agentic applications. Implemented in **React** for Web and Mobile—and backed by a framework-free schema and token contract ready for **Angular, Flutter, iOS (SwiftUI), and Android (Jetpack Compose)**—Lumina gives AI agents a rich, safe, and tactile vocabulary for turning streamed JSON into modern interactive interfaces.
+**A2UI Lumina** is a 49-component, 24-function **A2UI v1.0** UI catalog purpose-built for intelligent agentic applications. Implemented in **React** for Web and Mobile—and backed by a framework-free schema and token contract ready for **Angular, Flutter, iOS (SwiftUI), and Android (Jetpack Compose)**—Lumina gives AI agents a rich, safe, and tactile vocabulary for turning streamed JSON into modern interactive interfaces.
 
 ---
 
@@ -8,7 +8,7 @@
 
 1. **Bridges the A2UI Basic Catalog Gap (Without Becoming a Web Framework)**
    - The upstream A2UI v1.0 Basic Catalog ships 18 foundational primitives (`Row`, `Column`, `Text`, `Button`, `TextField`, etc.) intended for early protocol experimentation.
-   - Real agentic workflows need semantic building blocks that Basic lacks: collapsible reasoning traces (`ThoughtTrace`), multi-step execution trackers (`StepTimeline`), grounded web citations (`SourceList`), syntax-highlighted code and patch reviews (`CodeBlock`, `DiffViewer`), quantitative views (`StatMetric`, `Chart`, `DataTable`, `ComparisonMatrix`, `KeyValueList`), human-in-the-loop safety gates (`ApprovalCard`), expandable deliverables (`ArtifactCard`), and one-tap turn continuation (`FollowUpSuggestions`).
+   - Real agentic workflows need semantic building blocks that Basic lacks: collapsible reasoning traces (`ThoughtTrace`), multi-step execution trackers (`StepTimeline`, `ChecklistCard`), grounded web citations (`SourceList`), interactive schematics & maps (`AnnotatedDiagram`, `RouteMap`), syntax-highlighted code and patch reviews (`CodeBlock`, `DiffViewer`), quantitative & proportional views (`StatMetric`, `Chart`, `ProportionBar`, `DataTable`, `ComparisonMatrix`, `KeyValueList`, `SplitLedger`, `QuizCard`), tactile palettes (`SwatchPicker`), sandboxed interactive canvases (`MicroApp`), human-in-the-loop safety gates (`ApprovalCard`), expandable deliverables (`ArtifactCard`), and one-tap turn continuation (`FollowUpSuggestions`).
    - Lumina stays strictly focused on **agentic UI building blocks** rather than general-purpose web page layout or raw HTML/CSS generation.
    - Every Basic Catalog v1.0 primitive is preserved as a **100% compatible superset** (verified against all 43 upstream Basic v1.0 golden examples).
 
@@ -40,13 +40,13 @@ Shows **Web on the left** and a **live synchronized Mobile surface on the right*
 
 ---
 
-### 2. Complete 41-Component & Property Reference + Playbook (`4:11` · Voiceover)
+### 2. Complete Component & Property Reference + Playbook (`4:11` · Voiceover)
 
-Walks through **all 41 components (`01 Row` through `41 FollowUpSuggestions`)** in plain English inside the Interactive Explorer—presenting every component's visual property definitions (`Required` vs `Optional`), Light & Dark modes, Desktop / iPad / iPhone adaptation, and the 5-recipe [Practical Component Playbook](docs/PLAYBOOK.md).
+Walks through **41 foundational components (`01 Row` through `41 FollowUpSuggestions`)** in plain English inside the Interactive Explorer—presenting every component's visual property definitions (`Required` vs `Optional`), Light & Dark modes, Desktop / iPad / iPhone adaptation, and the 5-recipe [Practical Component Playbook](docs/PLAYBOOK.md).
 
 <video src="docs/media/lumina-components-deep-dive-narrated.mp4" poster="docs/media/poster-components-walkthrough.png" controls width="100%">
   <a href="docs/media/lumina-components-deep-dive-narrated.mp4">
-    <img src="docs/media/poster-components-walkthrough.png" alt="Watch Narrated 41-Component & Property Walkthrough + Playbook (4:11)" width="100%" />
+    <img src="docs/media/poster-components-walkthrough.png" alt="Watch Narrated Component & Property Walkthrough + Playbook (4:11)" width="100%" />
   </a>
 </video>
 
@@ -54,20 +54,34 @@ Walks through **all 41 components (`01 Row` through `41 FollowUpSuggestions`)** 
 
 ---
 
-## Catalog at a Glance (41 Components · 20 Functions)
+### 3. OpenAI Intelligent UI × A2UI Lumina Side-by-Side (`SxS`) Showcase (`2:54` · Voiceover)
+
+Compares **8 flagship OpenAI Intelligent UI showcases on the left** (including official standalone CDN exports `roth-calculator-v4.html`, `bill-splitter-v5.html`, and `retro-game-player-v3.html`, plus ChatGPT's *7-Speed Bicycle*, *San Francisco Route*, *Sunday Lamb Roast*, *Dog Vest Moodboard*, and *GDP / Central Limit Theorem / Quiz*) against **100% declarative A2UI v1.0 Lumina surfaces on the right**—driving live synchronized interactions across both Light and Dark modes.
+
+<video src="docs/media/lumina-openai-intelligent-ui-sxs-narrated.mp4" poster="docs/media/poster-openai-sxs.png" controls width="100%">
+  <a href="docs/media/lumina-openai-intelligent-ui-sxs-narrated.mp4">
+    <img src="docs/media/poster-openai-sxs.png" alt="Watch Narrated OpenAI Intelligent UI x A2UI Lumina Side-by-Side Showcase (2:54)" width="100%" />
+  </a>
+</video>
+
+> **[▶ Open Narrated SxS Video (`2:54` · MP4 with Voiceover)](docs/media/lumina-openai-intelligent-ui-sxs-narrated.mp4)** · **[Direct Raw Stream](docs/media/lumina-openai-intelligent-ui-sxs-narrated.mp4?raw=1)**
+
+---
+
+## Catalog at a Glance (49 Components · 24 Functions)
 
 | Family | Count | Components |
 | :--- | :---: | :--- |
 | **Layout & Containers** | 10 | `Row`, `Column`, `Grid`, `List`, `Carousel`, `Card`, `Tabs`, `Accordion`, `Modal`, `Divider` |
-| **Text, Media & Identity** | 7 | `Text`, `Image`, `Icon`, `Avatar`, `StatusBadge`, `Video`, `AudioPlayer` |
-| **Buttons & Form Inputs** | 9 | `Button`, `TextField`, `CheckBox`, `Switch`, `SegmentedControl`, `ChoicePicker`, `Slider`, `StepperInput`, `DateTimeInput` |
-| **Agent Thinking & Approvals** | 4 | `ThoughtTrace`, `StepTimeline`, `ApprovalCard`, `ProgressIndicator` |
-| **Sources, Code & Documents** | 5 | `SourceList`, `CodeBlock`, `DiffViewer`, `ArtifactCard`, `Callout` |
-| **Numbers, Charts & Next Steps** | 6 | `StatMetric`, `Chart`, `DataTable`, `KeyValueList`, `ComparisonMatrix`, `FollowUpSuggestions` |
+| **Text, Media & Identity** | 9 | `Text`, `Image`, `Icon`, `Avatar`, `StatusBadge`, `Video`, `AudioPlayer`, `AnnotatedDiagram`, `RouteMap` |
+| **Buttons & Form Inputs** | 10 | `Button`, `TextField`, `CheckBox`, `Switch`, `SegmentedControl`, `ChoicePicker`, `Slider`, `StepperInput`, `DateTimeInput`, `SwatchPicker` |
+| **Agent Thinking & Approvals** | 5 | `ThoughtTrace`, `StepTimeline`, `ApprovalCard`, `ProgressIndicator`, `ChecklistCard` |
+| **Sources, Code & Documents** | 6 | `SourceList`, `CodeBlock`, `DiffViewer`, `ArtifactCard`, `Callout`, `MicroApp` |
+| **Numbers, Charts & Next Steps** | 9 | `StatMetric`, `Chart`, `DataTable`, `KeyValueList`, `ComparisonMatrix`, `FollowUpSuggestions`, `ProportionBar`, `QuizCard`, `SplitLedger` |
 
-**Client-Side Catalog Functions (20):**
+**Client-Side Catalog Functions (24):**
 - **14 Standard A2UI v1.0 Functions:** `required`, `regex`, `length`, `numeric`, `email`, `and`, `or`, `not`, `formatString`, `formatNumber`, `formatCurrency`, `formatDate`, `pluralize`, `openUrl`
-- **6 Lumina Agentic Functions:** `formatCompactNumber`, `formatPercent`, `formatRelativeTime`, `copyToClipboard`, `shareContent`, `setValue`
+- **10 Lumina Agentic & Reactive Math Functions:** `formatCompactNumber`, `formatPercent`, `formatRelativeTime`, `copyToClipboard`, `shareContent`, `setValue`, `computeMath`, `compoundGrowth`, `selectByValue`, `runSimulation`
 
 ---
 
@@ -86,17 +100,17 @@ pnpm dev
 
 Running `pnpm dev` starts three local apps out of the box (no API key required—defaults to deterministic **Replay Mode**, or uses live Gemini when `GEMINI_API_KEY` is set):
 
-- **Interactive Explorer & Playbook (`http://localhost:5173`):** Browse all 41 components with visual property definitions, live Light/Dark and Desktop/iPad/iPhone toggles, stream simulation, `DataModel` inspection, and the plain-English Playbook.
-- **Hero Agent Studio (`http://localhost:5174`):** Conversational showcase featuring **Web × Mobile Side-by-Side (`SxS`)** mode, Protocol X-Ray inspector, and 4 multi-turn hero workflows (*Executive Tokyo Trip*, *AI Semiconductor Research*, *Service Outage & Safe Rollout*, and *Monthly Budget Optimizer*).
+- **Interactive Explorer & Playbook (`http://localhost:5173`):** Browse all 49 components with visual property definitions, live Light/Dark and Desktop/iPad/iPhone toggles, stream simulation, `DataModel` inspection, and the plain-English Playbook.
+- **Hero Agent Studio (`http://localhost:5174`):** Conversational showcase featuring **Web × Mobile Side-by-Side (`SxS`)** mode, **OpenAI Intelligent UI × Lumina SxS** mode, Protocol X-Ray inspector, and multi-turn hero workflows.
 - **A2A v1.0 Agent Server (`http://localhost:10002`):** Streams validated A2UI v1.0 surfaces over JSON-RPC + Server-Sent Events (`@a2ui/agent` + `@google/genai`).
 
 For isolated per-component fixture testing or full verification:
 
 ```bash
-# Boot worktree-safe isolated preview for all 41 component slices
+# Boot worktree-safe isolated preview for all 49 component slices
 ./scripts/worktree-preview.sh
 
-# Run full verification (typecheck, lint/DAG boundaries, doc checks, 276 tests, catalog.json build)
+# Run full verification (typecheck, lint/DAG boundaries, doc checks, unit/conformance tests, catalog.json build)
 ./scripts/verify.sh
 ```
 
@@ -138,11 +152,11 @@ const surface = processor.model.surfacesMap.get('summary')!;
 ## Documentation Guide (Where to Read Next)
 
 ### For Product Managers, Designers & Newcomers
-- **[Practical Component Playbook (`docs/PLAYBOOK.md`)](docs/PLAYBOOK.md)** — Plain-English guide to the 60-second A2UI mental model, 5 everyday agent UI recipes, and a 41-component decision cheat sheet.
+- **[Practical Component Playbook (`docs/PLAYBOOK.md`)](docs/PLAYBOOK.md)** — Plain-English guide to the 60-second A2UI mental model, 5 everyday agent UI recipes, and a 49-component decision cheat sheet.
 - **[Canonical Glossary (`docs/GLOSSARY.md`)](docs/GLOSSARY.md)** — Clear definitions of A2UI v1.0 concepts (`Surface`, `Catalog`, `Dynamic Value`, `Check Rule`, `Data Model`, `Slice`, `Seam`).
 
 ### For Application & Agent Engineers
-- **[Component & Function Specification (`docs/COMPONENT_CATALOG_SPEC.md`)](docs/COMPONENT_CATALOG_SPEC.md)** — Full property definitions, validation rules, data-binding patterns, and LLM prompt instructions for all 41 components and 20 functions.
+- **[Component & Function Specification (`docs/COMPONENT_CATALOG_SPEC.md`)](docs/COMPONENT_CATALOG_SPEC.md)** — Full property definitions, validation rules, data-binding patterns, and LLM prompt instructions for all 49 components and 24 functions.
 - **[Normative v1.0 Catalog Spec (`docs/specs/0001-lumina-v1-catalog-spec.md`)](docs/specs/0001-lumina-v1-catalog-spec.md)** — Acceptance invariants and compiled JSON Schema contract ([`packages/schema/catalog.json`](packages/schema/catalog.json)).
 
 ### For Design System & Multi-Platform Engineers
@@ -164,14 +178,14 @@ const surface = processor.model.surfacesMap.get('summary')!;
 | :--- | :--- |
 | [`src/protocol/`](src/protocol/) | Layer 0: Framework-free A2UI v1.0 constants, Zod `Dynamic*` helpers, wire normalizer, and slice descriptors |
 | [`src/primitives/`](src/primitives/) | Layer 0.5: Shared UI primitives (`AdaptiveOverlay`, icon registry, motion springs, safe value readers) |
-| [`src/components/`](src/components/) | Layer 1A: **41 vertical component slices** (`schema.ts`, `prompt.md`, `examples.json`, `renderer.tsx`, `index.ts`, `<slug>.test.tsx`) |
-| [`src/functions/`](src/functions/) | Layer 1B: **7 vertical function slices** (`basic-v1` + 6 Lumina client functions) |
+| [`src/components/`](src/components/) | Layer 1A: **49 vertical component slices** (`schema.ts`, `prompt.md`, `examples.json`, `renderer.tsx`, `index.ts`, `<slug>.test.tsx`) |
+| [`src/functions/`](src/functions/) | Layer 1B: **9 vertical function slices** (`basic-v1` + 10 Lumina client functions) |
 | [`src/catalog/`](src/catalog/) | Layer 2: Canonical `catalogRegistry`, `catalog.json` compiler, domain profile slicer, and React adapter |
 | [`src/preview/`](src/preview/) | Layer 3: Isolated worktree-safe Vite preview harness mounting every component's `examples.json` fixtures |
 | [`packages/tokens/`](packages/tokens/) | `@a2ui-catalog/tokens` — W3C design tokens compiled to CSS variables, TS springs, and Swift/Kotlin/Dart stubs |
 | [`packages/core/`](packages/core/) | `@a2ui-catalog/core` — Framework-free projection of A2UI v1.0 component schemas, functions, and profiles |
 | [`packages/schema/`](packages/schema/) | `@a2ui-catalog/schema` — Compiled Draft 2020-12 `catalog.json` + Ajv & Basic v1.0 conformance suite |
 | [`packages/react/`](packages/react/) | `@a2ui-catalog/react` — React renderer (`LuminaProvider`, `LuminaSurface`, `luminaReactCatalog`) + stylesheet |
-| [`apps/explorer/`](apps/explorer/) | Interactive 41-component visual workbench, property inspector, and plain-English Playbook |
-| [`apps/studio/`](apps/studio/) | Conversational Hero Agent showcase with Web × Mobile Side-by-Side (`SxS`) view and Protocol X-Ray |
+| [`apps/explorer/`](apps/explorer/) | Interactive 49-component visual workbench, property inspector, and plain-English Playbook |
+| [`apps/studio/`](apps/studio/) | Conversational Hero Agent showcase with Web × Mobile + OpenAI Intelligent UI Side-by-Side (`SxS`) views |
 | [`apps/agent/`](apps/agent/) | A2A v1.0 SSE agent backend supporting deterministic Replay mode and live `@google/genai` Gemini mode |

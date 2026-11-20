@@ -365,4 +365,178 @@ describe('Lumina React Renderer — Agentic Components & Interactions', () => {
     fireEvent.click(container.querySelector('.lumina-followup-pill')!);
     await waitFor(() => expect(onAction).toHaveBeenCalledTimes(1));
   });
+
+  it('renders and reacts across Intelligent UI slices (ProportionBar, compoundGrowth, ChecklistCard, SwatchPicker, QuizCard, AnnotatedDiagram, RouteMap, SplitLedger, MicroApp)', async () => {
+    const { container, surface } = renderLumina([
+      {
+        version: '1.0',
+        createSurface: {
+          surfaceId: 's-intelligent-ui',
+          catalogId: LUMINA_V1_CATALOG_ID,
+          dataModel: {
+            monthly: 500,
+            years: 30,
+            rate: 5,
+            done: ['c1'],
+            swatch: 'sage',
+          },
+          components: [
+            {
+              id: 'root',
+              component: 'Column',
+              children: ['slider', 'propbar', 'checklist', 'swatches', 'quiz', 'diagram', 'map', 'ledger', 'arcade'],
+            },
+            {
+              id: 'slider',
+              component: 'Slider',
+              label: 'Monthly contribution',
+              min: 0,
+              max: 1000,
+              step: 25,
+              valuePrefix: '$',
+              value: { '@path': '/monthly' },
+              marks: [
+                { value: 0, label: '$0' },
+                { value: 500, label: '$500' },
+                { value: 1000, label: '$1,000' },
+              ],
+            },
+            {
+              id: 'propbar',
+              component: 'ProportionBar',
+              variant: 'split',
+              segments: [
+                {
+                  id: 'contrib',
+                  label: 'Contributions',
+                  value: {
+                    '@call': 'compoundGrowth',
+                    args: { initial: 0, monthly: { '@path': '/monthly' }, years: { '@path': '/years' }, annualRate: { '@path': '/rate' }, metric: 'contributions' },
+                  },
+                  formattedValue: {
+                    '@call': 'formatCurrency',
+                    args: {
+                      value: {
+                        '@call': 'compoundGrowth',
+                        args: { initial: 0, monthly: { '@path': '/monthly' }, years: { '@path': '/years' }, annualRate: { '@path': '/rate' }, metric: 'contributions' },
+                      },
+                      currency: 'USD',
+                      decimals: 0,
+                    },
+                  },
+                  color: 'slate',
+                },
+                {
+                  id: 'growth',
+                  label: 'Investment growth',
+                  value: {
+                    '@call': 'compoundGrowth',
+                    args: { initial: 0, monthly: { '@path': '/monthly' }, years: { '@path': '/years' }, annualRate: { '@path': '/rate' }, metric: 'growth' },
+                  },
+                  formattedValue: {
+                    '@call': 'formatCurrency',
+                    args: {
+                      value: {
+                        '@call': 'compoundGrowth',
+                        args: { initial: 0, monthly: { '@path': '/monthly' }, years: { '@path': '/years' }, annualRate: { '@path': '/rate' }, metric: 'growth' },
+                      },
+                      currency: 'USD',
+                      decimals: 0,
+                    },
+                  },
+                  color: 'emerald',
+                },
+              ],
+            },
+            {
+              id: 'checklist',
+              component: 'ChecklistCard',
+              title: 'Lamb Roast Steps',
+              value: { '@path': '/done' },
+              items: [
+                { id: 'c1', title: 'Temper lamb leg', time: '-45m' },
+                { id: 'c2', title: 'Roast at 200C', time: '1h 15m' },
+              ],
+            },
+            {
+              id: 'swatches',
+              component: 'SwatchPicker',
+              label: 'Ripstop Palette',
+              value: { '@path': '/swatch' },
+              swatches: [
+                { value: 'sage', label: 'Alpine Sage', hex: '#4B6B58' },
+                { value: 'ochre', label: 'Signal Ochre', hex: '#D97706' },
+              ],
+            },
+            {
+              id: 'quiz',
+              component: 'QuizCard',
+              title: 'Quick Check',
+              questions: [
+                {
+                  id: 'q1',
+                  prompt: 'Which term represents Net Exports?',
+                  correctOptionId: 'nx',
+                  options: [
+                    { id: 'c', label: 'Consumption' },
+                    { id: 'nx', label: 'Exports minus Imports', explanation: 'NX = X - M.' },
+                  ],
+                },
+              ],
+            },
+            {
+              id: 'diagram',
+              component: 'AnnotatedDiagram',
+              title: '7-Speed Bicycle',
+              preset: 'bicycle-7speed',
+              hotspots: [{ id: 'h1', label: 'Rear Derailleur', detail: 'Shifts chain across 7 cogs.', x: 24, y: 65 }],
+            },
+            {
+              id: 'map',
+              component: 'RouteMap',
+              title: 'SF Sightseeing',
+              regionPreset: 'sf-bay',
+              stops: [{ id: 'st1', title: 'Ferry Building', lat: 37.7955, lng: -122.3937 }],
+            },
+            {
+              id: 'ledger',
+              component: 'SplitLedger',
+              title: 'The Dinner Ledger',
+              guests: ['Maya', 'Theo'],
+              items: [{ id: 'd1', name: 'Margherita', price: 22, sharedBy: [0, 1] }],
+              taxAmount: 2,
+              tipPercent: 20,
+            },
+            {
+              id: 'arcade',
+              component: 'MicroApp',
+              preset: 'drum-sequencer',
+              title: 'DRUM / LAB 01',
+            },
+          ],
+        },
+      },
+    ]);
+
+    await waitFor(() => {
+      expect(container.textContent).toContain('$180,000');
+      expect(container.textContent).toContain('$236,129');
+      expect(container.textContent).toContain('Lamb Roast Steps');
+      expect(container.textContent).toContain('Alpine Sage');
+      expect(container.textContent).toContain('7-Speed Bicycle');
+      expect(container.textContent).toContain('Ferry Building');
+      expect(container.textContent).toContain('The Dinner Ledger');
+      expect(container.textContent).toContain('DRUM / LAB 01');
+    });
+
+    // Adjusting monthly slider updates DataModel and compoundGrowth live!
+    const range = container.querySelector('.lumina-slider') as HTMLInputElement;
+    fireEvent.change(range, { target: { value: '600' } });
+    expect(surface.dataModel.get('/monthly')).toBe(600);
+    await waitFor(() => {
+      const trackLabel = container.querySelector('.lumina-proportion-track')?.getAttribute('aria-label') ?? '';
+      expect(trackLabel).toContain('$216,000');
+      expect(trackLabel).toContain('$283,355');
+    });
+  });
 });

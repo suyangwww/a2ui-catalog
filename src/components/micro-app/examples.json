@@ -1,0 +1,20 @@
+[
+  {
+    "title": "MicroApp — Pixel Palace 1989 Edition playable handheld console",
+    "props": {
+      "title": "PIXEL PALACE",
+      "badge": "1989 EDITION",
+      "preset": "retro-arcade",
+      "defaultGame": "snake"
+    }
+  },
+  {
+    "title": "MicroApp — Drum / Lab 01 16-step WebAudio rhythm sequencer",
+    "props": {
+      "title": "DRUM / LAB 01",
+      "subtitle": "Rhythm playground · 16-step machine",
+      "badge": "READY",
+      "preset": "drum-sequencer"
+    }
+  }
+]

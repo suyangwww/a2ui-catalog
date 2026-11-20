@@ -9,7 +9,7 @@ import soundfile as sf
 from kokoro_onnx import Kokoro
 
 ROOT = Path(__file__).resolve().parent
-CUES_PATH = ROOT / "cues.json"
+CUES_PATH = Path(os.environ.get("LUMINA_CUES_PATH", str(ROOT / "cues.json")))
 OUT_DIR = Path(os.environ.get("LUMINA_NARRATION_DIR", "/tmp/lumina-narration"))
 MODEL_DIR = Path(os.environ.get("KOKORO_MODEL_DIR", "/tmp/kokoro-models"))
 

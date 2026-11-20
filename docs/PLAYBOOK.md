@@ -10,7 +10,7 @@ When an AI agent only replies with plain text, people have to read walls of para
 
 **A2UI v1.0** solves this with a simple agreement between the **Agent** and the **App**:
 
-1. **The Catalog is the Menu:** Lumina gives the agent a trusted menu of **41 ready-made UI building blocks** (cards, charts, tables, toggles, approval gates, and side-panel documents).
+1. **The Catalog is the Menu:** Lumina gives the agent a trusted menu of **49 ready-made UI building blocks** (cards, charts, tables, schematics, maps, checklists, ledgers, toggles, approval gates, and side-panel documents).
 2. **The Agent Sends Plain Data, Never Code:** The agent sends a small JSON message listing which components to show, what properties to pass them, and a shared **Data Model** (a simple dictionary of current values, like `{ "seats": 5, "verified": false }`).
 3. **One Payload Works Everywhere:** You do not write separate payloads for Light Mode, Dark Mode, Desktop, iPad, or iPhone. Every Lumina component shares the same clean look and automatically adapts its layout to fit the screen it is on.
 
@@ -26,29 +26,32 @@ As a rule of thumb, **start with the user's task**, not the component list. Almo
 - **`ThoughtTrace`** — Put this at the top of a reply to summarize how the agent reasoned. Keep `defaultExpanded: false` so the screen stays calm unless someone wants to inspect the steps.
 - **`StepTimeline`** — Use when an agent is running a sequence of concrete actions (for example: *1. Checked inventory -> 2. Reserved flight -> 3. Waiting for confirmation*).
 - **`ProgressIndicator`** — Use `variant: "bar"` or `"ring"` for percentage progress, `"segmented"` for multi-stage rollouts, or omit `value` when duration is unknown.
+- **`ChecklistCard`** — Use when the *person* is checking off steps interactively (like a cooking timeline, packing checklist, or pre-flight runbook).
 
 ### Recipe 2: Back Up Answers with Sources & Clear Numbers
 > **Goal:** Let people verify facts at a glance instead of hunting through paragraphs.
 
 - **`SourceList`** — Always attach cited web pages, filings, or internal docs (`variant: "cards"` for 2–4 key sources, `"pills"` for compact inline references).
 - **`Grid` + `StatMetric`** — Pull the 2 to 4 most important numbers out of your text and place them in a `Grid` (`minItemWidth: 210`). Add `sparkline` for quick history and `trendSentiment` so the app knows whether "down" is good (like lower error rates) or bad (like lower revenue).
-- **`Chart`** — Use `"area"` or `"line"` for trends over time, `"bar"` or `"stackedBar"` for category comparisons, and `"donut"` for shares of a total. Users can hover with a mouse on Desktop or drag a finger across the chart on iPad and iPhone.
+- **`Chart` & `ProportionBar`** — Use `Chart` (`"area"`, `"line"`, `"bar"`, `"stackedBar"`, `"donut"`) for trends and distributions, and `ProportionBar` for clean horizontal share splits (like Contributions vs Investment Growth or GDP components).
+- **`AnnotatedDiagram` & `RouteMap`** — Use `AnnotatedDiagram` to explain subsystems with clickable hotspot pins, and `RouteMap` to plot multi-stop itineraries on a street basemap.
 - **`DataTable`** — Use for 4+ structured rows where people may want to sort columns (`sortable: true`) or scan formatted currency, percentages, and status badges.
-- **`Callout`** — Highlight a single takeaway, warning, or blocker (`tone: "info" | "tip" | "warning" | "critical"`).
+- **`QuizCard` & `Callout`** — Use `Callout` to highlight a key takeaway or alert, and `QuizCard` for interactive comprehension checks.
 
 ### Recipe 3: Let People Tap Instead of Type
 > **Goal:** Turn back-and-forth typing into quick, mistake-free controls bound directly to the Data Model.
 
 - **`SegmentedControl`** — Best for 2 to 4 mutually exclusive modes (for example: *Economy / Business / First*).
-- **`ChoicePicker`** — Best for selecting one or many tags from 4+ options (`displayStyle: "chips"` for quick pills, `"cards"` when each option needs a short description, `filterable: true` for long lists).
+- **`ChoicePicker` & `SwatchPicker`** — Use `ChoicePicker` (`"chips"`, `"cards"`, or `"gallery"` image cards) for multi-option selection, and `SwatchPicker` for colorways and material finishes.
 - **`StepperInput`** — Best for small whole numbers like headcount, nights, or seats (`+` / `-` buttons).
-- **`Slider`** — Best for budgets, percentages, or thresholds where seeing live numbers update as you drag helps you decide.
+- **`Slider`** — Best for budgets, percentages, or compound-growth horizons where live client math (`compoundGrowth`, `computeMath`) updates totals as you drag.
+- **`SplitLedger`** — Best for itemized group dinner bills with shared dishes, tax/tip presets, and cent-exact per-person receipts.
 - **`Switch` & `CheckBox`** — Use `Switch` for instant on/off preferences; use `CheckBox` when someone is explicitly agreeing to or verifying a statement.
 - **`TextField` & `DateTimeInput`** — Use for short text notes, emails, or picking a calendar date/time.
 - **`FollowUpSuggestions`** — Place 2 to 4 tap-to-send prompt pills at the bottom of a turn so users always have an obvious next step.
 
 ### Recipe 4: Put a Human Safety Gate in Front of Real Actions
-> **Goal:** Never let an agent spend money, delete data, message customers, or deploy code without clear human sign-off.
+> **Goal:** Never let an agent spend money, delete data, message customers, or deploy code without clear sign-off.
 
 - **Show the exact change first:** Use **`KeyValueList`** for bookings/transfers (who, how much, confirmation details) or **`DiffViewer`** / **`CodeBlock`** for code and configuration changes.
 - **Gate execution with `ApprovalCard`:** Set `riskLevel: "high"` (red) or `"medium"` (amber) so the stakes are unmistakable.
@@ -59,10 +62,11 @@ As a rule of thumb, **start with the user's task**, not the component list. Almo
 
 - **`ArtifactCard`** — Shows a clean summary card in chat (`title`, `kind`, `version`, `preview`) with an **Open** button. When clicked, its `child` content opens in a **split side panel on Desktop**, a ** spacious sheet on iPad**, or a **slide-up bottom sheet on iPhone**.
 - **`Modal`** — Use for secondary details (like security terms or settings) triggered by a button without leaving the current task.
+- **`MicroApp`** — Use when an experience genuinely requires continuous 60fps canvas animation, WebAudio synthesis, or a strictly sandboxed simulation.
 
 ---
 
-## 3. Quick Decision Cheat Sheet (All 41 Components)
+## 3. Quick Decision Cheat Sheet (All 49 Components)
 
 | What You Need to Do | Pick This Component | Key Properties to Set |
 | :--- | :--- | :--- |
@@ -83,30 +87,38 @@ As a rule of thumb, **start with the user's task**, not the component list. Almo
 | **Colored status pill** | `StatusBadge` | `label`, `tone`, `pulse`, `icon` |
 | **Inline video clip** | `Video` | `url`, `posterUrl`, `title` |
 | **Voice note or audio summary** | `AudioPlayer` | `url`, `description`, `subtitle` |
+| **Interactive technical schematic & pins** | `AnnotatedDiagram` | `preset`, `groups`, `hotspots` (`x`, `y`, `detail`), `gear` |
+| **Multi-stop street route map** | `RouteMap` | `region`, `stops` (`title`, `x`, `y`, `time`), `expandable` |
 | **Trigger an agent or client action** | `Button` | `label`, `variant`, `icon`, `action`, `@checks` |
 | **Single-line or multi-line text box** | `TextField` | `label`, `value` (`@path`), `placeholder`, `clearable` |
 | **Tick box for agreement / selection** | `CheckBox` | `label`, `value` (`@path`), `description` |
 | **Instant on/off toggle** | `Switch` | `label`, `value` (`@path`), `description` |
 | **2–4 option sliding pill switch** | `SegmentedControl` | `options`, `value` (`@path`), `label` |
-| **Single or multi-select chips/cards** | `ChoicePicker` | `options`, `value` (`@path`), `variant`, `displayStyle` |
-| **Drag-to-adjust number range** | `Slider` | `label`, `min`, `max`, `value` (`@path`), `unit` |
+| **Single or multi-select chips/gallery** | `ChoicePicker` | `options` (`imageUrl`, `eyebrow`), `value` (`@path`), `displayStyle` |
+| **Drag-to-adjust number range** | `Slider` | `label`, `min`, `max`, `step`, `valuePrefix`, `marks`, `value` (`@path`) |
 | **Plus / minus counter** | `StepperInput` | `label`, `value` (`@path`), `min`, `max`, `step` |
 | **Date or time picker** | `DateTimeInput` | `label`, `value` (`@path`), `enableDate`, `enableTime` |
+| **Colorway & material finish swatches** | `SwatchPicker` | `swatches` (`label`, `hex`, `subtitle`), `value` (`@path`), `variant` |
 | **Collapsible agent reasoning summary** | `ThoughtTrace` | `summary`, `status`, `durationSeconds`, `steps` |
 | **Step-by-step workflow tracker** | `StepTimeline` | `title`, `steps` (`title`, `status`, `timestamp`) |
 | **Approve / reject confirmation gate** | `ApprovalCard` | `title`, `riskLevel`, `approveAction`, `rejectAction`, `@checks` |
 | **Bar, ring, or stage progress meter** | `ProgressIndicator` | `label`, `value`, `variant`, `segments`, `tone` |
+| **Interactive X-of-N checklist** | `ChecklistCard` | `title`, `items` (`title`, `time`, `detail`), `value` (`@path`) |
 | **Grounded citations & links** | `SourceList` | `title`, `variant`, `sources` (`title`, `url`, `domain`) |
 | **Syntax-highlighted code snippet** | `CodeBlock` | `code`, `language`, `filename`, `highlightLines` |
 | **Before / after text or config diff** | `DiffViewer` | `before`, `after`, `filename`, `viewMode` |
 | **Expandable side-panel deliverable** | `ArtifactCard` | `title`, `kind`, `version`, `preview`, `child` |
 | **Highlighted note, tip, or alert** | `Callout` | `title`, `body`, `tone`, `actionLabel`, `action` |
+| **Retro arcade, synth or sandboxed app** | `MicroApp` | `preset` (`retroArcade`, `drumSequencer`, `customHtml`), `title` |
 | **Big KPI number with trend & sparkline** | `StatMetric` | `label`, `value`, `delta`, `trend`, `trendSentiment`, `sparkline` |
 | **Interactive area, line, bar, or donut** | `Chart` | `type`, `data`, `xKey`, `series`, `title` |
 | **Sortable formatted table** | `DataTable` | `columns` (`key`, `header`, `format`, `sortable`), `rows` |
 | **Clean label-and-value receipt rows** | `KeyValueList` | `title`, `items` (`label`, `value`, `copyable`) |
 | **Side-by-side option comparison** | `ComparisonMatrix` | `title`, `criteria`, `options` (`recommended`, `action`) |
 | **Suggested next-step prompt pills** | `FollowUpSuggestions` | `title`, `suggestions` (`label`, `action`) |
+| **Proportional split / share bar** | `ProportionBar` | `segments` (`label`, `value`, `formattedValue`), `variant` |
+| **Interactive comprehension quiz** | `QuizCard` | `questions` (`prompt`, `options`, `correctOptionId`, `hint`) |
+| **Itemized party bill splitter** | `SplitLedger` | `guests`, `items` (`name`, `price`, `diners`), `variant`, `tipPercent` |
 
 ---
 

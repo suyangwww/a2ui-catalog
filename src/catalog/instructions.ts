@@ -19,16 +19,19 @@ You are generating declarative A2UI v1.0 surfaces using the **Lumina Catalog** (
    - Use \`StepTimeline\` for multi-step execution traces, workflows, and itineraries.
    - Use \`ThoughtTrace\` for concise collapsible reasoning summaries.
    - Use \`SourceList\` for grounded web citations and references.
-   - Use \`Chart\` (\`line\`, \`area\`, \`bar\`, \`stackedBar\`, \`donut\`) and \`DataTable\` for quantitative analysis.
+   - Use \`Chart\` (\`line\`, \`area\`, \`bar\`, \`stackedBar\`, \`donut\`), \`ProportionBar\`, and \`DataTable\` for quantitative analysis and proportional splits.
+   - Use \`AnnotatedDiagram\` for interactive technical schematics with subsystem filters and hotspot pins, and \`RouteMap\` for multi-stop sightseeing/logistics routes.
+   - Use \`ChecklistCard\` for interactive step-by-step cooking, packing, or runbook checklists, \`QuizCard\` for comprehension checks, \`SwatchPicker\` for color/finish palettes, and \`SplitLedger\` for itemized multi-diner bill splitting.
+   - Use \`MicroApp\` for self-contained playable retro arcade canvases, step sequencers, or strictly sandboxed bespoke interactive simulations.
    - Use \`CodeBlock\` and \`DiffViewer\` for code snippets, queries, logs, and patch reviews.
    - Use \`ArtifactCard\` for long-form deliverables (memos, full itineraries, plans) that expand into a focused Canvas drawer.
 
 2. **Concise Button Authoring:**
    - Prefer \`Button\` with \`label\` and optional \`icon\` instead of creating a separate child \`Text\` component, unless custom composite child layout is needed.
 
-3. **Reactive Client Formatting & Data Binding (A2UI v1.0):**
+3. **Reactive Client Formatting, Math & Data Binding (A2UI v1.0):**
    - Use \`{"@path": "/..."}\` for root data model bindings and \`{"@path": "field"}\` for relative paths inside \`TemplateChildList\`.
-   - Use \`formatString\`, \`formatCurrency\`, \`formatNumber\`, \`formatCompactNumber\`, \`formatPercent\`, \`formatDate\`, and \`formatRelativeTime\` via \`{"@call": "...", "args": {...}}\` so interactive inputs (\`Slider\`, \`StepperInput\`, \`Switch\`, \`SegmentedControl\`) update displayed metrics immediately on the client.
+   - Use \`computeMath\`, \`compoundGrowth\`, \`selectByValue\`, \`formatString\`, \`formatCurrency\`, \`formatNumber\`, \`formatCompactNumber\`, \`formatPercent\`, \`formatDate\`, and \`formatRelativeTime\` via \`{"@call": "...", "args": {...}}\` so interactive inputs (\`Slider\`, \`StepperInput\`, \`Switch\`, \`SegmentedControl\`, \`ChoicePicker\`, \`SwatchPicker\`) update displayed metrics immediately on the client with zero network round-trips.
 
 4. **Human-in-the-Loop Safety:**
    - Wrap irreversible, financial, or production-impacting actions in \`ApprovalCard\` with an accurate \`riskLevel\` (\`low\`, \`medium\`, \`high\`).
@@ -44,7 +47,7 @@ export const LUMINA_CATALOG_DOCUMENT_OPTIONS = {
   schemaId: LUMINA_V1_CATALOG_ID,
   title: 'A2UI Lumina Catalog',
   description:
-    'Modern, cross-platform A2UI v1.0 agentic UI catalog covering 41 components and 20 functions across Web and Mobile.',
+    'Modern, cross-platform A2UI v1.0 agentic UI catalog covering 49 components and 24 functions across Web and Mobile.',
   instructions: LUMINA_INSTRUCTIONS,
   declaredProtocolVersion: '1.0',
   commonTypesUri: 'common_types.json',
