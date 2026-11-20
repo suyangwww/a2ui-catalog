@@ -24,6 +24,36 @@
 
 ---
 
+## Narrated Video Walkthroughs
+
+### 1. Live Hero Agent Studio — Web × Mobile Side by Side (`1:55` · Voiceover)
+
+Shows **Web on the left** and a **live synchronized Mobile surface on the right** driven by a single A2UI v1.0 stream across all 4 multi-turn hero workflows (*Executive Tokyo Trip*, *AI Semiconductor Research*, *Service Outage & Safe Rollout*, and *Monthly Budget Optimizer* with Protocol X-Ray). Each component shares the exact same visual language and state while adapting layout ergonomics to its screen size.
+
+<video src="docs/media/lumina-hero-agent-studio-narrated.mp4" poster="docs/media/poster-hero-studio-sxs.png" controls width="100%">
+  <a href="docs/media/lumina-hero-agent-studio-narrated.mp4">
+    <img src="docs/media/poster-hero-studio-sxs.png" alt="Watch Narrated Live Hero Agent Studio — Web x Mobile Side-by-Side (1:55)" width="100%" />
+  </a>
+</video>
+
+> **[▶ Open Narrated Video (`1:55` · MP4 with Voiceover)](docs/media/lumina-hero-agent-studio-narrated.mp4)** · **[Direct Raw Stream](https://github.com/wsyang0309/a2ui-catalog/raw/main/docs/media/lumina-hero-agent-studio-narrated.mp4)**
+
+---
+
+### 2. Complete 41-Component & Property Reference + Playbook (`4:11` · Voiceover)
+
+Walks through **all 41 components (`01 Row` through `41 FollowUpSuggestions`)** in plain English inside the Interactive Explorer—presenting every component's visual property definitions (`Required` vs `Optional`), Light & Dark modes, Desktop / iPad / iPhone adaptation, and the 5-recipe [Practical Component Playbook](docs/PLAYBOOK.md).
+
+<video src="docs/media/lumina-components-deep-dive-narrated.mp4" poster="docs/media/poster-components-walkthrough.png" controls width="100%">
+  <a href="docs/media/lumina-components-deep-dive-narrated.mp4">
+    <img src="docs/media/poster-components-walkthrough.png" alt="Watch Narrated 41-Component & Property Walkthrough + Playbook (4:11)" width="100%" />
+  </a>
+</video>
+
+> **[▶ Open Narrated Video (`4:11` · MP4 with Voiceover)](docs/media/lumina-components-deep-dive-narrated.mp4)** · **[Direct Raw Stream](https://github.com/wsyang0309/a2ui-catalog/raw/main/docs/media/lumina-components-deep-dive-narrated.mp4)** · **[Standalone Mobile Clip (`0:09`)](docs/media/lumina-studio-mobile.mp4)**
+
+---
+
 ## Catalog at a Glance (41 Components · 20 Functions)
 
 | Family | Count | Components |
