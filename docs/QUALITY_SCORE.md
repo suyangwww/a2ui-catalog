@@ -39,7 +39,7 @@ Generated deterministically by `pnpm quality:score` ([scripts/compute-quality-sc
 | `image` | Pass | 1 | Pass | Pass | 378c | 84L | **A** |
 | `key-value-list` | Pass | 1 | Pass | Pass | 334c | 66L | **A** |
 | `list` | Pass | 1 | Pass | Pass | 347c | 35L | **A** |
-| `micro-app` | Pass | 1 | Pass | Pass | 659c | 139L | **A** |
+| `micro-app` | Pass | 1 | Pass | Pass | 659c | 140L | **A** |
 | `modal` | Pass | 1 | Pass | Pass | 387c | 35L | **A** |
 | `progress-indicator` | Pass | 1 | Pass | Pass | 355c | 121L | **A** |
 | `proportion-bar` | Pass | 2 | Pass | Pass | 533c | 132L | **A** |

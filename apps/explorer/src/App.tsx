@@ -9,6 +9,7 @@ import {
   ChevronRight,
   Code2,
   Database,
+  Home,
   Layers,
   ListChecks,
   Monitor,
@@ -22,6 +23,7 @@ import {
 } from 'lucide-react';
 import { EXPLORER_EXAMPLES, type ExplorerExample } from './examples';
 import { CATALOG_GROUPS, CATALOG_REFERENCE, type ComponentReferenceEntry } from './catalog-reference';
+import { HomePage } from './HomePage';
 import './App.css';
 
 interface ActionLogEntry {
@@ -30,13 +32,18 @@ interface ActionLogEntry {
   action: unknown;
 }
 
-type ExplorerMode = 'showcases' | 'components' | 'playbook';
+type ExplorerMode = 'home' | 'showcases' | 'components' | 'playbook';
 
 function initialModeFromUrl(): ExplorerMode {
-  if (typeof window === 'undefined') return 'showcases';
+  if (typeof window === 'undefined') return 'home';
   const m = new URLSearchParams(window.location.search).get('mode');
-  if (m === 'components' || m === 'playbook') return m;
-  return 'showcases';
+  if (m === 'showcases' || m === 'components' || m === 'playbook') return m;
+  return 'home';
+}
+
+function initialThemeFromUrl(): 'light' | 'dark' {
+  if (typeof window === 'undefined') return 'light';
+  return new URLSearchParams(window.location.search).get('theme') === 'dark' ? 'dark' : 'light';
 }
 
 const PLAYBOOK_RECIPES = [
@@ -86,7 +93,7 @@ export function App() {
   const [mode, setMode] = React.useState<ExplorerMode>(initialModeFromUrl);
   const [selectedId, setSelectedId] = React.useState(EXPLORER_EXAMPLES[0].id);
   const [selectedCompName, setSelectedCompName] = React.useState(CATALOG_REFERENCE[0].name);
-  const [theme, setTheme] = React.useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = React.useState<'light' | 'dark'>(initialThemeFromUrl);
   const [device, setDevice] = React.useState<'desktop' | 'tablet' | 'mobile'>('desktop');
   const [inspectorTab, setInspectorTab] = React.useState<'props' | 'json' | 'data' | 'actions'>(() =>
     initialModeFromUrl() === 'components' ? 'props' : 'json',
@@ -202,7 +209,7 @@ export function App() {
   }, []);
 
   React.useEffect(() => {
-    if (mode === 'playbook') return;
+    if (mode === 'home' || mode === 'playbook') return;
     setJsonText(JSON.stringify(activeMessages, null, 2));
     loadMessages(activeMessages, false);
   }, [mode, activeMessages, loadMessages]);
@@ -270,6 +277,16 @@ export function App() {
           <button
             type="button"
             role="tab"
+            aria-selected={mode === 'home'}
+            className={`exp-mode-tab ${mode === 'home' ? 'is-active' : ''}`}
+            onClick={() => switchMode('home')}
+          >
+            <Home size={14} />
+            <span>Home</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
             aria-selected={mode === 'showcases'}
             className={`exp-mode-tab ${mode === 'showcases' ? 'is-active' : ''}`}
             onClick={() => switchMode('showcases')}
@@ -300,46 +317,48 @@ export function App() {
         </div>
 
         <div className="exp-toolbar">
-          <div className="exp-seg-group" role="group" aria-label="Viewport preview">
-            <button
-              type="button"
-              className={`exp-tool-btn ${device === 'desktop' ? 'is-active' : ''}`}
-              onClick={() => setDevice('desktop')}
-              title="Desktop Viewport"
-            >
-              <Monitor size={15} />
-              <span>Desktop</span>
-            </button>
-            <button
-              type="button"
-              className={`exp-tool-btn ${device === 'tablet' ? 'is-active' : ''}`}
-              onClick={() => setDevice('tablet')}
-              title="iPad Viewport"
-            >
-              <Tablet size={15} />
-              <span>iPad</span>
-            </button>
-            <button
-              type="button"
-              className={`exp-tool-btn ${device === 'mobile' ? 'is-active' : ''}`}
-              onClick={() => setDevice('mobile')}
-              title="iPhone Viewport"
-            >
-              <Smartphone size={15} />
-              <span>iPhone</span>
-            </button>
-          </div>
+          {mode !== 'home' && mode !== 'playbook' && (
+            <>
+              <div className="exp-seg-group" role="group" aria-label="Viewport preview">
+                <button
+                  type="button"
+                  className={`exp-tool-btn ${device === 'desktop' ? 'is-active' : ''}`}
+                  onClick={() => setDevice('desktop')}
+                  title="Desktop Viewport"
+                >
+                  <Monitor size={15} />
+                  <span>Desktop</span>
+                </button>
+                <button
+                  type="button"
+                  className={`exp-tool-btn ${device === 'tablet' ? 'is-active' : ''}`}
+                  onClick={() => setDevice('tablet')}
+                  title="iPad Viewport"
+                >
+                  <Tablet size={15} />
+                  <span>iPad</span>
+                </button>
+                <button
+                  type="button"
+                  className={`exp-tool-btn ${device === 'mobile' ? 'is-active' : ''}`}
+                  onClick={() => setDevice('mobile')}
+                  title="iPhone Viewport"
+                >
+                  <Smartphone size={15} />
+                  <span>iPhone</span>
+                </button>
+              </div>
 
-          {mode !== 'playbook' && (
-            <button
-              type="button"
-              className="exp-stream-btn"
-              disabled={streaming}
-              onClick={() => loadMessages(activeMessages, true)}
-            >
-              <Play size={14} />
-              <span>{streaming ? 'Streaming...' : 'Simulate Stream'}</span>
-            </button>
+              <button
+                type="button"
+                className="exp-stream-btn"
+                disabled={streaming}
+                onClick={() => loadMessages(activeMessages, true)}
+              >
+                <Play size={14} />
+                <span>{streaming ? 'Streaming...' : 'Simulate Stream'}</span>
+              </button>
+            </>
           )}
 
           <button
@@ -354,7 +373,18 @@ export function App() {
         </div>
       </header>
 
-      {mode === 'playbook' ? (
+      {mode === 'home' ? (
+        <HomePage
+          theme={theme}
+          totalComponents={CATALOG_REFERENCE.length}
+          onOpenShowcases={() => switchMode('showcases')}
+          onOpenPlaybook={() => switchMode('playbook')}
+          onSelectComponent={(compName) => {
+            setSelectedCompName(compName);
+            switchMode('components');
+          }}
+        />
+      ) : mode === 'playbook' ? (
         <main className="exp-playbook-page">
           <div className="exp-playbook-inner">
             <div className="exp-playbook-hero">

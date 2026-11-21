@@ -1,0 +1,39 @@
+{
+  "quick_walkthrough": [
+    {
+      "id": "beyond_text",
+      "title": "1 · Beyond Plain Text · Clear Visual Cards",
+      "props": "Plain-English Overview · 49 Ready-Made Building Blocks",
+      "speech": "When you ask an AI assistant for help, you usually get a long wall of text. Lumina changes that—giving AI a trusted menu of forty-nine visual building blocks, so everyday answers look like clean, interactive cards.",
+      "tts": "When you ask an A-I assistant for help, you usually get a long wall of text. Lumina changes that, giving A-I a trusted menu of forty-nine visual building blocks, so everyday answers look like clean, interactive cards."
+    },
+    {
+      "id": "tap_and_drag",
+      "title": "2 · Tap & Drag Live · No Extra Typing",
+      "props": "Live Sliders · Proportion Split Bar · Instant Math",
+      "speech": "Instead of typing follow-up messages just to test different numbers, people can switch to a live savings calculator and drag monthly deposits or return rates—watching their projected thirty-year balance update on the spot.",
+      "tts": "Instead of typing follow-up messages just to test different numbers, people can switch to a live savings calculator and drag monthly deposits or return rates, watching their projected thirty-year balance update on the spot."
+    },
+    {
+      "id": "maps_and_docs",
+      "title": "3 · Cited Sources, Charts & Side Reports",
+      "props": "Clickable Sources · Interactive Charts · Clean Side Panel",
+      "speech": "Research answers stay easy to verify. Assistants can attach clickable web sources, plot interactive charts, and tuck long memos neatly into a side panel instead of crowding the conversation.",
+      "tts": "Research answers stay easy to verify. Assistants can attach clickable web sources, plot interactive charts, and tuck long memos neatly into a side panel instead of crowding the conversation."
+    },
+    {
+      "id": "human_signoff",
+      "title": "4 · Built-In Human Sign-Off",
+      "props": "Reservation Summary · Required Check · Locked Approval Gate",
+      "speech": "Before an AI books a hotel, moves money, or applies a change, built-in approval gates keep the confirm button safely locked until a person reviews the summary and checks the box.",
+      "tts": "Before an A-I books a hotel, moves money, or applies a change, built-in approval gates keep the confirm button safely locked until a person reviews the summary and checks the box."
+    },
+    {
+      "id": "every_screen",
+      "title": "5 · One Reply Fits Computer, Tablet & Phone",
+      "props": "Laptop + Phone Sync · Light & Dark Mode · Safe Data Only",
+      "speech": "Best of all, the AI sends one simple data message—never raw code—and Lumina adapts every layout automatically across laptop, tablet, and phone, in both Light and Dark mode.",
+      "tts": "Best of all, the A-I sends one simple data message, never raw code, and Lumina adapts every layout automatically across laptop, tablet, and phone, in both Light and Dark mode."
+    }
+  ]
+}

@@ -45,7 +45,7 @@ export const EXPLORER_EXAMPLES: ExplorerExample[] = [
               component: 'StepTimeline',
               title: 'Release Pipeline',
               steps: [
-                { id: '1', title: 'Unit & A2UI Schema Conformance', subtitle: '41 components + 43 Basic v1.0 fixtures passed', status: 'completed', timestamp: '1.2s' },
+                { id: '1', title: 'Unit & A2UI Schema Conformance', subtitle: '49 components + 43 Basic v1.0 fixtures passed', status: 'completed', timestamp: '1.2s' },
                 { id: '2', title: 'Staging Canary Verification', subtitle: 'p99 38ms across us-east-1', status: 'completed', timestamp: '2.4s' },
                 { id: '3', title: 'Production Rollout Gate', subtitle: 'Waiting for engineer sign-off', status: 'active', timestamp: 'Now' },
               ],
